@@ -1,0 +1,118 @@
+openapi: 3.1.0
+info:
+  title: NVIDIA NIM Embeddings API
+  description: >
+    OpenAI-compatible embeddings endpoint backed by NVIDIA NeMo Retriever text
+    embedding models. Returns dense float vectors for documents or queries.
+    Supports `input_type=passage|query` for asymmetric retrieval and the
+    standard `dimensions` parameter on models that allow dimension reduction.
+  version: '2026-05-25'
+  contact:
+    name: NVIDIA Developer Support
+    url: https://forums.developer.nvidia.com/c/ai-data-science/nemo-llm-service/
+  license:
+    name: NVIDIA AI Enterprise License
+    url: https://www.nvidia.com/en-us/data-center/products/ai-enterprise/
+servers:
+  - url: https://integrate.api.nvidia.com
+    description: NVIDIA-hosted NIM endpoint
+  - url: http://localhost:8000
+    description: Self-hosted NIM container default
+security:
+  - BearerAuth: []
+tags:
+  - name: Embeddings
+    description: Dense vector embedding operations for RAG and semantic search
+paths:
+  /v1/embeddings:
+    post:
+      summary: Create An Embedding
+      description: Generate embedding vectors for one or more input strings using a NeMo Retriever embedding model.
+      operationId: createEmbedding
+      tags:
+        - Embeddings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbeddingRequest'
+      responses:
+        '200':
+          description: Embedding response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbeddingResponse'
+        '400':
+          description: Invalid request.
+        '401':
+          description: Missing or invalid API key.
+        '429':
+          description: Rate limit exceeded.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: nvapi-...
+  schemas:
+    EmbeddingRequest:
+      type: object
+      required: [model, input]
+      properties:
+        model:
+          type: string
+          description: e.g. `nvidia/llama-3.2-nv-embedqa-1b-v2`, `nvidia/nv-embedqa-e5-v5`, `baai/bge-m3`.
+        input:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+        input_type:
+          type: string
+          enum: [query, passage]
+          description: Asymmetric retrieval hint for NV-EmbedQA-style models.
+        encoding_format:
+          type: string
+          enum: [float, base64]
+          default: float
+        truncate:
+          type: string
+          enum: [NONE, START, END]
+          default: NONE
+        dimensions:
+          type: integer
+          description: Optional output dimensionality for models that support truncation (e.g. Matryoshka models).
+        user:
+          type: string
+    EmbeddingResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              object:
+                type: string
+                example: embedding
+              index:
+                type: integer
+              embedding:
+                type: array
+                items:
+                  type: number
+        model:
+          type: string
+        usage:
+          type: object
+          properties:
+            prompt_tokens:
+              type: integer
+            total_tokens:
+              type: integer

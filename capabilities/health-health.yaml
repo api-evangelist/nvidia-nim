@@ -1,0 +1,104 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NVIDIA NIM Health
+  description: 'Liveness, readiness, and Prometheus metrics endpoints for self-hosted NIM containers.'
+  tags:
+  - NVIDIA
+  - NIM
+  - Health
+  - Observability
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds: []
+capability:
+  consumes:
+  - type: http
+    namespace: health
+    baseUri: http://localhost:8000
+    description: Self-hosted NIM container health surface.
+    resources:
+    - name: health-live
+      path: /v1/health/live
+      operations:
+      - name: getliveness
+        method: GET
+        description: Liveness Probe
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: health-ready
+      path: /v1/health/ready
+      operations:
+      - name: getreadiness
+        method: GET
+        description: Readiness Probe
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: metrics
+      path: /v1/metrics
+      operations:
+      - name: getmetrics
+        method: GET
+        description: Prometheus Metrics
+        outputRawFormat: text
+        outputParameters:
+        - name: result
+          type: string
+          value: $.
+    authentication:
+      type: none
+  exposes:
+  - type: rest
+    namespace: health-rest
+    port: 8080
+    resources:
+    - path: /v1/health/live
+      name: health-live
+      operations:
+      - method: GET
+        name: getliveness
+        description: Liveness Probe
+        call: health.getliveness
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/health/ready
+      name: health-ready
+      operations:
+      - method: GET
+        name: getreadiness
+        description: Readiness Probe
+        call: health.getreadiness
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metrics
+      name: metrics
+      operations:
+      - method: GET
+        name: getmetrics
+        description: Prometheus Metrics
+        call: health.getmetrics
+        outputParameters:
+        - type: string
+          mapping: $.
+  - type: mcp
+    namespace: health-mcp
+    port: 9090
+    transport: http
+    tools:
+    - name: nvidia-nim-health
+      description: Readiness Probe
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: health.getreadiness
+      outputParameters:
+      - type: object
+        mapping: $.

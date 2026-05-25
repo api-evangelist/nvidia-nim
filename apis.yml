@@ -1,0 +1,366 @@
+aid: nvidia-nim
+url: https://raw.githubusercontent.com/api-evangelist/nvidia-nim/refs/heads/main/apis.yml
+apis:
+- aid: nvidia-nim:nvidia-nim-chat-completions-api
+  name: NVIDIA NIM Chat Completions API
+  tags:
+  - AI
+  - Artificial Intelligence
+  - Chat
+  - Completions
+  - LLM
+  - OpenAI Compatible
+  humanURL: https://docs.api.nvidia.com/nim/reference/llm-apis
+  baseURL: https://integrate.api.nvidia.com/v1
+  properties:
+  - url: https://docs.api.nvidia.com/nim/reference/llm-apis
+    type: Documentation
+  - url: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+    type: Documentation
+  - url: openapi/nvidia-nim-chat-completions-api-openapi.yml
+    type: OpenAPI
+  - url: json-schema/nvidia-nim-chat-completion-schema.json
+    type: JSONSchema
+  - url: json-ld/nvidia-nim-context.jsonld
+    type: JSONLD
+  - type: NaftikoCapability
+    url: capabilities/chat-completions-chat.yaml
+  description: OpenAI-compatible chat completions endpoint exposing 100+ foundation models — Meta Llama, Mistral,
+    Mixtral, NVIDIA Nemotron, DeepSeek, Qwen, Microsoft Phi, Google Gemma, IBM Granite, and more — through a single
+    /v1/chat/completions surface. Supports streaming, tool/function calling, structured outputs, vision inputs on
+    multimodal models, and the standard temperature/top_p/max_tokens parameters. Switching models is a one-line
+    change to the model string. Available hosted on integrate.api.nvidia.com or self-hosted via NIM containers on
+    any GPU.
+- aid: nvidia-nim:nvidia-nim-completions-api
+  name: NVIDIA NIM Completions API
+  tags:
+  - AI
+  - Artificial Intelligence
+  - Completions
+  - LLM
+  - OpenAI Compatible
+  humanURL: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+  baseURL: https://integrate.api.nvidia.com/v1
+  properties:
+  - url: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+    type: Documentation
+  - url: openapi/nvidia-nim-completions-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/completions-completions.yaml
+  description: Legacy OpenAI-compatible text completion endpoint (/v1/completions) for non-chat foundation models
+    served by NIM. Accepts a raw prompt and returns generated text with the same streaming, sampling, and
+    stopping-criterion controls as the chat endpoint.
+- aid: nvidia-nim:nvidia-nim-embeddings-api
+  name: NVIDIA NIM Embeddings API
+  tags:
+  - AI
+  - Artificial Intelligence
+  - Embeddings
+  - Retrieval
+  - RAG
+  - OpenAI Compatible
+  humanURL: https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/api-reference.html
+  baseURL: https://integrate.api.nvidia.com/v1
+  properties:
+  - url: https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/api-reference.html
+    type: Documentation
+  - url: openapi/nvidia-nim-embeddings-api-openapi.yml
+    type: OpenAPI
+  - url: json-schema/nvidia-nim-embedding-schema.json
+    type: JSONSchema
+  - type: NaftikoCapability
+    url: capabilities/embeddings-embeddings.yaml
+  description: OpenAI-compatible embeddings endpoint (/v1/embeddings) backed by NVIDIA NeMo Retriever text
+    embedding models including NV-Embed, NV-EmbedQA-E5, llama-3.2-nv-embedqa-1b, and BAAI BGE-M3. Returns dense
+    float vectors for documents or queries to power RAG, semantic search, and clustering. Supports
+    `input_type=passage|query` for asymmetric retrieval and the standard `dimensions` parameter on models that
+    permit dimension reduction.
+- aid: nvidia-nim:nvidia-nim-reranking-api
+  name: NVIDIA NIM Reranking API
+  tags:
+  - AI
+  - Artificial Intelligence
+  - Reranking
+  - Retrieval
+  - RAG
+  humanURL: https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/api-reference.html
+  baseURL: https://integrate.api.nvidia.com/v1
+  properties:
+  - url: https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/api-reference.html
+    type: Documentation
+  - url: openapi/nvidia-nim-reranking-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/reranking-reranking.yaml
+  description: NeMo Retriever cross-encoder reranking endpoint (/v1/ranking) for scoring candidate passages
+    against a query. Improves retrieval relevance on RAG pipelines and supports the llama-3.2-nv-rerankqa-1b and
+    NV-RerankQA-Mistral-4B-v3 models. Accepts a query plus a list of passages and returns a sorted list of
+    relevance scores.
+- aid: nvidia-nim:nvidia-nim-models-api
+  name: NVIDIA NIM Models API
+  tags:
+  - AI
+  - Artificial Intelligence
+  - Models
+  - Catalog
+  - OpenAI Compatible
+  humanURL: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+  baseURL: https://integrate.api.nvidia.com/v1
+  properties:
+  - url: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+    type: Documentation
+  - url: openapi/nvidia-nim-models-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/models-models.yaml
+  description: OpenAI-compatible model catalog endpoint (/v1/models) returning the list of models served by the
+    NIM endpoint or container. Each entry includes id, owned_by, and created timestamp. Used by clients to
+    discover the model name strings to pass to chat-completions / completions / embeddings.
+- aid: nvidia-nim:nvidia-nim-vision-api
+  name: NVIDIA NIM Vision Language Models API
+  tags:
+  - AI
+  - Artificial Intelligence
+  - Vision
+  - Multimodal
+  - VLM
+  humanURL: https://docs.api.nvidia.com/nim/reference/vlm-apis
+  baseURL: https://integrate.api.nvidia.com/v1
+  properties:
+  - url: https://docs.api.nvidia.com/nim/reference/vlm-apis
+    type: Documentation
+  - url: openapi/nvidia-nim-vision-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/vision-vision.yaml
+  description: Vision-language model inference through the standard /v1/chat/completions surface with image
+    inputs (base64 or URL) in the messages payload. Supports NVIDIA NeVA, microsoft/kosmos-2, Phi-3-vision,
+    llama-3.2-90b-vision-instruct, and other VLMs hosted in the NIM catalog.
+- aid: nvidia-nim:nvidia-nim-health-api
+  name: NVIDIA NIM Health API
+  tags:
+  - Health
+  - Observability
+  - Kubernetes
+  humanURL: https://docs.nvidia.com/nim/large-language-models/latest/observability.html
+  properties:
+  - url: https://docs.nvidia.com/nim/large-language-models/latest/observability.html
+    type: Documentation
+  - url: openapi/nvidia-nim-health-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/health-health.yaml
+  description: Liveness, readiness, and startup probes exposed by self-hosted NIM containers (/v1/health/live,
+    /v1/health/ready) and a Prometheus /v1/metrics scrape endpoint for GPU utilization, request latency, and
+    queue depth. Drives Kubernetes pod lifecycle and HPA scaling via the NIM Operator.
+- aid: nvidia-nim:nvidia-nim-image-generation-api
+  name: NVIDIA NIM Image Generation API
+  tags:
+  - AI
+  - Artificial Intelligence
+  - Image Generation
+  - Visual
+  humanURL: https://docs.api.nvidia.com/nim/reference/visual-models
+  baseURL: https://integrate.api.nvidia.com/v1
+  properties:
+  - url: https://docs.api.nvidia.com/nim/reference/visual-models
+    type: Documentation
+  - url: openapi/nvidia-nim-image-generation-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/image-generation-images.yaml
+  description: Visual generative AI endpoints for text-to-image, image-to-image, and image editing using models
+    such as Black Forest Labs FLUX.1, Stable Diffusion XL, Shutterstock-trained models, and NVIDIA-curated
+    Edify Image. Returns base64-encoded PNG/JPEG artifacts.
+- aid: nvidia-nim:nvidia-nim-speech-api
+  name: NVIDIA NIM Speech API
+  tags:
+  - AI
+  - Artificial Intelligence
+  - Speech
+  - ASR
+  - TTS
+  - Riva
+  humanURL: https://docs.nvidia.com/nim/riva/latest/index.html
+  baseURL: https://integrate.api.nvidia.com/v1
+  properties:
+  - url: https://docs.nvidia.com/nim/riva/latest/index.html
+    type: Documentation
+  - url: openapi/nvidia-nim-speech-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/speech-asr.yaml
+  - type: NaftikoCapability
+    url: capabilities/speech-tts.yaml
+  description: NVIDIA Riva-powered speech NIMs delivering automatic speech recognition (Parakeet, Canary),
+    neural machine translation, and text-to-speech (Magpie-TTS, FastPitch) through HTTP and gRPC surfaces.
+    Hosted endpoints accept WAV/FLAC audio and return transcripts or synthesized speech.
+- aid: nvidia-nim:nvidia-nim-biology-api
+  name: NVIDIA NIM Biology (BioNeMo) API
+  tags:
+  - AI
+  - Biology
+  - BioNeMo
+  - Drug Discovery
+  - Healthcare
+  humanURL: https://docs.nvidia.com/nim/bionemo/latest/index.html
+  baseURL: https://integrate.api.nvidia.com/v1
+  properties:
+  - url: https://docs.nvidia.com/nim/bionemo/latest/index.html
+    type: Documentation
+  - url: openapi/nvidia-nim-biology-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/biology-bionemo.yaml
+  description: BioNeMo NIMs for protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein
+    generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation,
+    and molecular docking (DiffDock). Each model is a containerized microservice with the same OpenAPI surface.
+name: NVIDIA NIM
+tags:
+- AI
+- Artificial Intelligence
+- Inference
+- Microservices
+- LLM
+- Foundation Models
+- GPU
+- Kubernetes
+- NVIDIA
+- OpenAI Compatible
+kind: contract
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+common:
+- type: Portal
+  url: https://build.nvidia.com
+- type: Documentation
+  url: https://docs.nvidia.com/nim/index.html
+- type: Documentation
+  url: https://docs.api.nvidia.com/nim/reference/llm-apis
+- type: Documentation
+  url: https://developer.nvidia.com/nim
+- type: GettingStarted
+  url: https://docs.nvidia.com/nim/large-language-models/latest/getting-started.html
+- type: SignUp
+  url: https://build.nvidia.com/explore/discover
+- type: Sandbox
+  url: https://build.nvidia.com/explore/discover
+- type: Pricing
+  url: https://www.nvidia.com/en-us/data-center/products/ai-enterprise/
+- type: GitHubOrganization
+  url: https://github.com/NVIDIA
+- type: GitHubOrganization
+  url: https://github.com/NVIDIA-NIM-Agent-Blueprints
+- type: StatusPage
+  url: https://status.nvidia.com
+- type: Blog
+  url: https://developer.nvidia.com/blog/category/generative-ai/
+- type: Blog
+  url: https://blogs.nvidia.com/blog/category/generative-ai/
+- type: Forum
+  url: https://forums.developer.nvidia.com/c/ai-data-science/nemo-llm-service/
+- type: TrustCenter
+  url: https://www.nvidia.com/en-us/about-nvidia/legal-info/
+- type: TermsOfService
+  url: https://www.nvidia.com/en-us/about-nvidia/terms-of-service/
+- type: PrivacyPolicy
+  url: https://www.nvidia.com/en-us/about-nvidia/privacy-policy/
+- type: Documentation
+  url: https://docs.nvidia.com/nim-operator/latest/index.html
+  name: NIM Operator Documentation
+- type: SDK
+  url: https://github.com/NVIDIA/nim-deploy
+  name: NIM Deploy (Helm Charts and Reference Implementations)
+- type: SDK
+  url: https://github.com/NVIDIA/k8s-nim-operator
+  name: Kubernetes NIM Operator
+- type: SDK
+  url: https://github.com/NVIDIA/GenerativeAIExamples
+  name: Generative AI Examples
+- type: SDK
+  url: https://github.com/NVIDIA/NeMo
+  name: NeMo Toolkit
+- type: SDK
+  url: https://github.com/NVIDIA/NeMo-Guardrails
+  name: NeMo Guardrails
+- type: SDK
+  url: https://github.com/NVIDIA/TensorRT-LLM
+  name: TensorRT-LLM
+- type: SDK
+  url: https://github.com/triton-inference-server/server
+  name: Triton Inference Server
+- type: SDK
+  url: https://github.com/langchain-ai/langchain-nvidia
+  name: LangChain NVIDIA AI Endpoints
+- type: SDK
+  url: https://pypi.org/project/openai/
+  name: OpenAI Python SDK (compatible)
+- type: CodeExamples
+  url: https://github.com/NVIDIA/GenerativeAIExamples
+  name: NVIDIA Generative AI Examples
+- type: CodeExamples
+  url: https://github.com/NVIDIA-AI-Blueprints
+  name: NVIDIA AI Blueprints
+- type: Models
+  url: https://build.nvidia.com/explore/discover
+- type: KubernetesCRD
+  url: https://github.com/NVIDIA/k8s-nim-operator/tree/main/api
+  name: NIMService / NIMCache / NIMPipeline CRDs
+- type: RateLimits
+  url: https://docs.api.nvidia.com/nim/reference/limits
+- type: Versioning
+  url: https://docs.nvidia.com/nim/large-language-models/latest/release-notes.html
+- url: plans/nvidia-nim-plans-pricing.yml
+  type: Plans
+- url: rate-limits/nvidia-nim-rate-limits.yml
+  type: RateLimits
+- url: finops/nvidia-nim-finops.yml
+  type: FinOps
+- type: Features
+  data:
+  - OpenAI-compatible REST surface — /v1/chat/completions, /v1/completions, /v1/embeddings, /v1/models, /v1/ranking
+  - 100+ foundation models exposed through a single API contract — Llama 3.1/3.2/3.3, Mistral, Mixtral, NVIDIA
+    Nemotron, DeepSeek-R1, Qwen 2.5, Microsoft Phi, Google Gemma, IBM Granite, and Falcon
+  - Free hosted inference at build.nvidia.com on DGX Cloud — 1,000 credits on signup, 40 RPM rate limit
+  - Self-hosted deployment via Docker containers shipping TensorRT-LLM, vLLM, or SGLang inference engines
+  - Kubernetes-native deployment via the NIM Operator with NIMService, NIMCache, NIMPipeline CRDs
+  - GPU-aware autoscaling, persistent model caches, and rolling upgrades managed by the operator
+  - Multi-tenant licensing through NVIDIA AI Enterprise (commercial production use)
+  - NeMo Retriever NIMs for embeddings, reranking, OCR, and PDF-to-Markdown extraction in RAG pipelines
+  - Vision Language Model NIMs reusing the chat-completions surface for multimodal inputs
+  - NVIDIA Riva speech NIMs (Parakeet ASR, Canary translation, Magpie TTS) with HTTP and gRPC adapters
+  - BioNeMo NIMs for AlphaFold2, ESMFold, ProtGPT2, MolMIM, DiffDock, RFDiffusion
+  - Visual generative AI NIMs — FLUX.1, SDXL, Shutterstock Edify Image, Edify 3D
+  - NeMo Guardrails for input/output safety and topic policy enforcement
+  - Function calling, JSON mode, tool use, and structured outputs across compatible LLMs
+  - Streaming via Server-Sent Events on chat/completions
+  - Prometheus /v1/metrics scrape endpoint and /v1/health/{live,ready} probes for Kubernetes
+  - LangChain, LlamaIndex, Haystack, OpenAI SDK, and direct REST client compatibility
+  - NVIDIA AI Blueprints — full reference RAG, multimodal search, drug discovery, and digital human stacks
+  - Available on DGX Cloud, AWS, Azure, Google Cloud, Oracle Cloud, GKE, EKS, AKS, OpenShift, and on-prem
+  sources:
+  - https://build.nvidia.com
+  - https://docs.nvidia.com/nim/index.html
+  - https://docs.api.nvidia.com/nim/reference/llm-apis
+  - https://www.nvidia.com/en-us/ai-data-science/products/nim-microservices/
+  - https://github.com/NVIDIA/k8s-nim-operator
+  - https://github.com/NVIDIA/nim-deploy
+  updated: '2026-05-25'
+created: '2026-05-25'
+modified: '2026-05-25'
+position: Consuming
+description: NVIDIA NIM (NVIDIA Inference Microservices) is a catalog of GPU-accelerated, containerized
+  AI inference microservices that package optimized model engines (TensorRT-LLM, vLLM, SGLang, Triton) behind
+  industry-standard OpenAI-compatible REST APIs. NIM covers large language models, embeddings and reranking,
+  vision-language models, speech (Riva), visual generative AI, and biology (BioNeMo) — exposed identically
+  whether consumed from the hosted endpoint at integrate.api.nvidia.com or self-hosted via Docker containers
+  and the Kubernetes-native NIM Operator. NIM ships with NVIDIA AI Enterprise for commercial deployment and
+  is the inference layer underneath NVIDIA AI Blueprints, NeMo Retriever, NeMo Guardrails, and the broader
+  NVIDIA developer stack.
+maintainers:
+- FN: Kin Lane
+  email: info@apievangelist.com
+  X: apievangelist
+  url: https://apievangelist.com
+specificationVersion: '0.16'

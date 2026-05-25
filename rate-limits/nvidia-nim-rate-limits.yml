@@ -1,0 +1,70 @@
+apiCommonsRateLimits: '0.1'
+provider:
+  name: NVIDIA NIM
+  id: nvidia-nim
+  url: https://docs.api.nvidia.com/nim/reference/limits
+  sources:
+  - https://docs.api.nvidia.com/nim/reference/limits
+  - https://build.nvidia.com
+  - https://docs.nvidia.com/nim/large-language-models/latest/configuration.html
+scope:
+  description: Limits below apply to the NVIDIA-hosted NIM endpoint at integrate.api.nvidia.com. Self-hosted NIM
+    containers are governed by the GPU capacity of the host and a configurable concurrency limit per container.
+policies:
+- id: hosted-developer-rpm
+  name: Hosted Developer RPM
+  scope: per-api-key
+  surface: https://integrate.api.nvidia.com
+  metric: requests
+  limit: 40
+  window: 1m
+  description: Free developer tier soft rate limit on /v1/chat/completions, /v1/completions, /v1/embeddings, and /v1/ranking.
+- id: hosted-developer-credits
+  name: Hosted Developer Credits
+  scope: per-account
+  surface: https://integrate.api.nvidia.com
+  metric: requests
+  limit: 1000
+  window: signup
+  description: 1,000 free inference credits granted on NVIDIA Developer Program signup, consumed across all hosted models.
+- id: hosted-concurrent
+  name: Hosted Concurrent Requests
+  scope: per-api-key
+  surface: https://integrate.api.nvidia.com
+  metric: concurrent-requests
+  limit: 5
+  window: instant
+  description: Concurrent in-flight requests against the shared hosted endpoint.
+- id: hosted-streaming-keepalive
+  name: SSE Keepalive
+  scope: per-stream
+  surface: https://integrate.api.nvidia.com
+  metric: idle-time
+  limit: 60
+  window: 60s
+  description: Streaming connections idle longer than ~60s may be closed by the gateway.
+- id: hosted-max-tokens
+  name: Per-request Output Cap
+  scope: per-request
+  surface: https://integrate.api.nvidia.com
+  metric: max_tokens
+  limit: 4096
+  window: per-request
+  description: Per-request output token cap on the hosted endpoint (model-dependent; some models support higher).
+- id: hosted-input-size
+  name: Hosted Input Size
+  scope: per-request
+  surface: https://integrate.api.nvidia.com
+  metric: input_tokens
+  limit: 128000
+  window: per-request
+  description: Maximum input tokens on the hosted endpoint (model-dependent — long-context Llama 3.1/3.3 and Nemotron variants accept up to ~128K).
+- id: self-hosted-concurrent
+  name: Self-hosted Container Concurrency
+  scope: per-container
+  surface: http://localhost:8000
+  metric: concurrent-requests
+  limit: unbounded
+  window: instant
+  description: Self-hosted NIM containers accept as many concurrent requests as the GPU and TensorRT-LLM batching configuration allow. Operators tune via NIM_MAX_BATCH_SIZE and similar env vars.
+modified: '2026-05-25'

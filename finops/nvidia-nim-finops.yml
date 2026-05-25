@@ -1,0 +1,66 @@
+apiCommonsFinops: '0.1'
+provider:
+  name: NVIDIA NIM
+  id: nvidia-nim
+  url: https://www.nvidia.com/en-us/data-center/products/ai-enterprise/
+  sources:
+  - https://www.nvidia.com/en-us/data-center/products/ai-enterprise/
+  - https://docs.nvidia.com/nim/index.html
+  - https://www.nvidia.com/en-us/data-center/dgx-cloud/
+billingSurfaces:
+- id: nvidia-ai-enterprise-subscription
+  name: NVIDIA AI Enterprise Subscription
+  type: subscription
+  description: Per-GPU per-year licensing for self-hosted NIM in production. The unit is the physical NVIDIA GPU
+    on which a NIM container runs. Cost recovery is via NVIDIA invoice and is independent of inference volume.
+  unit: gpu-year
+  currency: USD
+- id: dgx-cloud
+  name: DGX Cloud
+  type: usage
+  description: Managed multi-node GPU service. Billed by instance-hours through NVIDIA or the hosting hyperscaler
+    marketplace; NIM hosted endpoints are bundled.
+  unit: instance-hour
+  currency: USD
+- id: build-nvidia-com-credits
+  name: build.nvidia.com Credits
+  type: credits
+  description: Free developer credits on the hosted endpoint at integrate.api.nvidia.com. Granted on signup and
+    optionally topped up for paid prototyping tiers.
+  unit: request
+  currency: credit
+- id: cloud-marketplace-passthrough
+  name: Cloud Marketplace Pass-through
+  type: marketplace
+  description: When NIM is consumed through AWS, Azure, GCP, or OCI marketplaces (GKE, EKS, AKS), charges flow
+    through the hyperscaler bill alongside the underlying GPU instance cost.
+  unit: gpu-hour
+  currency: USD
+focusMapping:
+  AccountName: NVIDIA Enterprise Account
+  ChargeCategory: Usage | Subscription
+  ChargePeriodStart: invoice_period_start
+  ChargePeriodEnd: invoice_period_end
+  CommitmentDiscountType: annual | perpetual | committed-use
+  PricingUnit:
+  - gpu-year
+  - gpu-hour
+  - instance-hour
+  - request
+  ServiceCategory: AI and Machine Learning
+  ServiceName: NVIDIA AI Enterprise | NVIDIA NIM | DGX Cloud
+  SubAccountName: workspace | gpu-cluster | project
+  SkuId: nvaie-* | dgx-cloud-* | nim-*
+  EffectiveCost: invoice_line_amount
+  BilledCost: invoice_line_amount
+  ListCost: catalog_price
+notes:
+- Public LLM inference pricing is NOT published per-token by NVIDIA on the hosted endpoint — the hosted endpoint
+  is a developer convenience and is metered in credits, not USD.
+- Production cost is dominated by the underlying GPU bill (whether NVIDIA AI Enterprise license + on-prem GPUs,
+  cloud GPU instances + license, or DGX Cloud).
+- Operators model per-token cost themselves by dividing (GPU $/hour) by measured tokens/sec/GPU for the chosen
+  TensorRT-LLM / vLLM engine and model.
+- /v1/metrics provides the per-engine throughput and queue-depth signals required for FinOps unit-cost
+  attribution.
+modified: '2026-05-25'

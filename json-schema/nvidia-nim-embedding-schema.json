@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nvidia-nim/refs/heads/main/json-schema/nvidia-nim-embedding-schema.json",
+  "title": "NVIDIA NIM Embedding",
+  "description": "Request and response schemas for the NVIDIA NIM OpenAI-compatible /v1/embeddings endpoint.",
+  "type": "object",
+  "$defs": {
+    "EmbeddingRequest": {
+      "type": "object",
+      "required": ["model", "input"],
+      "properties": {
+        "model": { "type": "string" },
+        "input": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "array", "items": { "type": "string" } }
+          ]
+        },
+        "input_type": {
+          "type": "string",
+          "enum": ["query", "passage"]
+        },
+        "encoding_format": {
+          "type": "string",
+          "enum": ["float", "base64"]
+        },
+        "truncate": {
+          "type": "string",
+          "enum": ["NONE", "START", "END"]
+        },
+        "dimensions": { "type": "integer" },
+        "user": { "type": "string" }
+      }
+    },
+    "EmbeddingObject": {
+      "type": "object",
+      "required": ["object", "index", "embedding"],
+      "properties": {
+        "object": { "type": "string", "const": "embedding" },
+        "index": { "type": "integer" },
+        "embedding": {
+          "type": "array",
+          "items": { "type": "number" }
+        }
+      }
+    },
+    "EmbeddingResponse": {
+      "type": "object",
+      "properties": {
+        "object": { "type": "string", "const": "list" },
+        "data": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/EmbeddingObject" }
+        },
+        "model": { "type": "string" },
+        "usage": {
+          "type": "object",
+          "properties": {
+            "prompt_tokens": { "type": "integer" },
+            "total_tokens": { "type": "integer" }
+          }
+        }
+      }
+    }
+  },
+  "oneOf": [
+    { "$ref": "#/$defs/EmbeddingRequest" },
+    { "$ref": "#/$defs/EmbeddingResponse" }
+  ]
+}

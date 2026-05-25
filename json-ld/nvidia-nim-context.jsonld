@@ -1,0 +1,88 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "nvidia": "https://schema.nvidia.com/nim/",
+    "ai": "https://schema.nvidia.com/ai/",
+    "name": "schema:name",
+    "description": "schema:description",
+    "identifier": "schema:identifier",
+    "url": "schema:url",
+    "version": "schema:version",
+    "creator": "schema:creator",
+    "license": "schema:license",
+    "Model": "nvidia:Model",
+    "NIM": "nvidia:NIM",
+    "model": {
+      "@id": "nvidia:model",
+      "@type": "@id"
+    },
+    "publisher": "nvidia:publisher",
+    "modelFamily": "nvidia:modelFamily",
+    "contextWindow": {
+      "@id": "nvidia:contextWindow",
+      "@type": "schema:Integer"
+    },
+    "maxOutputTokens": {
+      "@id": "nvidia:maxOutputTokens",
+      "@type": "schema:Integer"
+    },
+    "inferenceEngine": "nvidia:inferenceEngine",
+    "engines": {
+      "@id": "nvidia:engines",
+      "@container": "@set"
+    },
+    "modalities": {
+      "@id": "nvidia:modalities",
+      "@container": "@set"
+    },
+    "ChatCompletion": "ai:ChatCompletion",
+    "messages": {
+      "@id": "ai:messages",
+      "@container": "@list"
+    },
+    "role": "ai:role",
+    "content": "ai:content",
+    "temperature": "ai:temperature",
+    "topP": "ai:topP",
+    "maxTokens": "ai:maxTokens",
+    "stream": "ai:stream",
+    "stop": "ai:stop",
+    "tools": "ai:tools",
+    "toolChoice": "ai:toolChoice",
+    "Embedding": "ai:Embedding",
+    "input": "ai:input",
+    "inputType": "ai:inputType",
+    "dimensions": "ai:dimensions",
+    "embedding": {
+      "@id": "ai:embedding",
+      "@container": "@list"
+    },
+    "Ranking": "ai:Ranking",
+    "query": "ai:query",
+    "passages": "ai:passages",
+    "logit": "ai:logit",
+    "Container": {
+      "@id": "nvidia:Container",
+      "@type": "@id"
+    },
+    "image": "nvidia:containerImage",
+    "ngcRegistry": "nvidia:ngcRegistry",
+    "minGPU": "nvidia:minGPU",
+    "tensorRTLLM": "nvidia:tensorRTLLM",
+    "vLLM": "nvidia:vLLM",
+    "sgLang": "nvidia:sgLang",
+    "NIMService": {
+      "@id": "nvidia:NIMService",
+      "@type": "@id"
+    },
+    "NIMCache": {
+      "@id": "nvidia:NIMCache",
+      "@type": "@id"
+    },
+    "apiVersion": "nvidia:apiVersion",
+    "kind": "nvidia:kind",
+    "metadata": "nvidia:metadata",
+    "spec": "nvidia:spec"
+  }
+}

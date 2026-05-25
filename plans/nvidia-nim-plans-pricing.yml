@@ -1,0 +1,80 @@
+apiCommonsPlans: '0.1'
+provider:
+  name: NVIDIA NIM
+  id: nvidia-nim
+  url: https://www.nvidia.com/en-us/ai-data-science/products/nim-microservices/
+  sources:
+  - https://build.nvidia.com
+  - https://www.nvidia.com/en-us/data-center/products/ai-enterprise/
+  - https://www.nvidia.com/en-us/ai-data-science/products/nim-microservices/
+plans:
+- id: developer-free
+  name: Developer (Free)
+  description: Free hosted inference on DGX Cloud through build.nvidia.com. Designed for prototyping and learning.
+  entries:
+  - geo: Global
+    unit: 1
+    label: Developer
+    limit: 1
+    price: 0
+    metric: user
+    timeFrame: month
+    description: Free tier with shared rate-limited endpoints.
+  elements:
+  - name: Free NVIDIA developer account
+  - name: 1,000 inference credits on signup
+  - name: 40 requests per minute soft rate limit
+  - name: Access to 100+ models through integrate.api.nvidia.com
+  - name: Sandbox try-it-now playground at build.nvidia.com
+  - name: OpenAI-compatible REST and gRPC endpoints
+  url: https://build.nvidia.com/explore/discover
+- id: nvidia-ai-enterprise
+  name: NVIDIA AI Enterprise
+  description: Production licensing for self-hosted NIM microservices with enterprise support and security updates.
+  entries:
+  - geo: Global
+    unit: 1
+    label: GPU
+    price: 4500
+    metric: gpu
+    timeFrame: year
+    description: Per-GPU per-year subscription licensing for production NIM deployment.
+  - geo: Global
+    unit: 1
+    label: GPU (Perpetual)
+    price: 13500
+    metric: gpu
+    timeFrame: perpetual
+    description: Perpetual per-GPU license with bundled NVIDIA support.
+  elements:
+  - name: All NIM microservices for production use
+  - name: Self-hosted Docker containers via NGC registry
+  - name: NIM Operator for Kubernetes
+  - name: TensorRT-LLM, vLLM, SGLang optimized engines
+  - name: Enterprise security patches and CVE response
+  - name: NVIDIA AI Workbench
+  - name: NeMo framework
+  - name: NVIDIA Riva, BioNeMo, Picasso, Maxine NIMs
+  - name: NVIDIA AI Blueprints
+  - name: Long-term support branches
+  - name: Direct access to NVIDIA AI experts
+  url: https://www.nvidia.com/en-us/data-center/products/ai-enterprise/
+- id: dgx-cloud
+  name: DGX Cloud
+  description: NVIDIA-managed AI training and inference infrastructure on a hyperscaler of your choice.
+  entries:
+  - geo: Global
+    unit: 1
+    label: DGX H100 Instance
+    price: 36999
+    metric: instance
+    timeFrame: month
+    description: Reference list price; commercial deals are negotiated.
+  elements:
+  - name: Managed multi-node GPU clusters
+  - name: Bundled NVIDIA AI Enterprise license
+  - name: Hosted NIM endpoints behind integrate.api.nvidia.com
+  - name: Optimized networking and storage
+  - name: 24/7 NVIDIA support
+  url: https://www.nvidia.com/en-us/data-center/dgx-cloud/
+modified: '2026-05-25'

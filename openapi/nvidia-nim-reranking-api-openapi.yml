@@ -1,0 +1,97 @@
+openapi: 3.1.0
+info:
+  title: NVIDIA NIM Reranking API
+  description: >
+    NVIDIA NeMo Retriever cross-encoder reranking endpoint. Given a query and a
+    list of candidate passages, returns each passage's relevance score so RAG
+    pipelines can re-order retrieved chunks before they hit the LLM context.
+  version: '2026-05-25'
+  contact:
+    name: NVIDIA Developer Support
+    url: https://forums.developer.nvidia.com/c/ai-data-science/nemo-llm-service/
+  license:
+    name: NVIDIA AI Enterprise License
+    url: https://www.nvidia.com/en-us/data-center/products/ai-enterprise/
+servers:
+  - url: https://integrate.api.nvidia.com
+    description: NVIDIA-hosted NIM endpoint
+  - url: http://localhost:8000
+    description: Self-hosted NIM container default
+security:
+  - BearerAuth: []
+tags:
+  - name: Reranking
+    description: Cross-encoder reranking operations
+paths:
+  /v1/ranking:
+    post:
+      summary: Rank Candidate Passages
+      description: Score candidate passages against a query using a NeMo Retriever reranker.
+      operationId: rankPassages
+      tags:
+        - Reranking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RankingRequest'
+      responses:
+        '200':
+          description: Ranked passages with relevance scores.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RankingResponse'
+        '400':
+          description: Invalid request.
+        '401':
+          description: Missing or invalid API key.
+        '429':
+          description: Rate limit exceeded.
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: nvapi-...
+  schemas:
+    RankingRequest:
+      type: object
+      required: [model, query, passages]
+      properties:
+        model:
+          type: string
+          description: e.g. `nvidia/llama-3.2-nv-rerankqa-1b-v2`, `nvidia/nv-rerankqa-mistral-4b-v3`.
+        query:
+          type: object
+          required: [text]
+          properties:
+            text:
+              type: string
+        passages:
+          type: array
+          items:
+            type: object
+            required: [text]
+            properties:
+              text:
+                type: string
+        truncate:
+          type: string
+          enum: [NONE, END]
+          default: END
+    RankingResponse:
+      type: object
+      properties:
+        rankings:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+                description: Original index in the request `passages` array.
+              logit:
+                type: number
+                description: Raw cross-encoder relevance logit (higher = more relevant).

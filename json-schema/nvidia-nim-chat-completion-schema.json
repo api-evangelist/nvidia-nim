@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nvidia-nim/refs/heads/main/json-schema/nvidia-nim-chat-completion-schema.json",
+  "title": "NVIDIA NIM Chat Completion",
+  "description": "Request and response schemas for the NVIDIA NIM OpenAI-compatible /v1/chat/completions endpoint.",
+  "type": "object",
+  "$defs": {
+    "ChatMessage": {
+      "type": "object",
+      "required": ["role"],
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": ["system", "user", "assistant", "tool"]
+        },
+        "content": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "array",
+              "items": { "$ref": "#/$defs/ContentPart" }
+            }
+          ]
+        },
+        "name": { "type": "string" },
+        "tool_call_id": { "type": "string" },
+        "tool_calls": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ToolCall" }
+        }
+      }
+    },
+    "ContentPart": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string", "enum": ["text", "image_url"] },
+        "text": { "type": "string" },
+        "image_url": {
+          "type": "object",
+          "properties": {
+            "url": { "type": "string" }
+          }
+        }
+      }
+    },
+    "ToolCall": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string", "enum": ["function"] },
+        "function": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "arguments": { "type": "string" }
+          }
+        }
+      }
+    },
+    "ChatCompletionRequest": {
+      "type": "object",
+      "required": ["model", "messages"],
+      "properties": {
+        "model": { "type": "string" },
+        "messages": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ChatMessage" }
+        },
+        "temperature": { "type": "number", "minimum": 0, "maximum": 2 },
+        "top_p": { "type": "number", "minimum": 0, "maximum": 1 },
+        "max_tokens": { "type": "integer", "minimum": 1 },
+        "stream": { "type": "boolean" },
+        "stop": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "array", "items": { "type": "string" } }
+          ]
+        },
+        "n": { "type": "integer", "minimum": 1 },
+        "seed": { "type": "integer" },
+        "tools": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "tool_choice": {
+          "oneOf": [
+            { "type": "string", "enum": ["auto", "none", "required"] },
+            { "type": "object" }
+          ]
+        },
+        "response_format": {
+          "type": "object",
+          "properties": {
+            "type": { "type": "string", "enum": ["text", "json_object", "json_schema"] }
+          }
+        },
+        "frequency_penalty": { "type": "number" },
+        "presence_penalty": { "type": "number" }
+      }
+    },
+    "ChatCompletionResponse": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "object": { "type": "string", "const": "chat.completion" },
+        "created": { "type": "integer" },
+        "model": { "type": "string" },
+        "choices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "index": { "type": "integer" },
+              "message": { "$ref": "#/$defs/ChatMessage" },
+              "finish_reason": {
+                "type": "string",
+                "enum": ["stop", "length", "tool_calls", "content_filter"]
+              }
+            }
+          }
+        },
+        "usage": {
+          "type": "object",
+          "properties": {
+            "prompt_tokens": { "type": "integer" },
+            "completion_tokens": { "type": "integer" },
+            "total_tokens": { "type": "integer" }
+          }
+        }
+      }
+    }
+  },
+  "oneOf": [
+    { "$ref": "#/$defs/ChatCompletionRequest" },
+    { "$ref": "#/$defs/ChatCompletionResponse" }
+  ]
+}
