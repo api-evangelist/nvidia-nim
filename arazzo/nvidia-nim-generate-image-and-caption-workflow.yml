@@ -1,0 +1,112 @@
+arazzo: 1.0.1
+info:
+  title: NVIDIA NIM Generate Image And Caption
+  summary: Generate an image from a text prompt, then caption the generated image with a vision-language model.
+  description: >-
+    A generate-then-verify visual flow. A visual generative NIM (FLUX.1,
+    SDXL, Edify) produces an image from a text prompt and returns it as a
+    base64-encoded artifact. That artifact is then fed straight back into a
+    vision-language NIM as a base64 data-URI image_url so the VLM can describe
+    what was actually rendered, giving an automatic caption and a check that the
+    output matched the prompt. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: imageGenerationApi
+  url: ../openapi/nvidia-nim-image-generation-api-openapi.yml
+  type: openapi
+- name: visionApi
+  url: ../openapi/nvidia-nim-vision-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: generate-image-and-caption
+  summary: Generate an image, then describe it with a VLM to produce a caption.
+  description: >-
+    Generates an image from a prompt with a visual generative model, then passes
+    the returned base64 artifact to a vision-language model for captioning.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - publisher
+    - model
+    - prompt
+    properties:
+      apiKey:
+        type: string
+        description: NVIDIA developer API key (nvapi-...) sent as a Bearer token.
+      publisher:
+        type: string
+        description: Image model publisher path segment (e.g. black-forest-labs).
+      model:
+        type: string
+        description: Image model slug path segment (e.g. flux.1-schnell).
+      prompt:
+        type: string
+        description: Text prompt describing the image to generate.
+      visionModel:
+        type: string
+        description: Vision-language model id used to caption the generated image.
+        default: meta/llama-3.2-90b-vision-instruct
+  steps:
+  - stepId: generateImage
+    description: >-
+      Generate an image from the text prompt with the selected publisher/model
+      visual generative NIM.
+    operationId: generateImage
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    - name: publisher
+      in: path
+      value: $inputs.publisher
+    - name: model
+      in: path
+      value: $inputs.model
+    requestBody:
+      contentType: application/json
+      payload:
+        prompt: $inputs.prompt
+        mode: text-to-image
+        steps: 50
+        cfg_scale: 5
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      imageBase64: $response.body#/artifacts/0/base64
+      finishReason: $response.body#/artifacts/0/finishReason
+      seed: $response.body#/artifacts/0/seed
+  - stepId: captionImage
+    description: >-
+      Caption the freshly generated image by passing its base64 artifact as a
+      data-URI image_url into a vision-language model.
+    operationId: createVisionChatCompletion
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        model: $inputs.visionModel
+        messages:
+        - role: user
+          content:
+          - type: text
+            text: Write a one-sentence caption describing this generated image.
+          - type: image_url
+            image_url:
+              url: $steps.generateImage.outputs.imageBase64
+        max_tokens: 64
+        temperature: 0.3
+        stream: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      caption: $response.body#/choices/0/message/content
+      finishReason: $response.body#/choices/0/finish_reason
+  outputs:
+    imageBase64: $steps.generateImage.outputs.imageBase64
+    caption: $steps.captionImage.outputs.caption

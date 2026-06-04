@@ -232,6 +232,30 @@ kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/nvidia-nim-bionemo-drug-discovery-workflow.yml
+    name: NVIDIA NIM BioNeMo Drug Discovery
+    summary: Fold a protein from sequence, dock a ligand into the predicted structure, then generate optimized analog molecules.
+  - url: arazzo/nvidia-nim-discover-and-chat-workflow.yml
+    name: NVIDIA NIM Discover And Chat
+    summary: List the served models, confirm a target model's metadata, then run a chat completion against it.
+  - url: arazzo/nvidia-nim-generate-image-and-caption-workflow.yml
+    name: NVIDIA NIM Generate Image And Caption
+    summary: Generate an image from a text prompt, then caption the generated image with a vision-language model.
+  - url: arazzo/nvidia-nim-health-gated-completion-workflow.yml
+    name: NVIDIA NIM Health Gated Completion
+    summary: Check a self-hosted NIM container's readiness, and only run a text completion once the engine reports ready.
+  - url: arazzo/nvidia-nim-rag-rerank-answer-workflow.yml
+    name: NVIDIA NIM RAG Rerank And Answer
+    summary: Embed a query, rerank candidate passages against it, then answer the question grounded in the top passage.
+  - url: arazzo/nvidia-nim-vision-describe-and-summarize-workflow.yml
+    name: NVIDIA NIM Vision Describe And Summarize
+    summary: Describe an image with a vision-language model, then condense the description into a short caption with an LLM.
+  - url: arazzo/nvidia-nim-voice-assistant-loop-workflow.yml
+    name: NVIDIA NIM Voice Assistant Loop
+    summary: Transcribe an audio clip with Riva ASR, answer the transcript with an LLM, then synthesize the reply with Riva TTS.
 - type: Portal
   url: https://build.nvidia.com
 - type: Documentation

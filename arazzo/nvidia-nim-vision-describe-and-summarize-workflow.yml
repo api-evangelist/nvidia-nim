@@ -1,0 +1,106 @@
+arazzo: 1.0.1
+info:
+  title: NVIDIA NIM Vision Describe And Summarize
+  summary: Describe an image with a vision-language model, then condense the description into a short caption with an LLM.
+  description: >-
+    A two-stage multimodal flow. A vision-language NIM first produces a detailed
+    description of the supplied image, passed in as an image_url content part
+    inside the user message. The detailed description is then handed to a
+    text-only chat model that condenses it into a short, shareable caption. This
+    splits the expensive multimodal pass (rich description) from the cheap
+    text pass (summarization). Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: visionApi
+  url: ../openapi/nvidia-nim-vision-api-openapi.yml
+  type: openapi
+- name: chatCompletionsApi
+  url: ../openapi/nvidia-nim-chat-completions-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: vision-describe-and-summarize
+  summary: Describe an image with a VLM, then summarize the description into a caption.
+  description: >-
+    Sends an image to a vision-language model for a detailed description, then
+    asks a text chat model to condense that description into a short caption.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - imageUrl
+    properties:
+      apiKey:
+        type: string
+        description: NVIDIA developer API key (nvapi-...) sent as a Bearer token.
+      imageUrl:
+        type: string
+        description: HTTPS URL or data:image/...;base64,... payload for the image to analyze.
+      visionModel:
+        type: string
+        description: Vision-language model id.
+        default: meta/llama-3.2-90b-vision-instruct
+      chatModel:
+        type: string
+        description: Text model id used to summarize the description.
+        default: meta/llama-3.3-70b-instruct
+  steps:
+  - stepId: describeImage
+    description: >-
+      Ask the vision-language model to produce a detailed description of the
+      image supplied as an image_url content part.
+    operationId: createVisionChatCompletion
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        model: $inputs.visionModel
+        messages:
+        - role: user
+          content:
+          - type: text
+            text: Describe this image in detail, including objects, setting, and any visible text.
+          - type: image_url
+            image_url:
+              url: $inputs.imageUrl
+        max_tokens: 512
+        temperature: 0.2
+        stream: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      description: $response.body#/choices/0/message/content
+      promptTokens: $response.body#/usage/prompt_tokens
+  - stepId: summarizeDescription
+    description: >-
+      Condense the detailed image description into a single short caption using
+      a text-only chat model.
+    operationId: createChatCompletion
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        model: $inputs.chatModel
+        messages:
+        - role: system
+          content: Condense the provided image description into a single short caption of at most 15 words.
+        - role: user
+          content: $steps.describeImage.outputs.description
+        max_tokens: 64
+        temperature: 0.3
+        stream: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      caption: $response.body#/choices/0/message/content
+      finishReason: $response.body#/choices/0/finish_reason
+  outputs:
+    description: $steps.describeImage.outputs.description
+    caption: $steps.summarizeDescription.outputs.caption

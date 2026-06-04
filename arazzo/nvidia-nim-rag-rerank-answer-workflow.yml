@@ -1,0 +1,140 @@
+arazzo: 1.0.1
+info:
+  title: NVIDIA NIM RAG Rerank And Answer
+  summary: Embed a query, rerank candidate passages against it, then answer the question grounded in the top passage.
+  description: >-
+    A retrieval-augmented generation pipeline built entirely from NVIDIA NIM
+    NeMo Retriever and LLM endpoints. The query is first embedded with a
+    NeMo Retriever embedding model (so the same vector can drive an external
+    vector search), the supplied candidate passages are then scored against the
+    query by a cross-encoder reranker, and finally the highest-scoring passage
+    is folded into a chat completion as grounding context to produce a cited
+    answer. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: embeddingsApi
+  url: ../openapi/nvidia-nim-embeddings-api-openapi.yml
+  type: openapi
+- name: rerankingApi
+  url: ../openapi/nvidia-nim-reranking-api-openapi.yml
+  type: openapi
+- name: chatCompletionsApi
+  url: ../openapi/nvidia-nim-chat-completions-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: rag-rerank-answer
+  summary: Embed a query, rerank candidate passages, and answer grounded in the best one.
+  description: >-
+    Generates a query embedding, scores candidate passages with a reranker,
+    selects the most relevant passage, and asks the chat model to answer using
+    that passage as context.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - query
+    - passages
+    properties:
+      apiKey:
+        type: string
+        description: NVIDIA developer API key (nvapi-...) sent as a Bearer token.
+      query:
+        type: string
+        description: The user's natural-language question.
+      passages:
+        type: array
+        description: Candidate passage objects ({ text }) to rerank against the query.
+        items:
+          type: object
+          properties:
+            text:
+              type: string
+      embeddingModel:
+        type: string
+        description: NeMo Retriever embedding model id.
+        default: nvidia/llama-3.2-nv-embedqa-1b-v2
+      rerankModel:
+        type: string
+        description: NeMo Retriever reranker model id.
+        default: nvidia/llama-3.2-nv-rerankqa-1b-v2
+      chatModel:
+        type: string
+        description: LLM model id used to compose the grounded answer.
+        default: meta/llama-3.3-70b-instruct
+  steps:
+  - stepId: embedQuery
+    description: >-
+      Generate a dense embedding vector for the query using a NeMo Retriever
+      embedding model with the asymmetric query input type.
+    operationId: createEmbedding
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        model: $inputs.embeddingModel
+        input: $inputs.query
+        input_type: query
+        encoding_format: float
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      queryVector: $response.body#/data/0/embedding
+      promptTokens: $response.body#/usage/prompt_tokens
+  - stepId: rerankPassages
+    description: >-
+      Score every candidate passage against the query with a cross-encoder
+      reranker so the most relevant passage can be selected.
+    operationId: rankPassages
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        model: $inputs.rerankModel
+        query:
+          text: $inputs.query
+        passages: $inputs.passages
+        truncate: END
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      rankings: $response.body#/rankings
+      topPassageIndex: $response.body#/rankings/0/index
+      topLogit: $response.body#/rankings/0/logit
+  - stepId: answerWithContext
+    description: >-
+      Compose a grounded answer by giving the chat model the highest-ranked
+      passage as system context alongside the original query.
+    operationId: createChatCompletion
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        model: $inputs.chatModel
+        messages:
+        - role: system
+          content: Answer the user's question using only the provided context passages. Cite the passage you used.
+        - role: user
+          content: $inputs.query
+        temperature: 0.2
+        max_tokens: 1024
+        stream: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      answer: $response.body#/choices/0/message/content
+      finishReason: $response.body#/choices/0/finish_reason
+      totalTokens: $response.body#/usage/total_tokens
+  outputs:
+    topPassageIndex: $steps.rerankPassages.outputs.topPassageIndex
+    answer: $steps.answerWithContext.outputs.answer
+    totalTokens: $steps.answerWithContext.outputs.totalTokens

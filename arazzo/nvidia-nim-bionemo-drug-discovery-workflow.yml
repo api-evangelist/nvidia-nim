@@ -1,0 +1,124 @@
+arazzo: 1.0.1
+info:
+  title: NVIDIA NIM BioNeMo Drug Discovery
+  summary: Fold a protein from sequence, dock a ligand into the predicted structure, then generate optimized analog molecules.
+  description: >-
+    A structure-based drug-discovery pipeline chaining three NVIDIA BioNeMo
+    NIMs. AlphaFold2 first predicts the 3D structure of a target protein from
+    its amino acid sequence; the resulting PDB structure is docked against a
+    seed ligand with DiffDock to find candidate binding poses; and MolMIM then
+    generates optimized analogs around the seed ligand SMILES to explore the
+    chemical neighborhood. Outputs of each stage feed the next, turning a bare
+    sequence and seed molecule into a ranked set of docked poses and generated
+    candidates. Every step spells out its request inline so the flow can be read
+    and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: biologyApi
+  url: ../openapi/nvidia-nim-biology-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: bionemo-drug-discovery
+  summary: Fold a protein, dock a ligand, then generate analog molecules.
+  description: >-
+    Predicts a protein structure from sequence, docks a seed ligand into it, and
+    generates optimized analogs of the seed ligand.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - sequence
+    - ligandSmiles
+    properties:
+      apiKey:
+        type: string
+        description: NVIDIA developer API key (nvapi-...) sent as a Bearer token.
+      sequence:
+        type: string
+        description: Single-letter amino acid sequence of the target protein.
+      ligandSmiles:
+        type: string
+        description: Seed ligand as a SMILES string, used for docking and analog generation.
+      numPoses:
+        type: integer
+        description: Number of docking poses to predict.
+        default: 10
+      numMolecules:
+        type: integer
+        description: Number of analog molecules to generate.
+        default: 10
+  steps:
+  - stepId: predictStructure
+    description: >-
+      Predict the 3D structure of the target protein from its amino acid
+      sequence with the AlphaFold2 NIM, returning PDB-format structures.
+    operationId: predictProteinStructure
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        sequence: $inputs.sequence
+        databases:
+        - uniref90
+        - mgnify
+        - small_bfd
+        relax_prediction: true
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      predictedPdb: $response.body#/pdbs/0
+  - stepId: dockLigand
+    description: >-
+      Dock the seed ligand against the predicted protein structure with
+      DiffDock to predict candidate binding poses.
+    operationId: dockLigand
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        protein: $steps.predictStructure.outputs.predictedPdb
+        ligand: $inputs.ligandSmiles
+        num_poses: $inputs.numPoses
+        time_divisions: 20
+        steps: 18
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ligandPositions: $response.body#/ligand_positions
+      topPoseConfidence: $response.body#/position_confidence/0
+  - stepId: generateAnalogs
+    description: >-
+      Generate optimized analog molecules around the seed ligand SMILES with
+      MolMIM, optimizing for drug-likeness (QED).
+    operationId: generateMolecules
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        smi: $inputs.ligandSmiles
+        algorithm: CMA-ES
+        num_molecules: $inputs.numMolecules
+        property_name: QED
+        minimize: false
+        min_similarity: 0.3
+        particles: 30
+        iterations: 10
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      generated: $response.body#/generated
+      topAnalogSmiles: $response.body#/generated/0/sample
+      topAnalogScore: $response.body#/generated/0/score
+  outputs:
+    predictedPdb: $steps.predictStructure.outputs.predictedPdb
+    topPoseConfidence: $steps.dockLigand.outputs.topPoseConfidence
+    topAnalogSmiles: $steps.generateAnalogs.outputs.topAnalogSmiles

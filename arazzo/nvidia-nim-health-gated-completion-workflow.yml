@@ -1,0 +1,109 @@
+arazzo: 1.0.1
+info:
+  title: NVIDIA NIM Health Gated Completion
+  summary: Check a self-hosted NIM container's readiness, and only run a text completion once the engine reports ready.
+  description: >-
+    An operational safety flow for self-hosted NIM containers. The readiness
+    probe is checked first; the container only returns 200 once its model engine
+    has finished loading. The flow branches on readiness — when ready it lists
+    the served models and runs a legacy text completion, and when not ready it
+    short-circuits to an end without burning an inference request against a cold
+    engine. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: healthApi
+  url: ../openapi/nvidia-nim-health-api-openapi.yml
+  type: openapi
+- name: modelsApi
+  url: ../openapi/nvidia-nim-models-api-openapi.yml
+  type: openapi
+- name: completionsApi
+  url: ../openapi/nvidia-nim-completions-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: health-gated-completion
+  summary: Gate a text completion behind the container readiness probe.
+  description: >-
+    Checks the readiness probe, and only when the engine is ready lists models
+    and issues a text completion; otherwise ends without inference.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - prompt
+    properties:
+      apiKey:
+        type: string
+        description: NVIDIA developer API key (nvapi-...) sent as a Bearer token.
+      prompt:
+        type: string
+        description: Raw text prompt for the legacy completions endpoint.
+      modelId:
+        type: string
+        description: Model id to run the completion against.
+        default: meta/llama-3.3-70b-instruct
+      maxTokens:
+        type: integer
+        description: Maximum number of tokens to generate.
+        default: 1024
+  steps:
+  - stepId: checkReadiness
+    description: >-
+      Probe the container readiness endpoint. A 200 means the model engine has
+      loaded and the container can accept traffic.
+    operationId: getReadiness
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      readyMessage: $response.body#/message
+    onSuccess:
+    - name: engineReady
+      type: goto
+      stepId: listAvailableModels
+      criteria:
+      - condition: $statusCode == 200
+  - stepId: listAvailableModels
+    description: >-
+      List the models the ready container serves to confirm the requested model
+      is available before inference.
+    operationId: listModels
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      models: $response.body#/data
+  - stepId: runCompletion
+    description: >-
+      Run a legacy text completion against the requested model now that the
+      container is confirmed ready.
+    operationId: createCompletion
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        model: $inputs.modelId
+        prompt: $inputs.prompt
+        max_tokens: $inputs.maxTokens
+        temperature: 0.2
+        stream: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      completionId: $response.body#/id
+      text: $response.body#/choices/0/text
+      finishReason: $response.body#/choices/0/finish_reason
+      totalTokens: $response.body#/usage/total_tokens
+    onSuccess:
+    - name: completed
+      type: end
+  outputs:
+    readyMessage: $steps.checkReadiness.outputs.readyMessage
+    text: $steps.runCompletion.outputs.text
+    totalTokens: $steps.runCompletion.outputs.totalTokens

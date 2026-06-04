@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: NVIDIA NIM Discover And Chat
+  summary: List the served models, confirm a target model's metadata, then run a chat completion against it.
+  description: >-
+    A model-grounded chat flow for NVIDIA NIM. The workflow first lists the
+    models exposed by the NIM endpoint, retrieves the metadata for the desired
+    model id to confirm it is actually served, and then issues an
+    OpenAI-compatible chat completion using that confirmed model. Discovering
+    the exact `model` string before inference avoids 404s from passing a model
+    the endpoint does not host. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: modelsApi
+  url: ../openapi/nvidia-nim-models-api-openapi.yml
+  type: openapi
+- name: chatCompletionsApi
+  url: ../openapi/nvidia-nim-chat-completions-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: discover-and-chat
+  summary: Discover a served model and run a chat completion against it.
+  description: >-
+    Lists the NIM model catalog, retrieves the chosen model to confirm it is
+    available, and then sends a chat completion request using that model.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - modelId
+    - prompt
+    properties:
+      apiKey:
+        type: string
+        description: NVIDIA developer API key (nvapi-...) sent as a Bearer token.
+      modelId:
+        type: string
+        description: The model id to confirm and use (e.g. meta/llama-3.3-70b-instruct).
+      prompt:
+        type: string
+        description: The user prompt to send to the chat model.
+      maxTokens:
+        type: integer
+        description: Maximum number of tokens to generate.
+        default: 1024
+  steps:
+  - stepId: listAvailableModels
+    description: >-
+      List the models exposed by this NIM endpoint to discover the exact model
+      strings that can be passed to chat completions.
+    operationId: listModels
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      models: $response.body#/data
+  - stepId: confirmModel
+    description: >-
+      Retrieve metadata for the requested model id to confirm the endpoint
+      actually serves it before attempting inference.
+    operationId: getModel
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    - name: model_id
+      in: path
+      value: $inputs.modelId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      confirmedModelId: $response.body#/id
+      ownedBy: $response.body#/owned_by
+  - stepId: chatWithModel
+    description: >-
+      Send a chat completion request using the confirmed model id and the
+      supplied user prompt.
+    operationId: createChatCompletion
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        model: $steps.confirmModel.outputs.confirmedModelId
+        messages:
+        - role: user
+          content: $inputs.prompt
+        max_tokens: $inputs.maxTokens
+        stream: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      completionId: $response.body#/id
+      answer: $response.body#/choices/0/message/content
+      finishReason: $response.body#/choices/0/finish_reason
+      totalTokens: $response.body#/usage/total_tokens
+  outputs:
+    confirmedModelId: $steps.confirmModel.outputs.confirmedModelId
+    answer: $steps.chatWithModel.outputs.answer
+    totalTokens: $steps.chatWithModel.outputs.totalTokens

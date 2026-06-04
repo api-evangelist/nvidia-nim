@@ -1,0 +1,126 @@
+arazzo: 1.0.1
+info:
+  title: NVIDIA NIM Voice Assistant Loop
+  summary: Transcribe an audio clip with Riva ASR, answer the transcript with an LLM, then synthesize the reply with Riva TTS.
+  description: >-
+    A full speech-to-speech assistant loop built from NVIDIA Riva and LLM NIMs.
+    An uploaded audio clip is transcribed to text by an ASR NIM (Parakeet /
+    Canary), the transcript is answered by an OpenAI-compatible chat model, and
+    the textual answer is synthesized back to audio by a TTS NIM (Magpie-TTS /
+    FastPitch). The transcription step uses multipart/form-data per the spec.
+    Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: speechApi
+  url: ../openapi/nvidia-nim-speech-api-openapi.yml
+  type: openapi
+- name: chatCompletionsApi
+  url: ../openapi/nvidia-nim-chat-completions-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: voice-assistant-loop
+  summary: Speech-to-text, chat answer, then text-to-speech in a single loop.
+  description: >-
+    Transcribes an audio clip, generates a chat answer to the transcript, and
+    synthesizes the answer back into audio.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - audioFile
+    properties:
+      apiKey:
+        type: string
+        description: NVIDIA developer API key (nvapi-...) sent as a Bearer token.
+      audioFile:
+        type: string
+        format: binary
+        description: WAV/FLAC/MP3 audio clip to transcribe.
+      asrModel:
+        type: string
+        description: Riva ASR model id.
+        default: nvidia/parakeet-ctc-1.1b-asr
+      chatModel:
+        type: string
+        description: LLM model id used to answer the transcript.
+        default: meta/llama-3.3-70b-instruct
+      ttsModel:
+        type: string
+        description: Riva TTS model id.
+        default: nvidia/magpie-tts
+      voice:
+        type: string
+        description: TTS voice identifier.
+        default: en-US.Female-1
+  steps:
+  - stepId: transcribeAudio
+    description: >-
+      Transcribe the uploaded audio clip into text using a Riva ASR NIM via a
+      multipart/form-data upload.
+    operationId: createTranscription
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    requestBody:
+      contentType: multipart/form-data
+      payload:
+        file: $inputs.audioFile
+        model: $inputs.asrModel
+        language: en-US
+        response_format: json
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      transcript: $response.body#/text
+      detectedLanguage: $response.body#/language
+  - stepId: answerTranscript
+    description: >-
+      Send the transcript to a chat model to generate a spoken-style reply.
+    operationId: createChatCompletion
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        model: $inputs.chatModel
+        messages:
+        - role: system
+          content: You are a concise voice assistant. Reply in one or two short spoken sentences.
+        - role: user
+          content: $steps.transcribeAudio.outputs.transcript
+        max_tokens: 256
+        temperature: 0.4
+        stream: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      replyText: $response.body#/choices/0/message/content
+      totalTokens: $response.body#/usage/total_tokens
+  - stepId: synthesizeReply
+    description: >-
+      Synthesize the chat reply back into audio bytes using a Riva TTS NIM.
+    operationId: createSpeech
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.apiKey
+    requestBody:
+      contentType: application/json
+      payload:
+        model: $inputs.ttsModel
+        input: $steps.answerTranscript.outputs.replyText
+        voice: $inputs.voice
+        response_format: mp3
+        speed: 1.0
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      audio: $response.body
+  outputs:
+    transcript: $steps.transcribeAudio.outputs.transcript
+    replyText: $steps.answerTranscript.outputs.replyText
+    audio: $steps.synthesizeReply.outputs.audio

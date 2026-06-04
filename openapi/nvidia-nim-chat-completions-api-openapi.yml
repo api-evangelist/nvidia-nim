@@ -52,7 +52,7 @@ paths:
             text/event-stream:
               schema:
                 type: string
-                description: SSE stream of `data:` JSON deltas terminated by `data: [DONE]`.
+                description: 'SSE stream of `data:` JSON deltas terminated by `data: [DONE]`.'
         '400':
           description: Invalid request.
         '401':
@@ -71,7 +71,7 @@ components:
       type: http
       scheme: bearer
       bearerFormat: nvapi-...
-      description: NVIDIA developer API key. Use `Authorization: Bearer nvapi-...`.
+      description: 'NVIDIA developer API key. Use `Authorization: Bearer nvapi-...`.'
   schemas:
     ChatCompletionRequest:
       type: object
