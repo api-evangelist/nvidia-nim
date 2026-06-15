@@ -1,0 +1,291 @@
+{
+  "item": [
+    {
+      "id": "a4be096c-a3e7-41a2-9336-2c181a714b6a",
+      "name": "Vision",
+      "description": {
+        "content": "Multimodal vision-language operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3c88defe-9158-4983-abb0-bfede1be1fd8",
+          "name": "Create A Multimodal Chat Completion",
+          "request": {
+            "name": "Create A Multimodal Chat Completion",
+            "description": {
+              "content": "Generate a chat completion against a vision-language model. Image content is supplied via `image_url` parts inside the user message; the response mirrors the standard chat completions schema.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "chat",
+                "completions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": [\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": [\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"stream\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d1b3d225-a6ec-42aa-bfff-b2ccd7df3b86",
+              "name": "Multimodal chat completion response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": [\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": [\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"stream\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"chat.completion\",\n  \"choices\": [\n    {\n      \"message\": {\n        \"role\": \"string\",\n        \"content\": \"string\"\n      },\n      \"finish_reason\": \"string\"\n    },\n    {\n      \"message\": {\n        \"role\": \"string\",\n        \"content\": \"string\"\n      },\n      \"finish_reason\": \"string\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 9887,\n    \"completion_tokens\": 7862,\n    \"total_tokens\": 4541\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61c9660a-c60f-42d6-8ff1-2bbc03968fde",
+              "name": "Invalid request (e.g. image too large or unsupported format).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": [\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": [\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"stream\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "19a70abb-dc28-49cd-861a-ae630162ac31",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": [\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": [\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"stream\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d93549b4-43e0-405e-8ccf-aa40a20d1142",
+              "name": "Payload too large.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"<string>\",\n      \"content\": [\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"role\": \"<string>\",\n      \"content\": [\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"stream\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://integrate.api.nvidia.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3e8db7bd-fe6e-436e-b117-96a651075a88",
+    "name": "NVIDIA NIM Vision Language Models API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Vision-language model inference through the standard /v1/chat/completions surface. Image inputs are passed as `image_url` content parts inside the messages array — either HTTPS URLs or base64 data URIs. Supports NVIDIA NeVA, microsoft/kosmos-2, phi-3-vision, llama-3.2-90b-vision-instruct, and other VLMs in the NIM catalog.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

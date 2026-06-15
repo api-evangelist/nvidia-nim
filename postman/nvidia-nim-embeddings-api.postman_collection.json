@@ -1,0 +1,295 @@
+{
+  "info": {
+    "_postman_id": "170ecd6f-4994-4521-b36c-036323ca703b",
+    "name": "NVIDIA NIM Embeddings API",
+    "description": "OpenAI-compatible embeddings endpoint backed by NVIDIA NeMo Retriever text embedding models. Returns dense float vectors for documents or queries. Supports `input_type=passage|query` for asymmetric retrieval and the standard `dimensions` parameter on models that allow dimension reduction.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:13:24.000Z",
+    "updatedAt": "2026-06-05T15:13:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-170ecd6f-4994-4521-b36c-036323ca703b"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "embeddings",
+          "item": [
+            {
+              "name": "Create An Embedding",
+              "id": "dd295022-be6e-4bec-8803-9e741334a230",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"input_type\": \"query\",\n  \"encoding_format\": \"float\",\n  \"truncate\": \"NONE\",\n  \"dimensions\": \"<integer>\",\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/embeddings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "embeddings"
+                  ]
+                },
+                "description": "Generate embedding vectors for one or more input strings using a NeMo Retriever embedding model."
+              },
+              "response": [
+                {
+                  "id": "90f0f238-65a8-47dc-9b44-9541a9bd9dd7",
+                  "name": "Embedding response.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"input_type\": \"query\",\n  \"encoding_format\": \"float\",\n  \"truncate\": \"NONE\",\n  \"dimensions\": \"<integer>\",\n  \"user\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/embeddings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "embeddings"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"object\": \"<string>\",\n  \"data\": [\n    {\n      \"object\": \"<string>\",\n      \"index\": \"<integer>\",\n      \"embedding\": [\n        \"<number>\",\n        \"<number>\"\n      ]\n    },\n    {\n      \"object\": \"<string>\",\n      \"index\": \"<integer>\",\n      \"embedding\": [\n        \"<number>\",\n        \"<number>\"\n      ]\n    }\n  ],\n  \"model\": \"<string>\",\n  \"usage\": {\n    \"prompt_tokens\": \"<integer>\",\n    \"total_tokens\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:13:25.000Z",
+                  "updatedAt": "2026-06-05T15:13:25.000Z",
+                  "uid": "35240-90f0f238-65a8-47dc-9b44-9541a9bd9dd7"
+                },
+                {
+                  "id": "e74c2a5b-ec3f-48fe-9bdd-33fe5c09f9d4",
+                  "name": "Invalid request.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"input_type\": \"query\",\n  \"encoding_format\": \"float\",\n  \"truncate\": \"NONE\",\n  \"dimensions\": \"<integer>\",\n  \"user\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/embeddings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "embeddings"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:13:25.000Z",
+                  "updatedAt": "2026-06-05T15:13:25.000Z",
+                  "uid": "35240-e74c2a5b-ec3f-48fe-9bdd-33fe5c09f9d4"
+                },
+                {
+                  "id": "f8665e25-3ab5-4dab-9709-2760c72ac41c",
+                  "name": "Missing or invalid API key.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"input_type\": \"query\",\n  \"encoding_format\": \"float\",\n  \"truncate\": \"NONE\",\n  \"dimensions\": \"<integer>\",\n  \"user\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/embeddings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "embeddings"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:13:25.000Z",
+                  "updatedAt": "2026-06-05T15:13:25.000Z",
+                  "uid": "35240-f8665e25-3ab5-4dab-9709-2760c72ac41c"
+                },
+                {
+                  "id": "63dd8c99-0600-4fd1-bf4f-90cd769a3171",
+                  "name": "Rate limit exceeded.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"input_type\": \"query\",\n  \"encoding_format\": \"float\",\n  \"truncate\": \"NONE\",\n  \"dimensions\": \"<integer>\",\n  \"user\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/embeddings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "embeddings"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:13:25.000Z",
+                  "updatedAt": "2026-06-05T15:13:25.000Z",
+                  "uid": "35240-63dd8c99-0600-4fd1-bf4f-90cd769a3171"
+                }
+              ],
+              "createdAt": "2026-06-05T15:13:25.000Z",
+              "updatedAt": "2026-06-05T15:13:25.000Z",
+              "uid": "35240-dd295022-be6e-4bec-8803-9e741334a230"
+            }
+          ],
+          "id": "b05ab232-ab44-4694-b565-47bf51279171",
+          "createdAt": "2026-06-05T15:13:24.000Z",
+          "updatedAt": "2026-06-05T15:13:24.000Z",
+          "uid": "35240-b05ab232-ab44-4694-b565-47bf51279171"
+        }
+      ],
+      "id": "79683344-c0b3-408f-a008-37f8b4ef0ac2",
+      "createdAt": "2026-06-05T15:13:24.000Z",
+      "updatedAt": "2026-06-05T15:13:24.000Z",
+      "uid": "35240-79683344-c0b3-408f-a008-37f8b4ef0ac2"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://integrate.api.nvidia.com"
+    }
+  ]
+}

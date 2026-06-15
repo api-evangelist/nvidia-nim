@@ -1,0 +1,295 @@
+{
+  "info": {
+    "_postman_id": "58133af3-825d-4558-b67e-f191ec173e9c",
+    "name": "NVIDIA NIM Reranking API",
+    "description": "NVIDIA NeMo Retriever cross-encoder reranking endpoint. Given a query and a list of candidate passages, returns each passage's relevance score so RAG pipelines can re-order retrieved chunks before they hit the LLM context.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:13:25.000Z",
+    "updatedAt": "2026-06-05T15:13:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-58133af3-825d-4558-b67e-f191ec173e9c"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "ranking",
+          "item": [
+            {
+              "name": "Rank Candidate Passages",
+              "id": "ca4a1f6e-2aaa-4d31-8a55-4b3227a762e4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"query\": {\n    \"text\": \"<string>\"\n  },\n  \"passages\": [\n    {\n      \"text\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\"\n    }\n  ],\n  \"truncate\": \"END\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/ranking",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "ranking"
+                  ]
+                },
+                "description": "Score candidate passages against a query using a NeMo Retriever reranker."
+              },
+              "response": [
+                {
+                  "id": "13b1b937-07b4-4c09-b664-b30eeb12386d",
+                  "name": "Ranked passages with relevance scores.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"query\": {\n    \"text\": \"<string>\"\n  },\n  \"passages\": [\n    {\n      \"text\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\"\n    }\n  ],\n  \"truncate\": \"END\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/ranking",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "ranking"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"rankings\": [\n    {\n      \"index\": \"<integer>\",\n      \"logit\": \"<number>\"\n    },\n    {\n      \"index\": \"<integer>\",\n      \"logit\": \"<number>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:13:25.000Z",
+                  "updatedAt": "2026-06-05T15:13:25.000Z",
+                  "uid": "35240-13b1b937-07b4-4c09-b664-b30eeb12386d"
+                },
+                {
+                  "id": "0ec0655b-aa94-4b0d-96ac-4cbf89c39a40",
+                  "name": "Invalid request.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"query\": {\n    \"text\": \"<string>\"\n  },\n  \"passages\": [\n    {\n      \"text\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\"\n    }\n  ],\n  \"truncate\": \"END\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/ranking",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "ranking"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:13:25.000Z",
+                  "updatedAt": "2026-06-05T15:13:25.000Z",
+                  "uid": "35240-0ec0655b-aa94-4b0d-96ac-4cbf89c39a40"
+                },
+                {
+                  "id": "aebed0de-d677-4e3f-922b-e46b84e86c76",
+                  "name": "Missing or invalid API key.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"query\": {\n    \"text\": \"<string>\"\n  },\n  \"passages\": [\n    {\n      \"text\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\"\n    }\n  ],\n  \"truncate\": \"END\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/ranking",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "ranking"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:13:25.000Z",
+                  "updatedAt": "2026-06-05T15:13:25.000Z",
+                  "uid": "35240-aebed0de-d677-4e3f-922b-e46b84e86c76"
+                },
+                {
+                  "id": "a11afe3d-999b-4464-b673-18caf0b63ff7",
+                  "name": "Rate limit exceeded.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"query\": {\n    \"text\": \"<string>\"\n  },\n  \"passages\": [\n    {\n      \"text\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\"\n    }\n  ],\n  \"truncate\": \"END\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/ranking",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "ranking"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:13:25.000Z",
+                  "updatedAt": "2026-06-05T15:13:25.000Z",
+                  "uid": "35240-a11afe3d-999b-4464-b673-18caf0b63ff7"
+                }
+              ],
+              "createdAt": "2026-06-05T15:13:25.000Z",
+              "updatedAt": "2026-06-05T15:13:25.000Z",
+              "uid": "35240-ca4a1f6e-2aaa-4d31-8a55-4b3227a762e4"
+            }
+          ],
+          "id": "1925e88c-7a77-4eb4-9928-a2165f204b30",
+          "createdAt": "2026-06-05T15:13:25.000Z",
+          "updatedAt": "2026-06-05T15:13:25.000Z",
+          "uid": "35240-1925e88c-7a77-4eb4-9928-a2165f204b30"
+        }
+      ],
+      "id": "2b366b61-f472-4d38-839b-a3693832493a",
+      "createdAt": "2026-06-05T15:13:25.000Z",
+      "updatedAt": "2026-06-05T15:13:25.000Z",
+      "uid": "35240-2b366b61-f472-4d38-839b-a3693832493a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://integrate.api.nvidia.com"
+    }
+  ]
+}

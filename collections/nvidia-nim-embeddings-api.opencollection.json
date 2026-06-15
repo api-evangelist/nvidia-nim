@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NVIDIA NIM Embeddings API",
+    "version": "2026-05-25"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Embeddings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create An Embedding",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://integrate.api.nvidia.com/v1/embeddings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate embedding vectors for one or more input strings using a NeMo Retriever embedding model."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

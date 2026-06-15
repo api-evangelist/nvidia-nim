@@ -1,0 +1,309 @@
+{
+  "info": {
+    "_postman_id": "66987998-e233-4453-9e82-3b2772d8b6dd",
+    "name": "NVIDIA NIM Vision Language Models API",
+    "description": "Vision-language model inference through the standard /v1/chat/completions surface. Image inputs are passed as `image_url` content parts inside the messages array \u2014 either HTTPS URLs or base64 data URIs. Supports NVIDIA NeVA, microsoft/kosmos-2, phi-3-vision, llama-3.2-90b-vision-instruct, and other VLMs in the NIM catalog.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:13:27.000Z",
+    "updatedAt": "2026-06-05T15:13:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-66987998-e233-4453-9e82-3b2772d8b6dd"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "chat",
+          "item": [
+            {
+              "name": "completions",
+              "item": [
+                {
+                  "name": "Create A Multimodal Chat Completion",
+                  "id": "05288c75-548c-498d-850d-164f098ae584",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"image_url\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"image_url\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": [\n        {\n          \"type\": \"image_url\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"stream\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/chat/completions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "chat",
+                        "completions"
+                      ]
+                    },
+                    "description": "Generate a chat completion against a vision-language model. Image content is supplied via `image_url` parts inside the user message; the response mirrors the standard chat completions schema.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "0fba51a0-88a4-464a-bf26-680349d493c1",
+                      "name": "Multimodal chat completion response.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"image_url\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"image_url\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": [\n        {\n          \"type\": \"image_url\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"stream\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/chat/completions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "chat",
+                            "completions"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"choices\": [\n    {\n      \"message\": {\n        \"role\": \"<string>\",\n        \"content\": \"<string>\"\n      },\n      \"finish_reason\": \"<string>\"\n    },\n    {\n      \"message\": {\n        \"role\": \"<string>\",\n        \"content\": \"<string>\"\n      },\n      \"finish_reason\": \"<string>\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": \"<integer>\",\n    \"completion_tokens\": \"<integer>\",\n    \"total_tokens\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:13:28.000Z",
+                      "updatedAt": "2026-06-05T15:13:28.000Z",
+                      "uid": "35240-0fba51a0-88a4-464a-bf26-680349d493c1"
+                    },
+                    {
+                      "id": "e65dbbd7-1752-4995-a8e2-0a631f45abd3",
+                      "name": "Invalid request (e.g. image too large or unsupported format).",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"image_url\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"image_url\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": [\n        {\n          \"type\": \"image_url\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"stream\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/chat/completions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "chat",
+                            "completions"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:28.000Z",
+                      "updatedAt": "2026-06-05T15:13:28.000Z",
+                      "uid": "35240-e65dbbd7-1752-4995-a8e2-0a631f45abd3"
+                    },
+                    {
+                      "id": "14a77621-3677-4360-9204-1adbb0b8fdf4",
+                      "name": "Missing or invalid API key.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"image_url\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"image_url\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": [\n        {\n          \"type\": \"image_url\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"stream\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/chat/completions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "chat",
+                            "completions"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:28.000Z",
+                      "updatedAt": "2026-06-05T15:13:28.000Z",
+                      "uid": "35240-14a77621-3677-4360-9204-1adbb0b8fdf4"
+                    },
+                    {
+                      "id": "34e709b6-7c47-4172-87f3-895155e2bcef",
+                      "name": "Payload too large.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"image_url\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"image_url\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": [\n        {\n          \"type\": \"image_url\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        },\n        {\n          \"type\": \"text\",\n          \"text\": \"<string>\",\n          \"image_url\": {\n            \"url\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"max_tokens\": \"<integer>\",\n  \"temperature\": \"<number>\",\n  \"stream\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/chat/completions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "chat",
+                            "completions"
+                          ]
+                        }
+                      },
+                      "status": "Request Entity Too Large",
+                      "code": 413,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:28.000Z",
+                      "updatedAt": "2026-06-05T15:13:28.000Z",
+                      "uid": "35240-34e709b6-7c47-4172-87f3-895155e2bcef"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:13:28.000Z",
+                  "updatedAt": "2026-06-05T15:13:28.000Z",
+                  "uid": "35240-05288c75-548c-498d-850d-164f098ae584"
+                }
+              ],
+              "id": "c31bcd40-767f-42de-8d72-77db0bc06358",
+              "createdAt": "2026-06-05T15:13:28.000Z",
+              "updatedAt": "2026-06-05T15:13:28.000Z",
+              "uid": "35240-c31bcd40-767f-42de-8d72-77db0bc06358"
+            }
+          ],
+          "id": "19319e77-6850-4853-9ba4-fda7c39139b7",
+          "createdAt": "2026-06-05T15:13:28.000Z",
+          "updatedAt": "2026-06-05T15:13:28.000Z",
+          "uid": "35240-19319e77-6850-4853-9ba4-fda7c39139b7"
+        }
+      ],
+      "id": "b96e4d4e-bb5b-4185-b7c3-79cbc5b2eda8",
+      "createdAt": "2026-06-05T15:13:28.000Z",
+      "updatedAt": "2026-06-05T15:13:28.000Z",
+      "uid": "35240-b96e4d4e-bb5b-4185-b7c3-79cbc5b2eda8"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://integrate.api.nvidia.com"
+    }
+  ]
+}

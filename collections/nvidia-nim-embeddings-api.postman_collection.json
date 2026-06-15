@@ -1,0 +1,286 @@
+{
+  "item": [
+    {
+      "id": "896ae215-0b77-4d8f-bdf1-e99f43045108",
+      "name": "Embeddings",
+      "description": {
+        "content": "Dense vector embedding operations for RAG and semantic search",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ffef373f-6b16-490d-b55e-881cb8100e14",
+          "name": "Create An Embedding",
+          "request": {
+            "name": "Create An Embedding",
+            "description": {
+              "content": "Generate embedding vectors for one or more input strings using a NeMo Retriever embedding model.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "embeddings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"input_type\": \"<string>\",\n  \"encoding_format\": \"float\",\n  \"truncate\": \"NONE\",\n  \"dimensions\": \"<integer>\",\n  \"user\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3a6a6b7b-5a99-4921-a755-41e0222573e0",
+              "name": "Embedding response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "embeddings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"input_type\": \"<string>\",\n  \"encoding_format\": \"float\",\n  \"truncate\": \"NONE\",\n  \"dimensions\": \"<integer>\",\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"data\": [\n    {\n      \"object\": \"embedding\",\n      \"index\": 7652,\n      \"embedding\": [\n        226.55047011718165,\n        3224.859175040976\n      ]\n    },\n    {\n      \"object\": \"embedding\",\n      \"index\": 3439,\n      \"embedding\": [\n        3460.6324271745148,\n        5998.183933811943\n      ]\n    }\n  ],\n  \"model\": \"string\",\n  \"usage\": {\n    \"prompt_tokens\": 9839,\n    \"total_tokens\": 6215\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2d8166d-804d-4755-9617-796ac155cc0c",
+              "name": "Invalid request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "embeddings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"input_type\": \"<string>\",\n  \"encoding_format\": \"float\",\n  \"truncate\": \"NONE\",\n  \"dimensions\": \"<integer>\",\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c3870cc7-82b4-4f29-955f-02ff87cda0a7",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "embeddings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"input_type\": \"<string>\",\n  \"encoding_format\": \"float\",\n  \"truncate\": \"NONE\",\n  \"dimensions\": \"<integer>\",\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c83c0438-3487-4d2c-b753-7342cbb74d9b",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "embeddings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"input_type\": \"<string>\",\n  \"encoding_format\": \"float\",\n  \"truncate\": \"NONE\",\n  \"dimensions\": \"<integer>\",\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://integrate.api.nvidia.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "be5297e1-1560-4e7a-ac61-b94ff70577a5",
+    "name": "NVIDIA NIM Embeddings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAI-compatible embeddings endpoint backed by NVIDIA NeMo Retriever text embedding models. Returns dense float vectors for documents or queries. Supports `input_type=passage|query` for asymmetric retrieval and the standard `dimensions` parameter on models that allow dimension reduction.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

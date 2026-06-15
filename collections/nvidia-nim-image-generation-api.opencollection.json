@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NVIDIA NIM Image Generation API",
+    "version": "2026-05-25"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Images",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate An Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://integrate.api.nvidia.com/v1/genai/:publisher/:model",
+            "params": [
+              {
+                "name": "publisher",
+                "value": "",
+                "type": "path",
+                "description": "Model publisher (e.g. `black-forest-labs`, `stabilityai`, `shutterstock`, `nvidia`)."
+              },
+              {
+                "name": "model",
+                "value": "",
+                "type": "path",
+                "description": "Model slug (e.g. `flux.1-schnell`, `sdxl-turbo`, `edify-image`)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate or edit an image with a NIM-hosted visual generative model. The exact request schema varies by model family."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

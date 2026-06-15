@@ -1,0 +1,369 @@
+{
+  "info": {
+    "_postman_id": "da5ce649-8788-4f8a-9e87-93803839c001",
+    "name": "NVIDIA NIM Image Generation API",
+    "description": "Visual generative AI endpoints. Text-to-image, image-to-image, and image editing using models such as Black Forest Labs FLUX.1, Stable Diffusion XL, Shutterstock-trained Edify Image, and NVIDIA Edify 3D \u2014 exposed by per-model NIM containers with a uniform JSON contract that returns base64-encoded PNG or JPEG artifacts.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:13:29.000Z",
+    "updatedAt": "2026-06-05T15:13:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-da5ce649-8788-4f8a-9e87-93803839c001"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "genai",
+          "item": [
+            {
+              "name": "{publisher}",
+              "item": [
+                {
+                  "name": "{model}",
+                  "item": [
+                    {
+                      "name": "Generate An Image",
+                      "id": "d2efe1a0-398e-472a-b977-e753b2f25e23",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"prompt\": \"<string>\",\n  \"negative_prompt\": \"<string>\",\n  \"cfg_scale\": 5,\n  \"sampler\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"steps\": 50,\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"mode\": \"text-to-image\",\n  \"image\": \"<string>\",\n  \"mask\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/genai/:publisher/:model",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "genai",
+                            ":publisher",
+                            ":model"
+                          ],
+                          "variable": [
+                            {
+                              "id": "aad7b290-df72-4acd-8378-76d38f1f26d8",
+                              "key": "publisher",
+                              "value": "<string>",
+                              "description": "(Required) Model publisher (e.g. `black-forest-labs`, `stabilityai`, `shutterstock`, `nvidia`)."
+                            },
+                            {
+                              "id": "e3144010-7b8a-41e2-9244-537d91c22c7e",
+                              "key": "model",
+                              "value": "<string>",
+                              "description": "(Required) Model slug (e.g. `flux.1-schnell`, `sdxl-turbo`, `edify-image`)."
+                            }
+                          ]
+                        },
+                        "description": "Generate or edit an image with a NIM-hosted visual generative model. The exact request schema varies by model family."
+                      },
+                      "response": [
+                        {
+                          "id": "5876ac79-a40f-43db-a71b-77606ca2d1c2",
+                          "name": "Generated image artifacts.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"prompt\": \"<string>\",\n  \"negative_prompt\": \"<string>\",\n  \"cfg_scale\": 5,\n  \"sampler\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"steps\": 50,\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"mode\": \"text-to-image\",\n  \"image\": \"<string>\",\n  \"mask\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/genai/:publisher/:model",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "genai",
+                                ":publisher",
+                                ":model"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publisher"
+                                },
+                                {
+                                  "key": "model"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"artifacts\": [\n    {\n      \"base64\": \"<string>\",\n      \"finishReason\": \"<string>\",\n      \"seed\": \"<integer>\"\n    },\n    {\n      \"base64\": \"<string>\",\n      \"finishReason\": \"<string>\",\n      \"seed\": \"<integer>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-06-05T15:13:30.000Z",
+                          "updatedAt": "2026-06-05T15:13:30.000Z",
+                          "uid": "35240-5876ac79-a40f-43db-a71b-77606ca2d1c2"
+                        },
+                        {
+                          "id": "e2796391-3606-4de0-9951-26a279550c85",
+                          "name": "Invalid request.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"prompt\": \"<string>\",\n  \"negative_prompt\": \"<string>\",\n  \"cfg_scale\": 5,\n  \"sampler\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"steps\": 50,\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"mode\": \"text-to-image\",\n  \"image\": \"<string>\",\n  \"mask\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/genai/:publisher/:model",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "genai",
+                                ":publisher",
+                                ":model"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publisher"
+                                },
+                                {
+                                  "key": "model"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:13:30.000Z",
+                          "updatedAt": "2026-06-05T15:13:30.000Z",
+                          "uid": "35240-e2796391-3606-4de0-9951-26a279550c85"
+                        },
+                        {
+                          "id": "ef005cde-b1bb-4e35-ab7e-e90373f91bd0",
+                          "name": "Missing or invalid API key.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"prompt\": \"<string>\",\n  \"negative_prompt\": \"<string>\",\n  \"cfg_scale\": 5,\n  \"sampler\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"steps\": 50,\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"mode\": \"text-to-image\",\n  \"image\": \"<string>\",\n  \"mask\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/genai/:publisher/:model",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "genai",
+                                ":publisher",
+                                ":model"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publisher"
+                                },
+                                {
+                                  "key": "model"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:13:30.000Z",
+                          "updatedAt": "2026-06-05T15:13:30.000Z",
+                          "uid": "35240-ef005cde-b1bb-4e35-ab7e-e90373f91bd0"
+                        },
+                        {
+                          "id": "57ff0b62-c438-4b2a-895e-223ba3a251f8",
+                          "name": "Rate limit exceeded.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"prompt\": \"<string>\",\n  \"negative_prompt\": \"<string>\",\n  \"cfg_scale\": 5,\n  \"sampler\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"steps\": 50,\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"mode\": \"text-to-image\",\n  \"image\": \"<string>\",\n  \"mask\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/genai/:publisher/:model",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "genai",
+                                ":publisher",
+                                ":model"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "publisher"
+                                },
+                                {
+                                  "key": "model"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:13:30.000Z",
+                          "updatedAt": "2026-06-05T15:13:30.000Z",
+                          "uid": "35240-57ff0b62-c438-4b2a-895e-223ba3a251f8"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:13:30.000Z",
+                      "updatedAt": "2026-06-05T15:13:30.000Z",
+                      "uid": "35240-d2efe1a0-398e-472a-b977-e753b2f25e23"
+                    }
+                  ],
+                  "id": "c67a5bfa-04c1-4631-8c2a-420b362c03cc",
+                  "createdAt": "2026-06-05T15:13:30.000Z",
+                  "updatedAt": "2026-06-05T15:13:30.000Z",
+                  "uid": "35240-c67a5bfa-04c1-4631-8c2a-420b362c03cc"
+                }
+              ],
+              "id": "5a4a0a2c-bc24-4c80-9dc9-b6c3ddf68d8d",
+              "createdAt": "2026-06-05T15:13:30.000Z",
+              "updatedAt": "2026-06-05T15:13:30.000Z",
+              "uid": "35240-5a4a0a2c-bc24-4c80-9dc9-b6c3ddf68d8d"
+            }
+          ],
+          "id": "e97ab502-af02-4ebb-9463-d54e452b0735",
+          "createdAt": "2026-06-05T15:13:30.000Z",
+          "updatedAt": "2026-06-05T15:13:30.000Z",
+          "uid": "35240-e97ab502-af02-4ebb-9463-d54e452b0735"
+        }
+      ],
+      "id": "c917ba22-f737-4205-80e2-1d69392881f0",
+      "createdAt": "2026-06-05T15:13:30.000Z",
+      "updatedAt": "2026-06-05T15:13:30.000Z",
+      "uid": "35240-c917ba22-f737-4205-80e2-1d69392881f0"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://integrate.api.nvidia.com"
+    }
+  ]
+}

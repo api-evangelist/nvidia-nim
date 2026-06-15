@@ -1,0 +1,314 @@
+{
+  "item": [
+    {
+      "id": "37fda4ff-36de-4a22-aad7-bea578121a4a",
+      "name": "Health",
+      "description": {
+        "content": "Liveness, readiness, and metrics probes",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a58f3aad-ee3d-403d-bd36-2684d52dae87",
+          "name": "Liveness Probe",
+          "request": {
+            "name": "Liveness Probe",
+            "description": {
+              "content": "Returns 200 OK if the container process is alive. Used as Kubernetes livenessProbe.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "health",
+                "live"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f1a88b8-3ae5-4916-b45f-5425ba11213f",
+              "name": "Container is alive.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health",
+                    "live"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Service is live.\",\n  \"object\": \"health-response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "579de3d8-aac3-4fdd-9fb0-ad5cd7a79ea1",
+              "name": "Container is unhealthy and should be restarted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health",
+                    "live"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3169835f-367f-4a79-9939-089c6b1a4efe",
+          "name": "Readiness Probe",
+          "request": {
+            "name": "Readiness Probe",
+            "description": {
+              "content": "Returns 200 OK only once the model engine has loaded and the container can accept traffic.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "health",
+                "ready"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf20c2cb-d118-42d1-bdc1-577db8932eb8",
+              "name": "Ready to serve.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health",
+                    "ready"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Service is live.\",\n  \"object\": \"health-response\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36c653ca-5e1e-43df-b5e0-1a3a0e1fa7e1",
+              "name": "Not ready yet (e.g. model still loading).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "health",
+                    "ready"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "caa76208-f58e-46d6-b244-0a8b5435c63c",
+          "name": "Prometheus Metrics",
+          "request": {
+            "name": "Prometheus Metrics",
+            "description": {
+              "content": "Prometheus text exposition format. Includes GPU utilization, request latency histograms, queue depth, and engine-specific counters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d31ecdc0-5a51-4117-9d21-c590c49d9cff",
+              "name": "Prometheus metrics payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8000",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "35745573-03a8-460b-8725-09e824be3967",
+    "name": "NVIDIA NIM Health API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Liveness, readiness, and metrics endpoints exposed by every self-hosted NIM container on port 8000. The NIM Operator uses these for Kubernetes probes; Prometheus scrapes /v1/metrics for GPU utilization, request latency, queue depth, and per-engine counters.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,337 @@
+{
+  "info": {
+    "_postman_id": "358bf94a-f10d-45dc-a6a2-5a5c9195faa4",
+    "name": "NVIDIA NIM Health API",
+    "description": "Liveness, readiness, and metrics endpoints exposed by every self-hosted NIM container on port 8000. The NIM Operator uses these for Kubernetes probes; Prometheus scrapes /v1/metrics for GPU utilization, request latency, queue depth, and per-engine counters.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:13:28.000Z",
+    "updatedAt": "2026-06-05T15:13:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-358bf94a-f10d-45dc-a6a2-5a5c9195faa4"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "health",
+          "item": [
+            {
+              "name": "live",
+              "item": [
+                {
+                  "name": "Liveness Probe",
+                  "id": "4a502dee-8560-4546-8811-3db4f9b968dc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/health/live",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "health",
+                        "live"
+                      ]
+                    },
+                    "description": "Returns 200 OK if the container process is alive. Used as Kubernetes livenessProbe."
+                  },
+                  "response": [
+                    {
+                      "id": "691c8613-4efd-468f-9ed9-5634388be8b6",
+                      "name": "Container is alive.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/health/live",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "health",
+                            "live"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"object\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:13:29.000Z",
+                      "updatedAt": "2026-06-05T15:13:29.000Z",
+                      "uid": "35240-691c8613-4efd-468f-9ed9-5634388be8b6"
+                    },
+                    {
+                      "id": "6ca434f5-c264-4bbb-a9ff-9ac518f5f55b",
+                      "name": "Container is unhealthy and should be restarted.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/health/live",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "health",
+                            "live"
+                          ]
+                        }
+                      },
+                      "status": "Service Unavailable",
+                      "code": 503,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:29.000Z",
+                      "updatedAt": "2026-06-05T15:13:29.000Z",
+                      "uid": "35240-6ca434f5-c264-4bbb-a9ff-9ac518f5f55b"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:13:29.000Z",
+                  "updatedAt": "2026-06-05T15:13:29.000Z",
+                  "uid": "35240-4a502dee-8560-4546-8811-3db4f9b968dc"
+                }
+              ],
+              "id": "830f479f-2c59-49d6-99eb-3223cee742b5",
+              "createdAt": "2026-06-05T15:13:28.000Z",
+              "updatedAt": "2026-06-05T15:13:28.000Z",
+              "uid": "35240-830f479f-2c59-49d6-99eb-3223cee742b5"
+            },
+            {
+              "name": "ready",
+              "item": [
+                {
+                  "name": "Readiness Probe",
+                  "id": "91c3e576-6c5f-434c-87fd-4cae570f061a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/health/ready",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "health",
+                        "ready"
+                      ]
+                    },
+                    "description": "Returns 200 OK only once the model engine has loaded and the container can accept traffic."
+                  },
+                  "response": [
+                    {
+                      "id": "a7b4b620-b80e-4a42-a98b-8020fc297dab",
+                      "name": "Ready to serve.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/health/ready",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "health",
+                            "ready"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"object\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:13:29.000Z",
+                      "updatedAt": "2026-06-05T15:13:29.000Z",
+                      "uid": "35240-a7b4b620-b80e-4a42-a98b-8020fc297dab"
+                    },
+                    {
+                      "id": "7c5006f9-0783-41ab-9e0b-6b5387bea7ef",
+                      "name": "Not ready yet (e.g. model still loading).",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/health/ready",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "health",
+                            "ready"
+                          ]
+                        }
+                      },
+                      "status": "Service Unavailable",
+                      "code": 503,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:29.000Z",
+                      "updatedAt": "2026-06-05T15:13:29.000Z",
+                      "uid": "35240-7c5006f9-0783-41ab-9e0b-6b5387bea7ef"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:13:29.000Z",
+                  "updatedAt": "2026-06-05T15:13:29.000Z",
+                  "uid": "35240-91c3e576-6c5f-434c-87fd-4cae570f061a"
+                }
+              ],
+              "id": "d1b38573-942c-4f60-8bf4-d969e9576fa4",
+              "createdAt": "2026-06-05T15:13:28.000Z",
+              "updatedAt": "2026-06-05T15:13:28.000Z",
+              "uid": "35240-d1b38573-942c-4f60-8bf4-d969e9576fa4"
+            }
+          ],
+          "id": "b3caa8ee-4d82-4caf-834b-93f6b7c0383e",
+          "createdAt": "2026-06-05T15:13:28.000Z",
+          "updatedAt": "2026-06-05T15:13:28.000Z",
+          "uid": "35240-b3caa8ee-4d82-4caf-834b-93f6b7c0383e"
+        },
+        {
+          "name": "metrics",
+          "item": [
+            {
+              "name": "Prometheus Metrics",
+              "id": "d331bb45-565b-4035-b8fa-14a09837192b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/metrics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "metrics"
+                  ]
+                },
+                "description": "Prometheus text exposition format. Includes GPU utilization, request latency histograms, queue depth, and engine-specific counters."
+              },
+              "response": [
+                {
+                  "id": "72dbbe4c-6434-40f8-b276-92f4693141ba",
+                  "name": "Prometheus metrics payload.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/metrics",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "metrics"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-06-05T15:13:29.000Z",
+                  "updatedAt": "2026-06-05T15:13:29.000Z",
+                  "uid": "35240-72dbbe4c-6434-40f8-b276-92f4693141ba"
+                }
+              ],
+              "createdAt": "2026-06-05T15:13:29.000Z",
+              "updatedAt": "2026-06-05T15:13:29.000Z",
+              "uid": "35240-d331bb45-565b-4035-b8fa-14a09837192b"
+            }
+          ],
+          "id": "800d69d8-5759-424d-bba0-cacae11bc691",
+          "createdAt": "2026-06-05T15:13:28.000Z",
+          "updatedAt": "2026-06-05T15:13:28.000Z",
+          "uid": "35240-800d69d8-5759-424d-bba0-cacae11bc691"
+        }
+      ],
+      "id": "8f16c2a2-0af8-4e17-8db3-98a239307c51",
+      "createdAt": "2026-06-05T15:13:28.000Z",
+      "updatedAt": "2026-06-05T15:13:28.000Z",
+      "uid": "35240-8f16c2a2-0af8-4e17-8db3-98a239307c51"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000"
+    }
+  ]
+}

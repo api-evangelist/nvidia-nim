@@ -1,0 +1,456 @@
+{
+  "info": {
+    "_postman_id": "db60dcff-a4ac-4d03-a95f-a04a8087254e",
+    "name": "NVIDIA NIM Chat Completions API",
+    "description": "OpenAI-compatible chat completions endpoint served by NVIDIA NIM. Available as a hosted service at https://integrate.api.nvidia.com/v1 and on every self-hosted NIM LLM container on port 8000. A single contract serves 100+ foundation models \u2014 Llama, Mistral, NVIDIA Nemotron, DeepSeek, Qwen, Phi, Gemma, Granite \u2014 through the standard /v1/chat/completions surface.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:13:21.000Z",
+    "updatedAt": "2026-06-05T15:13:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-db60dcff-a4ac-4d03-a95f-a04a8087254e"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "chat",
+          "item": [
+            {
+              "name": "completions",
+              "item": [
+                {
+                  "name": "Create A Chat Completion",
+                  "id": "2188adc1-3ce1-456a-99d5-c4a8cfebbc15",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"temperature\": 0.2,\n  \"top_p\": 0.7,\n  \"max_tokens\": 1024,\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"n\": 1,\n  \"seed\": \"<integer>\",\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    },\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    }\n  ],\n  \"tool_choice\": \"required\",\n  \"response_format\": {\n    \"type\": \"text\",\n    \"json_schema\": {}\n  },\n  \"frequency_penalty\": \"<number>\",\n  \"presence_penalty\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/chat/completions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "chat",
+                        "completions"
+                      ]
+                    },
+                    "description": "Generate a chat completion for the supplied messages. Compatible with the OpenAI chat completions schema; supports streaming via Server-Sent Events when `stream: true` is set, tool/function calling, JSON-mode structured outputs, and (on VLM models) image inputs inside the messages array.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "f31b58be-aa92-4987-ad08-2d3b47406564",
+                      "name": "Chat completion response (or SSE stream when stream=true).",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"temperature\": 0.2,\n  \"top_p\": 0.7,\n  \"max_tokens\": 1024,\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"n\": 1,\n  \"seed\": \"<integer>\",\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    },\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    }\n  ],\n  \"tool_choice\": \"required\",\n  \"response_format\": {\n    \"type\": \"text\",\n    \"json_schema\": {}\n  },\n  \"frequency_penalty\": \"<number>\",\n  \"presence_penalty\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/chat/completions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "chat",
+                            "completions"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"created\": \"<integer>\",\n  \"model\": \"<string>\",\n  \"choices\": [\n    {\n      \"index\": \"<integer>\",\n      \"message\": {\n        \"role\": \"user\",\n        \"content\": \"<string>\",\n        \"name\": \"<string>\",\n        \"tool_calls\": [\n          {\n            \"id\": \"<string>\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"<string>\",\n              \"arguments\": \"<string>\"\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"<string>\",\n              \"arguments\": \"<string>\"\n            }\n          }\n        ],\n        \"tool_call_id\": \"<string>\"\n      },\n      \"finish_reason\": \"stop\"\n    },\n    {\n      \"index\": \"<integer>\",\n      \"message\": {\n        \"role\": \"user\",\n        \"content\": \"<string>\",\n        \"name\": \"<string>\",\n        \"tool_calls\": [\n          {\n            \"id\": \"<string>\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"<string>\",\n              \"arguments\": \"<string>\"\n            }\n          },\n          {\n            \"id\": \"<string>\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"<string>\",\n              \"arguments\": \"<string>\"\n            }\n          }\n        ],\n        \"tool_call_id\": \"<string>\"\n      },\n      \"finish_reason\": \"content_filter\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": \"<integer>\",\n    \"completion_tokens\": \"<integer>\",\n    \"total_tokens\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:13:21.000Z",
+                      "updatedAt": "2026-06-05T15:13:21.000Z",
+                      "uid": "35240-f31b58be-aa92-4987-ad08-2d3b47406564"
+                    },
+                    {
+                      "id": "69f962e7-47f5-43ee-83b4-cff9f193942e",
+                      "name": "Invalid request.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"temperature\": 0.2,\n  \"top_p\": 0.7,\n  \"max_tokens\": 1024,\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"n\": 1,\n  \"seed\": \"<integer>\",\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    },\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    }\n  ],\n  \"tool_choice\": \"required\",\n  \"response_format\": {\n    \"type\": \"text\",\n    \"json_schema\": {}\n  },\n  \"frequency_penalty\": \"<number>\",\n  \"presence_penalty\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/chat/completions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "chat",
+                            "completions"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:21.000Z",
+                      "updatedAt": "2026-06-05T15:13:21.000Z",
+                      "uid": "35240-69f962e7-47f5-43ee-83b4-cff9f193942e"
+                    },
+                    {
+                      "id": "d9af0160-c63e-497f-aa00-f13cd6a5327c",
+                      "name": "Missing or invalid API key.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"temperature\": 0.2,\n  \"top_p\": 0.7,\n  \"max_tokens\": 1024,\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"n\": 1,\n  \"seed\": \"<integer>\",\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    },\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    }\n  ],\n  \"tool_choice\": \"required\",\n  \"response_format\": {\n    \"type\": \"text\",\n    \"json_schema\": {}\n  },\n  \"frequency_penalty\": \"<number>\",\n  \"presence_penalty\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/chat/completions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "chat",
+                            "completions"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:21.000Z",
+                      "updatedAt": "2026-06-05T15:13:21.000Z",
+                      "uid": "35240-d9af0160-c63e-497f-aa00-f13cd6a5327c"
+                    },
+                    {
+                      "id": "53e2b231-79b3-49e1-99cb-629f3dd47422",
+                      "name": "API key lacks access to the requested model.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"temperature\": 0.2,\n  \"top_p\": 0.7,\n  \"max_tokens\": 1024,\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"n\": 1,\n  \"seed\": \"<integer>\",\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    },\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    }\n  ],\n  \"tool_choice\": \"required\",\n  \"response_format\": {\n    \"type\": \"text\",\n    \"json_schema\": {}\n  },\n  \"frequency_penalty\": \"<number>\",\n  \"presence_penalty\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/chat/completions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "chat",
+                            "completions"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:21.000Z",
+                      "updatedAt": "2026-06-05T15:13:21.000Z",
+                      "uid": "35240-53e2b231-79b3-49e1-99cb-629f3dd47422"
+                    },
+                    {
+                      "id": "ffe9a187-1db1-4978-96c4-f92d561c87ea",
+                      "name": "Requested model not found in this endpoint's catalog.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"temperature\": 0.2,\n  \"top_p\": 0.7,\n  \"max_tokens\": 1024,\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"n\": 1,\n  \"seed\": \"<integer>\",\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    },\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    }\n  ],\n  \"tool_choice\": \"required\",\n  \"response_format\": {\n    \"type\": \"text\",\n    \"json_schema\": {}\n  },\n  \"frequency_penalty\": \"<number>\",\n  \"presence_penalty\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/chat/completions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "chat",
+                            "completions"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:21.000Z",
+                      "updatedAt": "2026-06-05T15:13:21.000Z",
+                      "uid": "35240-ffe9a187-1db1-4978-96c4-f92d561c87ea"
+                    },
+                    {
+                      "id": "006a5e26-9dab-4d61-ac2b-5fbad141b038",
+                      "name": "Rate limit or quota exceeded.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"temperature\": 0.2,\n  \"top_p\": 0.7,\n  \"max_tokens\": 1024,\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"n\": 1,\n  \"seed\": \"<integer>\",\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    },\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    }\n  ],\n  \"tool_choice\": \"required\",\n  \"response_format\": {\n    \"type\": \"text\",\n    \"json_schema\": {}\n  },\n  \"frequency_penalty\": \"<number>\",\n  \"presence_penalty\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/chat/completions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "chat",
+                            "completions"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:21.000Z",
+                      "updatedAt": "2026-06-05T15:13:21.000Z",
+                      "uid": "35240-006a5e26-9dab-4d61-ac2b-5fbad141b038"
+                    },
+                    {
+                      "id": "83201eea-e700-4c73-9e07-74373bf7aa7e",
+                      "name": "Upstream inference error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"function\",\n          \"function\": {\n            \"name\": \"<string>\",\n            \"arguments\": \"<string>\"\n          }\n        }\n      ],\n      \"tool_call_id\": \"<string>\"\n    }\n  ],\n  \"temperature\": 0.2,\n  \"top_p\": 0.7,\n  \"max_tokens\": 1024,\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"n\": 1,\n  \"seed\": \"<integer>\",\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    },\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"parameters\": {}\n      }\n    }\n  ],\n  \"tool_choice\": \"required\",\n  \"response_format\": {\n    \"type\": \"text\",\n    \"json_schema\": {}\n  },\n  \"frequency_penalty\": \"<number>\",\n  \"presence_penalty\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/chat/completions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "chat",
+                            "completions"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:21.000Z",
+                      "updatedAt": "2026-06-05T15:13:21.000Z",
+                      "uid": "35240-83201eea-e700-4c73-9e07-74373bf7aa7e"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:13:21.000Z",
+                  "updatedAt": "2026-06-05T15:13:21.000Z",
+                  "uid": "35240-2188adc1-3ce1-456a-99d5-c4a8cfebbc15"
+                }
+              ],
+              "id": "26516e80-493c-438a-b7e6-952e5a52bde2",
+              "createdAt": "2026-06-05T15:13:21.000Z",
+              "updatedAt": "2026-06-05T15:13:21.000Z",
+              "uid": "35240-26516e80-493c-438a-b7e6-952e5a52bde2"
+            }
+          ],
+          "id": "e101b621-d62f-44b6-915a-e16366a7bfb2",
+          "createdAt": "2026-06-05T15:13:21.000Z",
+          "updatedAt": "2026-06-05T15:13:21.000Z",
+          "uid": "35240-e101b621-d62f-44b6-915a-e16366a7bfb2"
+        }
+      ],
+      "id": "3ae4d4e9-2dcb-4618-bd5f-ff11c8557df8",
+      "createdAt": "2026-06-05T15:13:21.000Z",
+      "updatedAt": "2026-06-05T15:13:21.000Z",
+      "uid": "35240-3ae4d4e9-2dcb-4618-bd5f-ff11c8557df8"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://integrate.api.nvidia.com"
+    }
+  ]
+}

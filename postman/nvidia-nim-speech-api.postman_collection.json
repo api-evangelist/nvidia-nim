@@ -1,0 +1,561 @@
+{
+  "info": {
+    "_postman_id": "035a0c11-c76e-4df1-a066-3b8f84ad4dc5",
+    "name": "NVIDIA NIM Speech API",
+    "description": "NVIDIA Riva-powered speech NIMs. Exposes automatic speech recognition (Parakeet, Canary), neural machine translation, and text-to-speech (Magpie-TTS, FastPitch) through HTTP surfaces. (Production deployments typically use the gRPC adapter for streaming; this OpenAPI documents the REST surface exposed by the hosted endpoint.)\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:13:30.000Z",
+    "updatedAt": "2026-06-05T15:13:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-035a0c11-c76e-4df1-a066-3b8f84ad4dc5"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "audio",
+          "item": [
+            {
+              "name": "transcriptions",
+              "item": [
+                {
+                  "name": "Transcribe Audio",
+                  "id": "2978a788-927b-478e-ad7e-328ffa3b5ac9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) ",
+                          "key": "file",
+                          "type": "file",
+                          "value": null
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "model",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "key": "language",
+                          "value": "en-US",
+                          "type": "text"
+                        },
+                        {
+                          "description": " (This can only be one of json,text,srt,vtt)",
+                          "key": "response_format",
+                          "value": "json",
+                          "type": "text"
+                        },
+                        {
+                          "key": "temperature",
+                          "value": "<number>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/audio/transcriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "audio",
+                        "transcriptions"
+                      ]
+                    },
+                    "description": "Transcribe a WAV/FLAC/MP3 audio clip into text using a Riva ASR NIM (e.g. Parakeet, Canary)."
+                  },
+                  "response": [
+                    {
+                      "id": "5351ea7b-a25a-4c1d-b8d9-78fae03fcfed",
+                      "name": "Transcription result.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) ",
+                              "key": "file",
+                              "type": "file"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "model",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "key": "language",
+                              "value": "en-US",
+                              "type": "text"
+                            },
+                            {
+                              "description": " (This can only be one of json,text,srt,vtt)",
+                              "key": "response_format",
+                              "value": "json",
+                              "type": "text"
+                            },
+                            {
+                              "key": "temperature",
+                              "value": "<number>",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/audio/transcriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "audio",
+                            "transcriptions"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"text\": \"<string>\",\n  \"language\": \"<string>\",\n  \"duration\": \"<number>\"\n}",
+                      "createdAt": "2026-06-05T15:13:31.000Z",
+                      "updatedAt": "2026-06-05T15:13:31.000Z",
+                      "uid": "35240-5351ea7b-a25a-4c1d-b8d9-78fae03fcfed"
+                    },
+                    {
+                      "id": "997a3646-3ac8-4f49-85c5-e3c7eeac383f",
+                      "name": "Invalid audio or model.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) ",
+                              "key": "file",
+                              "type": "file"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "model",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "key": "language",
+                              "value": "en-US",
+                              "type": "text"
+                            },
+                            {
+                              "description": " (This can only be one of json,text,srt,vtt)",
+                              "key": "response_format",
+                              "value": "json",
+                              "type": "text"
+                            },
+                            {
+                              "key": "temperature",
+                              "value": "<number>",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/audio/transcriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "audio",
+                            "transcriptions"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:31.000Z",
+                      "updatedAt": "2026-06-05T15:13:31.000Z",
+                      "uid": "35240-997a3646-3ac8-4f49-85c5-e3c7eeac383f"
+                    },
+                    {
+                      "id": "3231c468-e260-4696-84aa-f74362c1084a",
+                      "name": "Missing or invalid API key.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "(Required) ",
+                              "key": "file",
+                              "type": "file"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "model",
+                              "value": "<string>",
+                              "type": "text"
+                            },
+                            {
+                              "key": "language",
+                              "value": "en-US",
+                              "type": "text"
+                            },
+                            {
+                              "description": " (This can only be one of json,text,srt,vtt)",
+                              "key": "response_format",
+                              "value": "json",
+                              "type": "text"
+                            },
+                            {
+                              "key": "temperature",
+                              "value": "<number>",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/audio/transcriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "audio",
+                            "transcriptions"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:31.000Z",
+                      "updatedAt": "2026-06-05T15:13:31.000Z",
+                      "uid": "35240-3231c468-e260-4696-84aa-f74362c1084a"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:13:31.000Z",
+                  "updatedAt": "2026-06-05T15:13:31.000Z",
+                  "uid": "35240-2978a788-927b-478e-ad7e-328ffa3b5ac9"
+                }
+              ],
+              "id": "c93c2a19-f14f-41eb-8178-9cb8ba3c75e9",
+              "createdAt": "2026-06-05T15:13:31.000Z",
+              "updatedAt": "2026-06-05T15:13:31.000Z",
+              "uid": "35240-c93c2a19-f14f-41eb-8178-9cb8ba3c75e9"
+            },
+            {
+              "name": "speech",
+              "item": [
+                {
+                  "name": "Synthesize Speech",
+                  "id": "4ec8b760-2bfc-42aa-9d8a-b4b0f080e3fd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "audio/mpeg"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"voice\": \"<string>\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/audio/speech",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "audio",
+                        "speech"
+                      ]
+                    },
+                    "description": "Generate WAV/MP3 audio from text using a Riva TTS NIM (e.g. Magpie-TTS, FastPitch)."
+                  },
+                  "response": [
+                    {
+                      "id": "fadbfd92-ebbd-4a13-8d91-5a9728c7bfea",
+                      "name": "Synthesized audio bytes.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "audio/mpeg"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"voice\": \"<string>\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/audio/speech",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "audio",
+                            "speech"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "audio/mpeg"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<binary>",
+                      "createdAt": "2026-06-05T15:13:31.000Z",
+                      "updatedAt": "2026-06-05T15:13:31.000Z",
+                      "uid": "35240-fadbfd92-ebbd-4a13-8d91-5a9728c7bfea"
+                    },
+                    {
+                      "id": "c8131119-f89b-411e-8b05-63801815a53f",
+                      "name": "Invalid request.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"voice\": \"<string>\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/audio/speech",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "audio",
+                            "speech"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:31.000Z",
+                      "updatedAt": "2026-06-05T15:13:31.000Z",
+                      "uid": "35240-c8131119-f89b-411e-8b05-63801815a53f"
+                    },
+                    {
+                      "id": "abe4f3ca-5767-4493-9b2d-28adada59d21",
+                      "name": "Missing or invalid API key.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"voice\": \"<string>\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/audio/speech",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "audio",
+                            "speech"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:31.000Z",
+                      "updatedAt": "2026-06-05T15:13:31.000Z",
+                      "uid": "35240-abe4f3ca-5767-4493-9b2d-28adada59d21"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:13:31.000Z",
+                  "updatedAt": "2026-06-05T15:13:31.000Z",
+                  "uid": "35240-4ec8b760-2bfc-42aa-9d8a-b4b0f080e3fd"
+                }
+              ],
+              "id": "6e4909f7-55d7-49dd-994d-67344179b1b3",
+              "createdAt": "2026-06-05T15:13:31.000Z",
+              "updatedAt": "2026-06-05T15:13:31.000Z",
+              "uid": "35240-6e4909f7-55d7-49dd-994d-67344179b1b3"
+            }
+          ],
+          "id": "40177e64-d902-4649-a342-48c934cba069",
+          "createdAt": "2026-06-05T15:13:31.000Z",
+          "updatedAt": "2026-06-05T15:13:31.000Z",
+          "uid": "35240-40177e64-d902-4649-a342-48c934cba069"
+        }
+      ],
+      "id": "c793b9f6-b6da-431c-8a5b-bb1807f06e02",
+      "createdAt": "2026-06-05T15:13:31.000Z",
+      "updatedAt": "2026-06-05T15:13:31.000Z",
+      "uid": "35240-c793b9f6-b6da-431c-8a5b-bb1807f06e02"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://integrate.api.nvidia.com"
+    }
+  ]
+}

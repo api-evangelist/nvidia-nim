@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NVIDIA NIM Completions API",
+    "version": "2026-05-25"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Completions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create A Text Completion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://integrate.api.nvidia.com/v1/completions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a text completion from a raw prompt against a supported NIM-served model."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

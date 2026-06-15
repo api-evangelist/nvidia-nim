@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NVIDIA NIM Biology (BioNeMo) API",
+    "version": "2026-05-25"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Biology",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Predict Protein Structure",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://integrate.api.nvidia.com/v1/biology/nvidia/alphafold2/predict-structure-from-sequence",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Predict the 3D structure of a protein from its amino acid sequence using AlphaFold2 NIM."
+        },
+        {
+          "info": {
+            "name": "Dock Ligand To Protein",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://integrate.api.nvidia.com/v1/biology/mit/diffdock",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Predict the binding pose of a small molecule ligand against a protein using DiffDock NIM."
+        },
+        {
+          "info": {
+            "name": "Generate Small Molecules",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://integrate.api.nvidia.com/v1/biology/nvidia/molmim/generate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate small molecule SMILES around a seed molecule using NVIDIA MolMIM NIM."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

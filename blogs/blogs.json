@@ -2,6 +2,20 @@
   "repo": "nvidia-nim",
   "feeds": [
     {
+      "source": "https://developer.nvidia.com/blog/category/generative-ai/feed/",
+      "feed_url": "https://developer.nvidia.com/blog/category/generative-ai/feed/",
+      "title": "",
+      "saved": 19,
+      "method": "feed"
+    },
+    {
+      "source": "https://blogs.nvidia.com/blog/category/generative-ai/feed/",
+      "feed_url": "https://blogs.nvidia.com/blog/category/generative-ai/feed/",
+      "title": "",
+      "saved": 2,
+      "method": "feed"
+    },
+    {
       "source": "https://status.nvidia.com",
       "error": "URLError"
     },
@@ -9,10 +23,10 @@
       "source": "https://developer.nvidia.com/blog/category/generative-ai/",
       "feed_url": "https://developer.nvidia.com/blog/category/generative-ai/feed/",
       "title": "",
-      "saved": 25,
+      "saved": 0,
       "method": "discovered"
     }
   ],
-  "post_count": 25,
-  "fetched": "2026-06-01T23:35:02Z"
+  "post_count": 52,
+  "fetched": "2026-06-14T20:42:17Z"
 }

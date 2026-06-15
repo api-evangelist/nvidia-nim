@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NVIDIA NIM Speech API",
+    "version": "2026-05-25"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ASR",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Transcribe Audio",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://integrate.api.nvidia.com/v1/audio/transcriptions",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "model",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "language",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "response_format",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "temperature",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Transcribe a WAV/FLAC/MP3 audio clip into text using a Riva ASR NIM (e.g. Parakeet, Canary)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "TTS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Synthesize Speech",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://integrate.api.nvidia.com/v1/audio/speech",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate WAV/MP3 audio from text using a Riva TTS NIM (e.g. Magpie-TTS, FastPitch)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

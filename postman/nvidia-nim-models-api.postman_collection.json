@@ -1,0 +1,296 @@
+{
+  "info": {
+    "_postman_id": "a3c13dc3-567e-40cc-bcfe-872e2daad19e",
+    "name": "NVIDIA NIM Models API",
+    "description": "OpenAI-compatible model catalog endpoint. Returns the list of models served by the NIM endpoint or self-hosted container \u2014 useful for discovering the exact `model` strings to pass to chat completions, completions, or embeddings.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:13:26.000Z",
+    "updatedAt": "2026-06-05T15:13:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a3c13dc3-567e-40cc-bcfe-872e2daad19e"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "models",
+          "item": [
+            {
+              "name": "{model_id}",
+              "item": [
+                {
+                  "name": "Retrieve A Model",
+                  "id": "ec5ca993-4ede-47b3-8a46-d08915a4eac0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/models/:model_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "models",
+                        ":model_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "780c6d57-9a4a-45f4-99de-5491b60a966b",
+                          "key": "model_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Return metadata for a single model id."
+                  },
+                  "response": [
+                    {
+                      "id": "03cca60c-5939-493b-84ac-9384ad16bb75",
+                      "name": "Model object.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/models/:model_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "models",
+                            ":model_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "model_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"created\": \"<integer>\",\n  \"owned_by\": \"<string>\",\n  \"root\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:13:27.000Z",
+                      "updatedAt": "2026-06-05T15:13:27.000Z",
+                      "uid": "35240-03cca60c-5939-493b-84ac-9384ad16bb75"
+                    },
+                    {
+                      "id": "8e328415-497d-4135-9184-6bdd77aea602",
+                      "name": "Model not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/models/:model_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "models",
+                            ":model_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "model_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:13:27.000Z",
+                      "updatedAt": "2026-06-05T15:13:27.000Z",
+                      "uid": "35240-8e328415-497d-4135-9184-6bdd77aea602"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:13:27.000Z",
+                  "updatedAt": "2026-06-05T15:13:27.000Z",
+                  "uid": "35240-ec5ca993-4ede-47b3-8a46-d08915a4eac0"
+                }
+              ],
+              "id": "05341b21-8138-4b2d-9b6c-c08cf68fe3ac",
+              "createdAt": "2026-06-05T15:13:26.000Z",
+              "updatedAt": "2026-06-05T15:13:26.000Z",
+              "uid": "35240-05341b21-8138-4b2d-9b6c-c08cf68fe3ac"
+            },
+            {
+              "name": "List Available Models",
+              "id": "4f510fb6-3300-41e3-9ae2-8e9d7f8ca7de",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/models",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "models"
+                  ]
+                },
+                "description": "Return the list of models exposed by this NIM endpoint or container."
+              },
+              "response": [
+                {
+                  "id": "028305ee-07e7-47ab-ac03-1abae974bc22",
+                  "name": "Model list.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/models",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "models"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"object\": \"<string>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"created\": \"<integer>\",\n      \"owned_by\": \"<string>\",\n      \"root\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"object\": \"<string>\",\n      \"created\": \"<integer>\",\n      \"owned_by\": \"<string>\",\n      \"root\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:13:27.000Z",
+                  "updatedAt": "2026-06-05T15:13:27.000Z",
+                  "uid": "35240-028305ee-07e7-47ab-ac03-1abae974bc22"
+                },
+                {
+                  "id": "e4b410dd-74d3-48aa-b0f9-3c12ed3501b7",
+                  "name": "Missing or invalid API key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/models",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "models"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:13:27.000Z",
+                  "updatedAt": "2026-06-05T15:13:27.000Z",
+                  "uid": "35240-e4b410dd-74d3-48aa-b0f9-3c12ed3501b7"
+                }
+              ],
+              "createdAt": "2026-06-05T15:13:27.000Z",
+              "updatedAt": "2026-06-05T15:13:27.000Z",
+              "uid": "35240-4f510fb6-3300-41e3-9ae2-8e9d7f8ca7de"
+            }
+          ],
+          "id": "c2290af1-d0ca-4721-8884-7a1c8d0aec4a",
+          "createdAt": "2026-06-05T15:13:26.000Z",
+          "updatedAt": "2026-06-05T15:13:26.000Z",
+          "uid": "35240-c2290af1-d0ca-4721-8884-7a1c8d0aec4a"
+        }
+      ],
+      "id": "d269b282-1cff-4d38-8592-62147e1f19ba",
+      "createdAt": "2026-06-05T15:13:26.000Z",
+      "updatedAt": "2026-06-05T15:13:26.000Z",
+      "uid": "35240-d269b282-1cff-4d38-8592-62147e1f19ba"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://integrate.api.nvidia.com"
+    }
+  ]
+}

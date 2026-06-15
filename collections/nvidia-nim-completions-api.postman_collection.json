@@ -1,0 +1,286 @@
+{
+  "item": [
+    {
+      "id": "8e40bb2c-3144-4c3e-b35c-75cbda68e8f1",
+      "name": "Completions",
+      "description": {
+        "content": "Legacy text completion operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d8d462de-b145-4909-99aa-3678289b5ab7",
+          "name": "Create A Text Completion",
+          "request": {
+            "name": "Create A Text Completion",
+            "description": {
+              "content": "Generate a text completion from a raw prompt against a supported NIM-served model.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "completions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"max_tokens\": 1024,\n  \"temperature\": 0.2,\n  \"top_p\": 0.7,\n  \"n\": 1,\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"frequency_penalty\": \"<number>\",\n  \"presence_penalty\": \"<number>\",\n  \"echo\": \"<boolean>\",\n  \"logprobs\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b4f1170-c73e-4326-b83b-ef011c0f0ee9",
+              "name": "Completion response (or SSE stream when stream=true).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"max_tokens\": 1024,\n  \"temperature\": 0.2,\n  \"top_p\": 0.7,\n  \"n\": 1,\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"frequency_penalty\": \"<number>\",\n  \"presence_penalty\": \"<number>\",\n  \"echo\": \"<boolean>\",\n  \"logprobs\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"text_completion\",\n  \"created\": 582,\n  \"model\": \"string\",\n  \"choices\": [\n    {\n      \"text\": \"string\",\n      \"index\": 2390,\n      \"finish_reason\": \"string\"\n    },\n    {\n      \"text\": \"string\",\n      \"index\": 3546,\n      \"finish_reason\": \"string\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 2509,\n    \"completion_tokens\": 3917,\n    \"total_tokens\": 6067\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d03c11d-98df-4085-98e8-e511d3d4c097",
+              "name": "Invalid request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"max_tokens\": 1024,\n  \"temperature\": 0.2,\n  \"top_p\": 0.7,\n  \"n\": 1,\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"frequency_penalty\": \"<number>\",\n  \"presence_penalty\": \"<number>\",\n  \"echo\": \"<boolean>\",\n  \"logprobs\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c8cb4b72-a44f-41db-8453-327e03dc4b4b",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"max_tokens\": 1024,\n  \"temperature\": 0.2,\n  \"top_p\": 0.7,\n  \"n\": 1,\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"frequency_penalty\": \"<number>\",\n  \"presence_penalty\": \"<number>\",\n  \"echo\": \"<boolean>\",\n  \"logprobs\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ff35c5a9-eb8f-4cb7-aacb-f9c1fd15ccb2",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"max_tokens\": 1024,\n  \"temperature\": 0.2,\n  \"top_p\": 0.7,\n  \"n\": 1,\n  \"stream\": false,\n  \"stop\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"frequency_penalty\": \"<number>\",\n  \"presence_penalty\": \"<number>\",\n  \"echo\": \"<boolean>\",\n  \"logprobs\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://integrate.api.nvidia.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2b50026c-ed3c-4dbe-b884-f2847b1f8f83",
+    "name": "NVIDIA NIM Completions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Legacy OpenAI-compatible text completion endpoint. Accepts a raw prompt (instead of a structured messages array) and returns generated text. Same streaming, stop, and sampling controls as the chat endpoint.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

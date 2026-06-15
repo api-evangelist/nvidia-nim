@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NVIDIA NIM Chat Completions API",
+    "version": "2026-05-25"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chat",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create A Chat Completion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://integrate.api.nvidia.com/v1/chat/completions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a chat completion for the supplied messages. Compatible with the OpenAI chat completions schema; supports streaming via Server-Sent Events when `stream: true` is set, tool/function calling, JSON-mode structured outputs, and (on VLM models) image inputs inside the messages array.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

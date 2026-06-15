@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NVIDIA NIM Reranking API",
+    "version": "2026-05-25"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reranking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Rank Candidate Passages",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://integrate.api.nvidia.com/v1/ranking",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Score candidate passages against a query using a NeMo Retriever reranker."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

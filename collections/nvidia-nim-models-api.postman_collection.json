@@ -1,0 +1,308 @@
+{
+  "item": [
+    {
+      "id": "34fb4474-99e7-4725-8bf5-9324f2466b00",
+      "name": "Models",
+      "description": {
+        "content": "Model discovery operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4f484637-d496-4a49-994b-759d618b306c",
+          "name": "List Available Models",
+          "request": {
+            "name": "List Available Models",
+            "description": {
+              "content": "Return the list of models exposed by this NIM endpoint or container.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "333520a9-8d4e-470b-8bce-4357cb37df02",
+              "name": "Model list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"data\": [\n    {\n      \"id\": \"meta/llama-3.3-70b-instruct\",\n      \"object\": \"model\",\n      \"created\": 2910,\n      \"owned_by\": \"meta\",\n      \"root\": \"string\"\n    },\n    {\n      \"id\": \"meta/llama-3.3-70b-instruct\",\n      \"object\": \"model\",\n      \"created\": 9458,\n      \"owned_by\": \"meta\",\n      \"root\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1bfd141d-3b6a-443d-bad1-444e898c5c9a",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3efc1da1-1da6-4410-9cfb-d0d78728e1b1",
+          "name": "Retrieve A Model",
+          "request": {
+            "name": "Retrieve A Model",
+            "description": {
+              "content": "Return metadata for a single model id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "models",
+                ":model_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "model_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e97624b-85f3-4132-beda-d764c7213fe8",
+              "name": "Model object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "models",
+                    ":model_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"meta/llama-3.3-70b-instruct\",\n  \"object\": \"model\",\n  \"created\": 5032,\n  \"owned_by\": \"meta\",\n  \"root\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9faa09c6-3328-482b-8c9b-07045d03bbb9",
+              "name": "Model not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "models",
+                    ":model_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://integrate.api.nvidia.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3a3dae3b-a129-4e42-ac8e-ece3b6f62a14",
+    "name": "NVIDIA NIM Models API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenAI-compatible model catalog endpoint. Returns the list of models served by the NIM endpoint or self-hosted container — useful for discovering the exact `model` strings to pass to chat completions, completions, or embeddings.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

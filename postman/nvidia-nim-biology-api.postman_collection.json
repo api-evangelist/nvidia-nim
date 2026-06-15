@@ -1,0 +1,588 @@
+{
+  "info": {
+    "_postman_id": "80c65603-63dd-4774-8be2-95cb148255b0",
+    "name": "NVIDIA NIM Biology (BioNeMo) API",
+    "description": "NVIDIA BioNeMo NIMs for drug discovery and structural biology. Each model is a containerized microservice with its own task-specific payload but a consistent JSON contract. Includes protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock).\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:13:31.000Z",
+    "updatedAt": "2026-06-05T15:13:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-80c65603-63dd-4774-8be2-95cb148255b0"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "biology",
+          "item": [
+            {
+              "name": "nvidia",
+              "item": [
+                {
+                  "name": "alphafold2",
+                  "item": [
+                    {
+                      "name": "predict-structure-from-sequence",
+                      "item": [
+                        {
+                          "name": "Predict Protein Structure",
+                          "id": "a86d1c7d-6609-4303-8ca0-e08f7c1258da",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"sequence\": \"<string>\",\n  \"databases\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relax_prediction\": true\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/biology/nvidia/alphafold2/predict-structure-from-sequence",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "biology",
+                                "nvidia",
+                                "alphafold2",
+                                "predict-structure-from-sequence"
+                              ]
+                            },
+                            "description": "Predict the 3D structure of a protein from its amino acid sequence using AlphaFold2 NIM."
+                          },
+                          "response": [
+                            {
+                              "id": "6b902c92-3c00-416a-9032-3c73bf69d4b7",
+                              "name": "Predicted structure.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"sequence\": \"<string>\",\n  \"databases\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relax_prediction\": true\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/biology/nvidia/alphafold2/predict-structure-from-sequence",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "biology",
+                                    "nvidia",
+                                    "alphafold2",
+                                    "predict-structure-from-sequence"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"pdbs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "createdAt": "2026-06-05T15:13:32.000Z",
+                              "updatedAt": "2026-06-05T15:13:32.000Z",
+                              "uid": "35240-6b902c92-3c00-416a-9032-3c73bf69d4b7"
+                            },
+                            {
+                              "id": "a487a200-461e-4deb-99e5-02ef4faf4da3",
+                              "name": "Invalid sequence.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"sequence\": \"<string>\",\n  \"databases\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relax_prediction\": true\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/biology/nvidia/alphafold2/predict-structure-from-sequence",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "biology",
+                                    "nvidia",
+                                    "alphafold2",
+                                    "predict-structure-from-sequence"
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:13:32.000Z",
+                              "updatedAt": "2026-06-05T15:13:32.000Z",
+                              "uid": "35240-a487a200-461e-4deb-99e5-02ef4faf4da3"
+                            },
+                            {
+                              "id": "3509e812-8d05-4cef-a431-04d6837c1321",
+                              "name": "Missing or invalid API key.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"sequence\": \"<string>\",\n  \"databases\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"relax_prediction\": true\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/biology/nvidia/alphafold2/predict-structure-from-sequence",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "biology",
+                                    "nvidia",
+                                    "alphafold2",
+                                    "predict-structure-from-sequence"
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:13:32.000Z",
+                              "updatedAt": "2026-06-05T15:13:32.000Z",
+                              "uid": "35240-3509e812-8d05-4cef-a431-04d6837c1321"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:13:32.000Z",
+                          "updatedAt": "2026-06-05T15:13:32.000Z",
+                          "uid": "35240-a86d1c7d-6609-4303-8ca0-e08f7c1258da"
+                        }
+                      ],
+                      "id": "93bf98d8-107f-4a14-9d66-be00b6c913b7",
+                      "createdAt": "2026-06-05T15:13:32.000Z",
+                      "updatedAt": "2026-06-05T15:13:32.000Z",
+                      "uid": "35240-93bf98d8-107f-4a14-9d66-be00b6c913b7"
+                    }
+                  ],
+                  "id": "855caff6-1d3e-4337-9806-9d8fb5464abf",
+                  "createdAt": "2026-06-05T15:13:32.000Z",
+                  "updatedAt": "2026-06-05T15:13:32.000Z",
+                  "uid": "35240-855caff6-1d3e-4337-9806-9d8fb5464abf"
+                },
+                {
+                  "name": "molmim",
+                  "item": [
+                    {
+                      "name": "generate",
+                      "item": [
+                        {
+                          "name": "Generate Small Molecules",
+                          "id": "147aff28-23b5-4ed2-afa0-dc654c25c02e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"smi\": \"<string>\",\n  \"algorithm\": \"CMA-ES\",\n  \"num_molecules\": 10,\n  \"property_name\": \"plogP\",\n  \"minimize\": \"<boolean>\",\n  \"min_similarity\": 0.3,\n  \"particles\": 30,\n  \"iterations\": 10\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/biology/nvidia/molmim/generate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "biology",
+                                "nvidia",
+                                "molmim",
+                                "generate"
+                              ]
+                            },
+                            "description": "Generate small molecule SMILES around a seed molecule using NVIDIA MolMIM NIM."
+                          },
+                          "response": [
+                            {
+                              "id": "9609a6d9-35e2-4e14-bc8d-a14e51233e6b",
+                              "name": "Generated molecules.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"smi\": \"<string>\",\n  \"algorithm\": \"CMA-ES\",\n  \"num_molecules\": 10,\n  \"property_name\": \"plogP\",\n  \"minimize\": \"<boolean>\",\n  \"min_similarity\": 0.3,\n  \"particles\": 30,\n  \"iterations\": 10\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/biology/nvidia/molmim/generate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "biology",
+                                    "nvidia",
+                                    "molmim",
+                                    "generate"
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"generated\": [\n    {\n      \"sample\": \"<string>\",\n      \"score\": \"<number>\"\n    },\n    {\n      \"sample\": \"<string>\",\n      \"score\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-06-05T15:13:32.000Z",
+                              "updatedAt": "2026-06-05T15:13:32.000Z",
+                              "uid": "35240-9609a6d9-35e2-4e14-bc8d-a14e51233e6b"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:13:32.000Z",
+                          "updatedAt": "2026-06-05T15:13:32.000Z",
+                          "uid": "35240-147aff28-23b5-4ed2-afa0-dc654c25c02e"
+                        }
+                      ],
+                      "id": "39d4fe01-f17a-4603-b43c-2e5aa09a606c",
+                      "createdAt": "2026-06-05T15:13:32.000Z",
+                      "updatedAt": "2026-06-05T15:13:32.000Z",
+                      "uid": "35240-39d4fe01-f17a-4603-b43c-2e5aa09a606c"
+                    }
+                  ],
+                  "id": "b9081440-97e0-4506-9870-6cff07f1d5b0",
+                  "createdAt": "2026-06-05T15:13:32.000Z",
+                  "updatedAt": "2026-06-05T15:13:32.000Z",
+                  "uid": "35240-b9081440-97e0-4506-9870-6cff07f1d5b0"
+                }
+              ],
+              "id": "71e48d52-c10b-44dc-842c-1b8c36d7dd02",
+              "createdAt": "2026-06-05T15:13:32.000Z",
+              "updatedAt": "2026-06-05T15:13:32.000Z",
+              "uid": "35240-71e48d52-c10b-44dc-842c-1b8c36d7dd02"
+            },
+            {
+              "name": "mit",
+              "item": [
+                {
+                  "name": "diffdock",
+                  "item": [
+                    {
+                      "name": "Dock Ligand To Protein",
+                      "id": "89d5007c-9170-4b8e-a36f-a33f137087e5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"protein\": \"<string>\",\n  \"ligand\": \"<string>\",\n  \"num_poses\": 10,\n  \"time_divisions\": 20,\n  \"steps\": 18\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/biology/mit/diffdock",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "biology",
+                            "mit",
+                            "diffdock"
+                          ]
+                        },
+                        "description": "Predict the binding pose of a small molecule ligand against a protein using DiffDock NIM."
+                      },
+                      "response": [
+                        {
+                          "id": "e6f84977-b213-42ca-9f49-59ff5834aaa3",
+                          "name": "Predicted binding poses.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"protein\": \"<string>\",\n  \"ligand\": \"<string>\",\n  \"num_poses\": 10,\n  \"time_divisions\": 20,\n  \"steps\": 18\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/biology/mit/diffdock",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "biology",
+                                "mit",
+                                "diffdock"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"ligand_positions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"position_confidence\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                          "createdAt": "2026-06-05T15:13:32.000Z",
+                          "updatedAt": "2026-06-05T15:13:32.000Z",
+                          "uid": "35240-e6f84977-b213-42ca-9f49-59ff5834aaa3"
+                        },
+                        {
+                          "id": "0e09ccd4-9560-4208-8da3-4d661d92b687",
+                          "name": "Invalid input.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"protein\": \"<string>\",\n  \"ligand\": \"<string>\",\n  \"num_poses\": 10,\n  \"time_divisions\": 20,\n  \"steps\": 18\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/biology/mit/diffdock",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "biology",
+                                "mit",
+                                "diffdock"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:13:32.000Z",
+                          "updatedAt": "2026-06-05T15:13:32.000Z",
+                          "uid": "35240-0e09ccd4-9560-4208-8da3-4d661d92b687"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:13:32.000Z",
+                      "updatedAt": "2026-06-05T15:13:32.000Z",
+                      "uid": "35240-89d5007c-9170-4b8e-a36f-a33f137087e5"
+                    }
+                  ],
+                  "id": "867fefdb-9ad7-4c59-b79f-846b9dc5cf44",
+                  "createdAt": "2026-06-05T15:13:32.000Z",
+                  "updatedAt": "2026-06-05T15:13:32.000Z",
+                  "uid": "35240-867fefdb-9ad7-4c59-b79f-846b9dc5cf44"
+                }
+              ],
+              "id": "be10e9ed-3019-43e5-b3db-aa83fada8ee4",
+              "createdAt": "2026-06-05T15:13:32.000Z",
+              "updatedAt": "2026-06-05T15:13:32.000Z",
+              "uid": "35240-be10e9ed-3019-43e5-b3db-aa83fada8ee4"
+            }
+          ],
+          "id": "2de3bdd7-0deb-496e-8e19-c63ae4c8e716",
+          "createdAt": "2026-06-05T15:13:32.000Z",
+          "updatedAt": "2026-06-05T15:13:32.000Z",
+          "uid": "35240-2de3bdd7-0deb-496e-8e19-c63ae4c8e716"
+        }
+      ],
+      "id": "d93dbeaf-ecc8-4e8c-88ce-7b7096e392e2",
+      "createdAt": "2026-06-05T15:13:32.000Z",
+      "updatedAt": "2026-06-05T15:13:32.000Z",
+      "uid": "35240-d93dbeaf-ecc8-4e8c-88ce-7b7096e392e2"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://integrate.api.nvidia.com"
+    }
+  ]
+}

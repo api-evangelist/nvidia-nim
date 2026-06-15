@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NVIDIA NIM Health API",
+    "version": "2026-05-25"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Liveness Probe",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8000/v1/health/live"
+          },
+          "docs": "Returns 200 OK if the container process is alive. Used as Kubernetes livenessProbe."
+        },
+        {
+          "info": {
+            "name": "Readiness Probe",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8000/v1/health/ready"
+          },
+          "docs": "Returns 200 OK only once the model engine has loaded and the container can accept traffic."
+        },
+        {
+          "info": {
+            "name": "Prometheus Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8000/v1/metrics"
+          },
+          "docs": "Prometheus text exposition format. Includes GPU utilization, request latency histograms, queue depth, and engine-specific counters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,371 @@
+{
+  "item": [
+    {
+      "id": "ed804266-8355-47e0-bb60-c5ee0a69772c",
+      "name": "Images",
+      "description": {
+        "content": "Text-to-image and image-to-image generation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dd12c344-48ae-4a31-91fe-9d9d96159408",
+          "name": "Generate An Image",
+          "request": {
+            "name": "Generate An Image",
+            "description": {
+              "content": "Generate or edit an image with a NIM-hosted visual generative model. The exact request schema varies by model family.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "genai",
+                ":publisher",
+                ":model"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "publisher",
+                  "description": "(Required) Model publisher (e.g. `black-forest-labs`, `stabilityai`, `shutterstock`, `nvidia`)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "model",
+                  "description": "(Required) Model slug (e.g. `flux.1-schnell`, `sdxl-turbo`, `edify-image`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": \"<string>\",\n  \"negative_prompt\": \"<string>\",\n  \"cfg_scale\": 5,\n  \"sampler\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"steps\": 50,\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"mode\": \"text-to-image\",\n  \"image\": \"<string>\",\n  \"mask\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bdb6a73e-4899-4f5e-9191-60004736a502",
+              "name": "Generated image artifacts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "genai",
+                    ":publisher",
+                    ":model"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publisher",
+                      "description": "(Required) Model publisher (e.g. `black-forest-labs`, `stabilityai`, `shutterstock`, `nvidia`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model",
+                      "description": "(Required) Model slug (e.g. `flux.1-schnell`, `sdxl-turbo`, `edify-image`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prompt\": \"<string>\",\n  \"negative_prompt\": \"<string>\",\n  \"cfg_scale\": 5,\n  \"sampler\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"steps\": 50,\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"mode\": \"text-to-image\",\n  \"image\": \"<string>\",\n  \"mask\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"artifacts\": [\n    {\n      \"base64\": \"string\",\n      \"finishReason\": \"string\",\n      \"seed\": 6792\n    },\n    {\n      \"base64\": \"string\",\n      \"finishReason\": \"string\",\n      \"seed\": 2104\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c4190ac-a415-4eab-bd5c-da2571f0d545",
+              "name": "Invalid request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "genai",
+                    ":publisher",
+                    ":model"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publisher",
+                      "description": "(Required) Model publisher (e.g. `black-forest-labs`, `stabilityai`, `shutterstock`, `nvidia`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model",
+                      "description": "(Required) Model slug (e.g. `flux.1-schnell`, `sdxl-turbo`, `edify-image`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prompt\": \"<string>\",\n  \"negative_prompt\": \"<string>\",\n  \"cfg_scale\": 5,\n  \"sampler\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"steps\": 50,\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"mode\": \"text-to-image\",\n  \"image\": \"<string>\",\n  \"mask\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b45a78b0-2a94-4cbf-866d-46e45ebf0946",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "genai",
+                    ":publisher",
+                    ":model"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publisher",
+                      "description": "(Required) Model publisher (e.g. `black-forest-labs`, `stabilityai`, `shutterstock`, `nvidia`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model",
+                      "description": "(Required) Model slug (e.g. `flux.1-schnell`, `sdxl-turbo`, `edify-image`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prompt\": \"<string>\",\n  \"negative_prompt\": \"<string>\",\n  \"cfg_scale\": 5,\n  \"sampler\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"steps\": 50,\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"mode\": \"text-to-image\",\n  \"image\": \"<string>\",\n  \"mask\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "70b959a2-cccb-4609-a1de-18c958f6d65c",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "genai",
+                    ":publisher",
+                    ":model"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publisher",
+                      "description": "(Required) Model publisher (e.g. `black-forest-labs`, `stabilityai`, `shutterstock`, `nvidia`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model",
+                      "description": "(Required) Model slug (e.g. `flux.1-schnell`, `sdxl-turbo`, `edify-image`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prompt\": \"<string>\",\n  \"negative_prompt\": \"<string>\",\n  \"cfg_scale\": 5,\n  \"sampler\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"steps\": 50,\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"mode\": \"text-to-image\",\n  \"image\": \"<string>\",\n  \"mask\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://integrate.api.nvidia.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "448debbc-f1e5-47e9-9863-36252ad901b7",
+    "name": "NVIDIA NIM Image Generation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Visual generative AI endpoints. Text-to-image, image-to-image, and image editing using models such as Black Forest Labs FLUX.1, Stable Diffusion XL, Shutterstock-trained Edify Image, and NVIDIA Edify 3D — exposed by per-model NIM containers with a uniform JSON contract that returns base64-encoded PNG or JPEG artifacts.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

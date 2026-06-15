@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NVIDIA NIM Models API",
+    "version": "2026-05-25"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Available Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://integrate.api.nvidia.com/v1/models"
+          },
+          "docs": "Return the list of models exposed by this NIM endpoint or container."
+        },
+        {
+          "info": {
+            "name": "Retrieve A Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://integrate.api.nvidia.com/v1/models/:model_id",
+            "params": [
+              {
+                "name": "model_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Return metadata for a single model id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

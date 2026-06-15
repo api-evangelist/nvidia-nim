@@ -1,0 +1,602 @@
+{
+  "item": [
+    {
+      "id": "aacdb6e5-1dc2-448f-a628-6c10c588507f",
+      "name": "ASR",
+      "description": {
+        "content": "Automatic speech recognition (speech-to-text)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c8b2cc83-4b13-4b2f-8ea0-1b9114c8f8ed",
+          "name": "Transcribe Audio",
+          "request": {
+            "name": "Transcribe Audio",
+            "description": {
+              "content": "Transcribe a WAV/FLAC/MP3 audio clip into text using a Riva ASR NIM (e.g. Parakeet, Canary).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "audio",
+                "transcriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "model",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "language",
+                  "value": "en-US",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "response_format",
+                  "value": "json",
+                  "type": "text",
+                  "description": " (This can only be one of json,text,srt,vtt)"
+                },
+                {
+                  "key": "temperature",
+                  "value": "<number>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6f0edbed-dce0-4589-93c3-3bb8415dc694",
+              "name": "Transcription result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "audio",
+                    "transcriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "model",
+                      "value": "nvidia/parakeet-ctc-1.1b-asr",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "en-US",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": " (This can only be one of json,text,srt,vtt)",
+                        "type": "text/plain"
+                      },
+                      "key": "response_format",
+                      "value": "json",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "temperature",
+                      "value": "<number>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"text\": \"string\",\n  \"language\": \"string\",\n  \"duration\": 7372.27514804254\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d206a037-25a7-45c0-b8bd-6ca9b0e574d2",
+              "name": "Invalid audio or model.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "audio",
+                    "transcriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "model",
+                      "value": "nvidia/parakeet-ctc-1.1b-asr",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "en-US",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": " (This can only be one of json,text,srt,vtt)",
+                        "type": "text/plain"
+                      },
+                      "key": "response_format",
+                      "value": "json",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "temperature",
+                      "value": "<number>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "89c40217-65ca-4556-b64c-ec9dde625e71",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "audio",
+                    "transcriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "model",
+                      "value": "nvidia/parakeet-ctc-1.1b-asr",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "language",
+                      "value": "en-US",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": " (This can only be one of json,text,srt,vtt)",
+                        "type": "text/plain"
+                      },
+                      "key": "response_format",
+                      "value": "json",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "temperature",
+                      "value": "<number>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d805a1d5-22f3-4b65-992d-434550a1b78f",
+      "name": "TTS",
+      "description": {
+        "content": "Text-to-speech synthesis",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "800fcdc3-2168-4933-8277-06ea5b7248b6",
+          "name": "Synthesize Speech",
+          "request": {
+            "name": "Synthesize Speech",
+            "description": {
+              "content": "Generate WAV/MP3 audio from text using a Riva TTS NIM (e.g. Magpie-TTS, FastPitch).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "audio",
+                "speech"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "audio/mpeg"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"voice\": \"<string>\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d50e8245-a207-4d6f-8e49-8f15e0d22022",
+              "name": "Synthesized audio bytes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "audio",
+                    "speech"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "audio/mpeg"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"nvidia/magpie-tts\",\n  \"input\": \"<string>\",\n  \"voice\": \"en-US.Female-1\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "audio/mpeg"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5679dbb2-2b04-400f-9979-ee506c2f060f",
+              "name": "Invalid request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "audio",
+                    "speech"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"nvidia/magpie-tts\",\n  \"input\": \"<string>\",\n  \"voice\": \"en-US.Female-1\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab5e9334-9611-46b9-b368-2fdd2168d524",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "audio",
+                    "speech"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"nvidia/magpie-tts\",\n  \"input\": \"<string>\",\n  \"voice\": \"en-US.Female-1\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://integrate.api.nvidia.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "962494e1-eee4-4533-92af-03840c7d19db",
+    "name": "NVIDIA NIM Speech API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "NVIDIA Riva-powered speech NIMs. Exposes automatic speech recognition (Parakeet, Canary), neural machine translation, and text-to-speech (Magpie-TTS, FastPitch) through HTTP surfaces. (Production deployments typically use the gRPC adapter for streaming; this OpenAPI documents the REST surface exposed by the hosted endpoint.)\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
