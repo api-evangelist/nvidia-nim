@@ -5,14 +5,14 @@
       "source": "https://developer.nvidia.com/blog/category/generative-ai/feed/",
       "feed_url": "https://developer.nvidia.com/blog/category/generative-ai/feed/",
       "title": "",
-      "saved": 19,
+      "saved": 8,
       "method": "feed"
     },
     {
       "source": "https://blogs.nvidia.com/blog/category/generative-ai/feed/",
       "feed_url": "https://blogs.nvidia.com/blog/category/generative-ai/feed/",
       "title": "",
-      "saved": 2,
+      "saved": 4,
       "method": "feed"
     },
     {
@@ -27,6 +27,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 52,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 70,
+  "fetched": "2026-06-27T12:03:07Z"
 }

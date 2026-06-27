@@ -220,36 +220,27 @@ access: 3rd-Party
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/nvidia-nim/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/nvidia-nim-bionemo-drug-discovery-workflow.yml
-        name: NVIDIA NIM BioNeMo Drug Discovery
-        summary: >-
-          Fold a protein from sequence, dock a ligand into the predicted structure, then generate optimized analog
-          molecules.
-      - url: arazzo/nvidia-nim-discover-and-chat-workflow.yml
-        name: NVIDIA NIM Discover And Chat
-        summary: List the served models, confirm a target model's metadata, then run a chat completion against it.
-      - url: arazzo/nvidia-nim-generate-image-and-caption-workflow.yml
-        name: NVIDIA NIM Generate Image And Caption
-        summary: Generate an image from a text prompt, then caption the generated image with a vision-language model.
-      - url: arazzo/nvidia-nim-health-gated-completion-workflow.yml
-        name: NVIDIA NIM Health Gated Completion
-        summary: Check a self-hosted NIM container's readiness, and only run a text completion once the engine reports ready.
-      - url: arazzo/nvidia-nim-rag-rerank-answer-workflow.yml
-        name: NVIDIA NIM RAG Rerank And Answer
-        summary: Embed a query, rerank candidate passages against it, then answer the question grounded in the top passage.
-      - url: arazzo/nvidia-nim-vision-describe-and-summarize-workflow.yml
-        name: NVIDIA NIM Vision Describe And Summarize
-        summary: >-
-          Describe an image with a vision-language model, then condense the description into a short caption with an
-          LLM.
-      - url: arazzo/nvidia-nim-voice-assistant-loop-workflow.yml
-        name: NVIDIA NIM Voice Assistant Loop
-        summary: >-
-          Transcribe an audio clip with Riva ASR, answer the transcript with an LLM, then synthesize the reply with Riva
-          TTS.
+  - type: Arazzo
+    url: arazzo/nvidia-nim-bionemo-drug-discovery-workflow.yml
+    name: NVIDIA NIM BioNeMo Drug Discovery
+  - type: Arazzo
+    url: arazzo/nvidia-nim-discover-and-chat-workflow.yml
+    name: NVIDIA NIM Discover And Chat
+  - type: Arazzo
+    url: arazzo/nvidia-nim-generate-image-and-caption-workflow.yml
+    name: NVIDIA NIM Generate Image And Caption
+  - type: Arazzo
+    url: arazzo/nvidia-nim-health-gated-completion-workflow.yml
+    name: NVIDIA NIM Health Gated Completion
+  - type: Arazzo
+    url: arazzo/nvidia-nim-rag-rerank-answer-workflow.yml
+    name: NVIDIA NIM RAG Rerank And Answer
+  - type: Arazzo
+    url: arazzo/nvidia-nim-vision-describe-and-summarize-workflow.yml
+    name: NVIDIA NIM Vision Describe And Summarize
+  - type: Arazzo
+    url: arazzo/nvidia-nim-voice-assistant-loop-workflow.yml
+    name: NVIDIA NIM Voice Assistant Loop
   - type: Portal
     url: https://build.nvidia.com
   - type: Documentation
@@ -260,7 +251,7 @@ common:
     url: https://developer.nvidia.com/nim
   - type: GettingStarted
     url: https://docs.nvidia.com/nim/large-language-models/latest/getting-started.html
-  - type: SignUp
+  - type: Signup
     url: https://build.nvidia.com/explore/discover
   - type: Sandbox
     url: https://build.nvidia.com/explore/discover
@@ -276,7 +267,7 @@ common:
     url: https://developer.nvidia.com/blog/category/generative-ai/
   - type: Blog
     url: https://blogs.nvidia.com/blog/category/generative-ai/
-  - type: Forum
+  - type: Forums
     url: https://forums.developer.nvidia.com/c/ai-data-science/nemo-llm-service/
   - type: TrustCenter
     url: https://www.nvidia.com/en-us/about-nvidia/legal-info/
@@ -287,31 +278,31 @@ common:
   - type: Documentation
     url: https://docs.nvidia.com/nim-operator/latest/index.html
     name: NIM Operator Documentation
-  - type: SDK
+  - type: SDKs
     url: https://github.com/NVIDIA/nim-deploy
     name: NIM Deploy (Helm Charts and Reference Implementations)
-  - type: SDK
+  - type: SDKs
     url: https://github.com/NVIDIA/k8s-nim-operator
     name: Kubernetes NIM Operator
-  - type: SDK
+  - type: SDKs
     url: https://github.com/NVIDIA/GenerativeAIExamples
     name: Generative AI Examples
-  - type: SDK
+  - type: SDKs
     url: https://github.com/NVIDIA/NeMo
     name: NeMo Toolkit
-  - type: SDK
+  - type: SDKs
     url: https://github.com/NVIDIA/NeMo-Guardrails
     name: NeMo Guardrails
-  - type: SDK
+  - type: SDKs
     url: https://github.com/NVIDIA/TensorRT-LLM
     name: TensorRT-LLM
-  - type: SDK
+  - type: SDKs
     url: https://github.com/triton-inference-server/server
     name: Triton Inference Server
-  - type: SDK
+  - type: SDKs
     url: https://github.com/langchain-ai/langchain-nvidia
     name: LangChain NVIDIA AI Endpoints
-  - type: SDK
+  - type: SDKs
     url: https://pypi.org/project/openai/
     name: OpenAI Python SDK (compatible)
   - type: CodeExamples
