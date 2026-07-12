@@ -218,6 +218,15 @@ kind: contract
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+  - type: VulnerabilityDisclosure
+    url: security/nvidia-nim-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/nvidia-nim-domain-security.yml
+  - type: Authentication
+    url: authentication/nvidia-nim-authentication.yml
+  - name: Agent Skills
+    url: https://github.com/NVIDIA/skills
+    type: AgentSkills
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/nvidia-nim/overview
   - type: Arazzo

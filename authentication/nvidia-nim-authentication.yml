@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/nvidia-nim-biology-api-openapi.yml, openapi/nvidia-nim-chat-completions-api-openapi.yml,
+  openapi/nvidia-nim-completions-api-openapi.yml, openapi/nvidia-nim-embeddings-api-openapi.yml,
+  openapi/nvidia-nim-image-generation-api-openapi.yml, openapi/nvidia-nim-models-api-openapi.yml,
+  openapi/nvidia-nim-reranking-api-openapi.yml, openapi/nvidia-nim-speech-api-openapi.yml, openapi/nvidia-nim-vision-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: nvapi-...
+  sources:
+  - openapi/nvidia-nim-biology-api-openapi.yml
+  - openapi/nvidia-nim-chat-completions-api-openapi.yml
+  - openapi/nvidia-nim-completions-api-openapi.yml
+  - openapi/nvidia-nim-embeddings-api-openapi.yml
+  - openapi/nvidia-nim-image-generation-api-openapi.yml
+  - openapi/nvidia-nim-models-api-openapi.yml
+  - openapi/nvidia-nim-reranking-api-openapi.yml
+  - openapi/nvidia-nim-speech-api-openapi.yml
+  - openapi/nvidia-nim-vision-api-openapi.yml
