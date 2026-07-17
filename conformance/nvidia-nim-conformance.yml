@@ -1,0 +1,50 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  openapi/*-openapi.yml; llms.txt (build.nvidia.com); docs.nvidia.com/nim
+notes: >-
+  DERIVED from the repo OpenAPI plus the provider's own OpenAI-compatibility claims in
+  build.nvidia.com/llms.txt ("All NIM model endpoints implement the OpenAI Chat Completions
+  API"). NIM is an inference API secured by a Bearer API key; it does not implement OAuth2,
+  OIDC, FHIR, FAPI, SCIM, OData, PSD2, or RFC 9457 problem+json.
+standards:
+  - id: openai-chat-completions
+    conforms: true
+    evidence: >-
+      /v1/chat/completions, /v1/completions, /v1/embeddings, /v1/models mirror the OpenAI
+      request/response schemas; provider states OpenAI SDK compatibility in llms.txt.
+  - id: openapi-3.1
+    conforms: true
+    evidence: all specs declare openapi 3.1.0
+  - id: sse-streaming
+    conforms: true
+    evidence: chat/completions expose text/event-stream responses terminated by data:[DONE]
+  - id: grpc
+    conforms: true
+    evidence: Speech (Riva) NIMs publish proto3 services (grpc/nvidia-nim-riva_*.proto)
+  - id: prometheus-metrics
+    conforms: true
+    evidence: self-hosted NIM containers expose /v1/metrics (health-api spec)
+  - id: bearer-token-auth
+    conforms: true
+    evidence: securitySchemes BearerAuth (http bearer, nvapi-... key) across all specs
+  - id: oauth2
+    conforms: false
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: error responses use plain descriptions, not application/problem+json
+  - id: json-api
+    conforms: false
+  - id: fhir-r4
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: odata
+    conforms: false
+  - id: cursor-pagination
+    conforms: false
+    evidence: inference endpoints are stateless; no list pagination beyond /v1/models

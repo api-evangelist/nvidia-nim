@@ -1,0 +1,30 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  https://docs.nvidia.com/nim/large-language-models/latest/release-notes.html;
+  https://status.nvidia.com; openapi/*-openapi.yml
+versioning:
+  scheme: semver
+  container_current: 1.15.0
+  api_surface: >-
+    The OpenAI-compatible REST surface is unversioned in the path (/v1/...); the version
+    that moves is the NIM container image tag (semver, e.g. meta/llama-3.1-70b-instruct:1.15.0).
+  production_branch: >-
+    NVIDIA ships "PB" (Production Branch) releases alongside feature releases for long-lived,
+    stability-focused deployments (e.g. 1.14.0-pb5.1).
+  docs: https://docs.nvidia.com/nim/large-language-models/latest/release-notes.html
+deprecation:
+  policy_url: https://docs.nvidia.com/nim/large-language-models/latest/release-notes.html
+  sunset_header: false
+  deprecation_header: false
+  notes: >-
+    Model and container lifecycle is communicated through release notes and the model
+    catalog rather than RFC 8594 Sunset/Deprecation response headers. The legacy TRT-LLM
+    backend was moved to legacy status in 1.15.0 (PyTorch backend became default).
+sla:
+  url: https://www.nvidia.com/en-us/data-center/products/ai-enterprise/
+  notes: >-
+    Production SLAs and long-term support are delivered through NVIDIA AI Enterprise;
+    the free hosted tier at build.nvidia.com carries no uptime SLA.
+status_page: https://status.nvidia.com
+deprecated_operations: []

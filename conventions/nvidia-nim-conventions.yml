@@ -1,0 +1,55 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  openapi/*-openapi.yml; build.nvidia.com/llms.txt;
+  docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+notes: >-
+  Cross-cutting request/response semantics for the NIM OpenAI-compatible surface, DERIVED
+  from the repo OpenAPI and confirmed against the provider's llms.txt. Because NIM tracks
+  the OpenAI API contract, most conventions mirror OpenAI's.
+authentication:
+  style: bearer-api-key
+  header: 'Authorization: Bearer nvapi-...'
+  key_prefix: nvapi-
+  issuance: https://build.nvidia.com/settings
+  ref: authentication/nvidia-nim-authentication.yml
+base_url:
+  hosted: https://integrate.api.nvidia.com/v1
+  self_hosted: http://localhost:8000/v1
+content_types:
+  request: application/json
+  responses: [application/json, text/event-stream]
+streaming:
+  supported: true
+  mechanism: "Server-Sent Events (set stream:true); delta chunks terminated by 'data: [DONE]'"
+  endpoints: [/v1/chat/completions, /v1/completions]
+idempotency:
+  supported: false
+  notes: Inference calls are non-idempotent generations; no Idempotency-Key header is documented.
+pagination:
+  style: none
+  notes: >-
+    Inference endpoints are stateless and return no collections. /v1/models returns a full
+    {object:list, data:[...]} array with no pagination params (build.nvidia.com's catalog
+    page uses ?page=N but the API /v1/models does not).
+field_expansion:
+  supported: false
+metadata:
+  supported: false
+request_tracing:
+  request_id_header: none
+  notes: No documented x-request-id echo on the hosted endpoint.
+versioning:
+  ref: lifecycle/nvidia-nim-lifecycle.yml
+  path_version: /v1
+  container_version: semver image tag
+error_envelope:
+  shape: '{ "error": { "message", "type", "param", "code" } }'
+  format: openai-compatible
+  ref: errors/nvidia-nim-problem-types.yml
+rate_limiting:
+  signaled_by: HTTP 429
+  free_tier: ~40 RPM on the hosted build.nvidia.com endpoint; 1,000 signup credits
+  ref: rate-limits/nvidia-nim-rate-limits.yml
+model_selection:
+  notes: The target model is selected by the required `model` string in the request body; switching models is a one-line change.

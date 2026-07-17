@@ -1,0 +1,81 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/*-openapi.yml
+notes: >-
+  DERIVED entity graph from the repo OpenAPI. NIM is a stateless inference surface: there are
+  no persisted, cross-referencing resources like a CRM/payments API. The only first-class,
+  retrievable resource is Model (/v1/models); every inference request references a Model by its
+  `model` id string. Request/response payloads (ChatCompletion, Embedding, Ranking, Image,
+  Transcription, Speech, StructurePrediction) are ephemeral generations keyed to a Model.
+entities:
+  - name: Model
+    retrievable: true
+    id_field: id
+    endpoints: [/v1/models, '/v1/models/{model}']
+    example_ids: [meta/llama-3.3-70b-instruct, nvidia/llama-3.1-nemotron-70b-instruct, black-forest-labs/flux.1-dev]
+    fields: [id, object, created, owned_by]
+  - name: ChatCompletion
+    retrievable: false
+    ephemeral: true
+    endpoint: /v1/chat/completions
+  - name: Completion
+    retrievable: false
+    ephemeral: true
+    endpoint: /v1/completions
+  - name: Embedding
+    retrievable: false
+    ephemeral: true
+    endpoint: /v1/embeddings
+  - name: Ranking
+    retrievable: false
+    ephemeral: true
+    endpoint: /v1/ranking
+  - name: ImageGeneration
+    retrievable: false
+    ephemeral: true
+    endpoint: /v1/images/generations
+  - name: Transcription
+    retrievable: false
+    ephemeral: true
+    endpoint: /v1/audio/transcriptions
+  - name: Speech
+    retrievable: false
+    ephemeral: true
+    endpoint: /v1/audio/speech
+  - name: StructurePrediction
+    retrievable: false
+    ephemeral: true
+    endpoint: /v1/biology/*
+relationships:
+  - from: ChatCompletion
+    to: Model
+    type: belongs_to
+    via: model
+  - from: Completion
+    to: Model
+    type: belongs_to
+    via: model
+  - from: Embedding
+    to: Model
+    type: belongs_to
+    via: model
+  - from: Ranking
+    to: Model
+    type: belongs_to
+    via: model
+  - from: ImageGeneration
+    to: Model
+    type: belongs_to
+    via: model
+  - from: Transcription
+    to: Model
+    type: belongs_to
+    via: model
+  - from: Speech
+    to: Model
+    type: belongs_to
+    via: model
+  - from: StructurePrediction
+    to: Model
+    type: belongs_to
+    via: model

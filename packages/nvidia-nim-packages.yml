@@ -1,0 +1,57 @@
+generated: '2026-06-20'
+method: searched
+source: https://build.nvidia.com; PyPI registry; NVIDIA developer docs
+notes: >-
+  NVIDIA NIM exposes an OpenAI-compatible REST surface, so the primary client is the
+  standard OpenAI SDK pointed at https://integrate.api.nvidia.com/v1. NVIDIA additionally
+  co-maintains a first-party LangChain integration and ships dedicated Python clients for
+  the Riva speech gRPC surface, Triton, and the NeMo toolkit. The container CLI (ngc) is
+  catalogued under cli/.
+packages:
+  - language: python
+    registry: pypi
+    name: langchain-nvidia-ai-endpoints
+    url: https://pypi.org/project/langchain-nvidia-ai-endpoints/
+    install: pip install -U langchain-nvidia-ai-endpoints
+    official: true
+    description: >-
+      First-party LangChain integration (ChatNVIDIA, NVIDIAEmbeddings, NVIDIARerank) for
+      the hosted NVIDIA API Catalog and self-hosted NIM microservices; connects to
+      integrate.api.nvidia.com by default or a local NIM via base_url.
+  - language: python
+    registry: pypi
+    name: nvidia-riva-client
+    url: https://pypi.org/project/nvidia-riva-client/
+    install: pip install nvidia-riva-client
+    official: true
+    description: >-
+      Python client for NVIDIA Riva speech services (ASR, TTS, NMT) served by the Speech NIMs
+      over gRPC. Source at github.com/nvidia-riva/python-clients.
+  - language: python
+    registry: pypi
+    name: tritonclient
+    url: https://pypi.org/project/tritonclient/
+    install: pip install tritonclient[all]
+    official: true
+    description: >-
+      NVIDIA Triton Inference Server client (HTTP/gRPC); Triton is one of the inference
+      backends NIM microservices ship.
+  - language: python
+    registry: pypi
+    name: nemo_toolkit
+    url: https://pypi.org/project/nemo_toolkit/
+    install: pip install nemo_toolkit
+    official: true
+    description: >-
+      NVIDIA NeMo framework for building, customizing, and deploying the generative AI
+      models served by NIM.
+  - language: python
+    registry: pypi
+    name: openai
+    url: https://pypi.org/project/openai/
+    install: pip install openai
+    official: false
+    description: >-
+      Standard OpenAI Python SDK, compatible with NIM when base_url is set to
+      https://integrate.api.nvidia.com/v1. Documented by NVIDIA as the recommended client
+      but published by OpenAI, not NVIDIA.

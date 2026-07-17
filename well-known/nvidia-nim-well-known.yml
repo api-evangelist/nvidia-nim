@@ -1,0 +1,27 @@
+generated: '2026-06-20'
+method: searched
+source: live probe of /.well-known/* on the API and portal hosts
+notes: >-
+  The hosted inference host integrate.api.nvidia.com publishes no /.well-known discovery
+  documents (all 404) — expected for a Bearer-API-key service with no OAuth/OIDC surface.
+  build.nvidia.com returns HTTP 200 for /.well-known/security.txt but the body is the
+  single-page-app HTML shell, not a valid RFC 9116 security.txt, so nothing was saved.
+hosts:
+  - host: https://integrate.api.nvidia.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+  - host: https://build.nvidia.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        valid: false
+        note: returns SPA HTML shell, not a valid security.txt; not saved

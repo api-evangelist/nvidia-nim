@@ -1,0 +1,41 @@
+generated: '2026-06-20'
+method: searched
+source: https://docs.nvidia.com/nim/large-language-models/latest/release-notes.html
+scheme: semver
+current_version: 1.15.0
+window: recent releases of NIM for Large Language Models (the flagship NIM)
+notes: >-
+  NIM is a family of container microservices; each family (LLMs, VLMs, NeMo Retriever,
+  Riva, BioNeMo) versions its container independently. This changelog tracks the flagship
+  NIM for LLMs. Production Branch (PB) tags run alongside feature releases.
+entries:
+  - version: 1.15.0
+    date: '2026-05-22'
+    breaking:
+      - TRT-LLM PyTorch backend is now stable and the default; legacy TRT-LLM backend moved to legacy.
+      - Guided decoding now defaults to xgrammar instead of outlines.
+    additions:
+      - Prompt embeds — use secure pre-computed embeddings instead of raw text prompts (experimental).
+      - Optional anonymous NIM telemetry (NIM_TELEMETRY_MODE=1, experimental).
+      - Hardware-specific profile prioritization in automatic profile selection; expanded DGX Spark support.
+      - CUDA updated 12.9 -> 13.0; logit_bias now available on the TRT-LLM backend.
+  - version: 1.14.0
+    date: '2025-11'
+    additions:
+      - Top-level parameter support for commonly used request parameters.
+      - DGX Spark hardware support.
+      - Custom chat templates via the chat_template field for vLLM and TRT-LLM backends.
+    subreleases:
+      - version: 1.14.1
+        highlights:
+          - Streaming responses honor the per-request metrics setting.
+          - Accept Content-Type headers with charset/whitespace.
+          - Allow system-role messages with empty content on /v1/chat/completions.
+  - version: 1.13.0
+    date: '2025-10'
+    additions:
+      - Thinking budget control — cap thinking tokens before the final answer.
+      - Best-of-N completions via the best_of parameter; n may exceed 1.
+      - RTX PRO 6000 Blackwell Server Edition GPU support.
+      - Multi-Instance GPU (MIG) mode for models <= 8B parameters.
+      - New model Qwen3 Next 80B A3B Thinking.

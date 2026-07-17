@@ -1,0 +1,77 @@
+generated: '2026-06-20'
+method: derived
+format: plain
+source: openapi/*-openapi.yml
+notes: >-
+  DERIVED from the 4xx/5xx responses declared across the repo OpenAPI. NIM does not emit
+  RFC 9457 application/problem+json; being OpenAI-compatible, error bodies follow the OpenAI
+  error envelope { "error": { "message", "type", "param", "code" } }. Health probes signal
+  status through HTTP codes with no body. Titles/remediation are summarized per status code.
+envelope:
+  shape: '{ "error": { "message": string, "type": string, "param": string|null, "code": string|null } }'
+  reference: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+problems:
+  - status: 400
+    title: Invalid request
+    detail: >-
+      Malformed body, unsupported parameter, invalid model string, invalid audio/sequence,
+      or an image in an unsupported format.
+    remediation: Validate the request against the operation schema and the model's capabilities.
+    source_operations:
+      - openapi/nvidia-nim-chat-completions-api-openapi.yml#createChatCompletion
+      - openapi/nvidia-nim-completions-api-openapi.yml#createCompletion
+      - openapi/nvidia-nim-embeddings-api-openapi.yml#createEmbedding
+      - openapi/nvidia-nim-reranking-api-openapi.yml#rankPassages
+      - openapi/nvidia-nim-image-generation-api-openapi.yml#generateImage
+      - openapi/nvidia-nim-speech-api-openapi.yml#createTranscription
+      - openapi/nvidia-nim-vision-api-openapi.yml#createVisionChatCompletion
+      - openapi/nvidia-nim-biology-api-openapi.yml#predictProteinStructure
+  - status: 401
+    title: Missing or invalid API key
+    detail: The Authorization Bearer nvapi-... key is absent, malformed, or revoked.
+    remediation: Generate/rotate a key at https://build.nvidia.com/settings and send it as a Bearer token.
+    source_operations:
+      - openapi/nvidia-nim-chat-completions-api-openapi.yml#createChatCompletion
+      - openapi/nvidia-nim-models-api-openapi.yml#listModels
+  - status: 403
+    title: API key lacks access to the requested model
+    detail: The key is valid but not entitled to the requested model.
+    remediation: Request access to the model or use a model available to your tier.
+    source_operations:
+      - openapi/nvidia-nim-chat-completions-api-openapi.yml#createChatCompletion
+  - status: 404
+    title: Model not found
+    detail: The requested model is not present in this endpoint's or container's catalog.
+    remediation: Call /v1/models to discover valid model id strings.
+    source_operations:
+      - openapi/nvidia-nim-chat-completions-api-openapi.yml#createChatCompletion
+      - openapi/nvidia-nim-models-api-openapi.yml#getModel
+  - status: 413
+    title: Payload too large
+    detail: The multimodal request (e.g. embedded image) exceeds the size limit.
+    remediation: Downscale or reference the image by HTTPS URL instead of inline base64.
+    source_operations:
+      - openapi/nvidia-nim-vision-api-openapi.yml#createVisionChatCompletion
+  - status: 429
+    title: Rate limit or quota exceeded
+    detail: Request rate or the free-tier credit quota has been exhausted.
+    remediation: Back off and retry; raise limits via NVIDIA AI Enterprise or self-hosting.
+    source_operations:
+      - openapi/nvidia-nim-chat-completions-api-openapi.yml#createChatCompletion
+      - openapi/nvidia-nim-completions-api-openapi.yml#createCompletion
+      - openapi/nvidia-nim-embeddings-api-openapi.yml#createEmbedding
+      - openapi/nvidia-nim-reranking-api-openapi.yml#rankPassages
+      - openapi/nvidia-nim-image-generation-api-openapi.yml#generateImage
+  - status: 500
+    title: Upstream inference error
+    detail: The inference engine failed while generating the response.
+    remediation: Retry; if persistent, reduce max_tokens/batch or check the status page.
+    source_operations:
+      - openapi/nvidia-nim-chat-completions-api-openapi.yml#createChatCompletion
+  - status: 503
+    title: Container unhealthy or not ready
+    detail: Self-hosted NIM container is unhealthy or the model is still loading.
+    remediation: Wait for readiness (/v1/health/ready) or restart the pod.
+    source_operations:
+      - openapi/nvidia-nim-health-api-openapi.yml#getLiveness
+      - openapi/nvidia-nim-health-api-openapi.yml#getReadiness

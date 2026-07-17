@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for NVIDIA NIM Speech API
+  version: 1.0.0
+extends: openapi/nvidia-nim-speech-api-openapi.yml
+# generated: '2026-06-20'
+# method: generated
+# source: openapi/nvidia-nim-speech-api-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: nvidia-nim
+      x-apievangelist-artifacts:
+        authentication: authentication/nvidia-nim-authentication.yml
+        conventions: conventions/nvidia-nim-conventions.yml
+        errors: errors/nvidia-nim-problem-types.yml
+        lifecycle: lifecycle/nvidia-nim-lifecycle.yml
+        conformance: conformance/nvidia-nim-conformance.yml
+  - target: $.info
+    update:
+      x-apievangelist-openai-compatible: true
+      x-apievangelist-base-url: https://integrate.api.nvidia.com/v1

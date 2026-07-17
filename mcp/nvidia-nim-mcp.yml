@@ -1,0 +1,66 @@
+generated: '2026-06-20'
+method: derived
+status: candidate
+source: openapi/*-openapi.yml
+notes: >-
+  NVIDIA publishes no first-party hosted/remote MCP server for the NIM inference API.
+  NVIDIA's MCP story lives in the NeMo Agent Toolkit, which can run as a self-hosted MCP
+  server (streamable-http, default http://localhost:9901/mcp) that publishes workflow tools
+  and can also act as an MCP client — but that is an agent-framework server, not a hosted
+  endpoint that fronts the NIM REST surface. There is also a community NVIDIA NIM MCP server
+  (not first-party). The tool list below is DERIVED one-per-operation from the repo's OpenAPI
+  as a candidate; it is not a published NVIDIA server.
+references:
+  - name: NeMo Agent Toolkit MCP server
+    url: https://docs.nvidia.com/nemo/agent-toolkit/latest/run-workflows/mcp-server.html
+    first_party: true
+    hosted: false
+server:
+  name: nvidia-nim
+  transport: http
+tools:
+  - name: create_chat_completion
+    description: Generate an OpenAI-compatible chat completion across 100+ foundation models.
+    source_operation: openapi/nvidia-nim-chat-completions-api-openapi.yml#createChatCompletion
+  - name: create_completion
+    description: Generate a legacy text completion from a raw prompt.
+    source_operation: openapi/nvidia-nim-completions-api-openapi.yml#createCompletion
+  - name: create_embedding
+    description: Return dense float embedding vectors for documents or queries.
+    source_operation: openapi/nvidia-nim-embeddings-api-openapi.yml#createEmbedding
+  - name: rank_passages
+    description: Rerank candidate passages against a query with a cross-encoder.
+    source_operation: openapi/nvidia-nim-reranking-api-openapi.yml#rankPassages
+  - name: list_models
+    description: List models served by the endpoint or container.
+    source_operation: openapi/nvidia-nim-models-api-openapi.yml#listModels
+  - name: get_model
+    description: Retrieve a single model's metadata.
+    source_operation: openapi/nvidia-nim-models-api-openapi.yml#getModel
+  - name: create_vision_chat_completion
+    description: Multimodal chat completion with image inputs on VLM models.
+    source_operation: openapi/nvidia-nim-vision-api-openapi.yml#createVisionChatCompletion
+  - name: generate_image
+    description: Text-to-image / image-to-image visual generation.
+    source_operation: openapi/nvidia-nim-image-generation-api-openapi.yml#generateImage
+  - name: create_transcription
+    description: Transcribe audio to text via Riva ASR NIMs.
+    source_operation: openapi/nvidia-nim-speech-api-openapi.yml#createTranscription
+  - name: create_speech
+    description: Synthesize speech from text via Riva TTS NIMs.
+    source_operation: openapi/nvidia-nim-speech-api-openapi.yml#createSpeech
+  - name: predict_protein_structure
+    description: Predict protein structure via BioNeMo (AlphaFold2/ESMFold/OpenFold).
+    source_operation: openapi/nvidia-nim-biology-api-openapi.yml#predictProteinStructure
+  - name: dock_ligand
+    description: Molecular docking of a ligand to a protein (DiffDock).
+    source_operation: openapi/nvidia-nim-biology-api-openapi.yml#dockLigand
+  - name: generate_molecules
+    description: Generate small molecules (MolMIM).
+    source_operation: openapi/nvidia-nim-biology-api-openapi.yml#generateMolecules
+  - name: get_liveness
+    description: Container liveness probe.
+    source_operation: openapi/nvidia-nim-health-api-openapi.yml#getLiveness
+  - name: get_readiness
+    description: Container readiness probe.
+    source_operation: openapi/nvidia-nim-health-api-openapi.yml#getReadiness

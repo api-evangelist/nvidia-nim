@@ -1,0 +1,36 @@
+generated: '2026-06-20'
+method: searched
+source: https://docs.ngc.nvidia.com/cli/index.html; https://docs.api.nvidia.com/nim/docs/deployment
+notes: >-
+  NIM has no single "nim" binary; the first-party CLI for pulling, listing, and running NIM
+  container microservices is the NGC CLI (ngc), which manages images/models in the NVIDIA GPU
+  Cloud registry (nvcr.io). Actual inference is then driven over the OpenAI-compatible REST/gRPC
+  surface. The docker CLI runs the pulled NIM image. The binary itself is not on PyPI/npm; it
+  is distributed from NGC.
+cli:
+  name: ngc
+  binary: ngc
+  distribution: https://org.ngc.nvidia.com/setup/installers/cli
+  auth:
+    method: NGC Personal API Key
+    config: ngc config set
+    registry_login: 'docker login nvcr.io -u $oauthtoken -p $NGC_API_KEY'
+  command_groups:
+    - group: config
+      purpose: Configure API key, org/team, and output format.
+      examples:
+        - ngc config set
+    - group: registry image
+      purpose: Discover and inspect NIM container images.
+      examples:
+        - 'ngc registry image list --format_type csv nvcr.io/nim/meta/*'
+        - ngc registry image info nvcr.io/nim/nvidia/fourcastnet:1.1.0
+    - group: registry model
+      purpose: List and download model artifacts backing a NIM.
+      examples:
+        - ngc registry model list
+  typical_flow:
+    - ngc config set                              # store API key + org
+    - docker login nvcr.io -u '$oauthtoken' -p $NGC_API_KEY
+    - ngc registry image list 'nvcr.io/nim/meta/*'
+    - docker run --gpus all -e NGC_API_KEY -p 8000:8000 nvcr.io/nim/meta/llama-3.1-70b-instruct:latest

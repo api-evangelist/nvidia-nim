@@ -337,6 +337,73 @@ common:
     type: RateLimits
   - url: finops/nvidia-nim-finops.yml
     type: FinOps
+  - url: packages/nvidia-nim-packages.yml
+    type: Packages
+  - url: well-known/nvidia-nim-well-known.yml
+    type: WellKnown
+  - url: mcp/nvidia-nim-mcp.yml
+    type: MCPServer
+  - url: llms/nvidia-nim-llms.txt
+    type: LLMsTxt
+  - url: conformance/nvidia-nim-conformance.yml
+    type: Conformance
+  - url: errors/nvidia-nim-problem-types.yml
+    type: ErrorCatalog
+  - url: lifecycle/nvidia-nim-lifecycle.yml
+    type: Lifecycle
+  - url: conventions/nvidia-nim-conventions.yml
+    type: Conventions
+  - url: changelog/nvidia-nim-changelog.yml
+    type: ChangeLog
+  - url: cli/nvidia-nim-cli.yml
+    type: CLI
+  - url: data-model/nvidia-nim-data-model.yml
+    type: DataModel
+  - url: grpc/nvidia-nim-riva_asr.proto
+    type: Protobuf
+    name: Riva Speech Recognition (ASR)
+  - url: grpc/nvidia-nim-riva_tts.proto
+    type: Protobuf
+    name: Riva Speech Synthesis (TTS)
+  - url: grpc/nvidia-nim-riva_nmt.proto
+    type: Protobuf
+    name: Riva Neural Machine Translation
+  - url: grpc/nvidia-nim-riva_audio.proto
+    type: Protobuf
+    name: Riva Audio Encoding
+  - url: grpc/nvidia-nim-riva_common.proto
+    type: Protobuf
+    name: Riva Common Types
+  - url: overlays/nvidia-nim-chat-completions-overlay.yaml
+    type: Overlay
+    name: Chat Completions enhancements
+  - url: overlays/nvidia-nim-completions-overlay.yaml
+    type: Overlay
+    name: Completions enhancements
+  - url: overlays/nvidia-nim-embeddings-overlay.yaml
+    type: Overlay
+    name: Embeddings enhancements
+  - url: overlays/nvidia-nim-reranking-overlay.yaml
+    type: Overlay
+    name: Reranking enhancements
+  - url: overlays/nvidia-nim-models-overlay.yaml
+    type: Overlay
+    name: Models enhancements
+  - url: overlays/nvidia-nim-vision-overlay.yaml
+    type: Overlay
+    name: Vision enhancements
+  - url: overlays/nvidia-nim-image-generation-overlay.yaml
+    type: Overlay
+    name: Image Generation enhancements
+  - url: overlays/nvidia-nim-speech-overlay.yaml
+    type: Overlay
+    name: Speech enhancements
+  - url: overlays/nvidia-nim-biology-overlay.yaml
+    type: Overlay
+    name: Biology (BioNeMo) enhancements
+  - url: overlays/nvidia-nim-health-overlay.yaml
+    type: Overlay
+    name: Health enhancements
   - type: Features
     data:
       - OpenAI-compatible REST surface — /v1/chat/completions, /v1/completions, /v1/embeddings, /v1/models, /v1/ranking
@@ -369,7 +436,7 @@ common:
       - https://github.com/NVIDIA/nim-deploy
     updated: '2026-05-25'
 created: '2026-05-25'
-modified: '2026-05-25'
+modified: '2026-06-20'
 position: Consuming
 description: >-
   NVIDIA NIM (NVIDIA Inference Microservices) is a catalog of GPU-accelerated, containerized AI inference microservices
