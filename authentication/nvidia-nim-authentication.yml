@@ -4,7 +4,7 @@ source: openapi/*-openapi.yml
 docs: https://build.nvidia.com/settings
 docs_notes: >-
   NVIDIA developer API key ("nvapi-..." personal key) generated at build.nvidia.com/settings
-  and sent as `Authorization: Bearer nvapi-...`. The same key authenticates the hosted endpoint
+  and sent as `Authorization: Bearer [example key]`. The same key authenticates the hosted endpoint
   (integrate.api.nvidia.com), NGC container pulls (nvcr.io, as the $oauthtoken password), and
   self-hosted NIM containers (via NGC_API_KEY). No OAuth2/OIDC flow; no scopes.
 summary:
