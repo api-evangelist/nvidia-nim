@@ -1,10 +1,9 @@
 openapi: 3.1.0
 info:
-  title: NVIDIA NIM Reranking API
-  description: >
-    NVIDIA NeMo Retriever cross-encoder reranking endpoint. Given a query and a
-    list of candidate passages, returns each passage's relevance score so RAG
-    pipelines can re-order retrieved chunks before they hit the LLM context.
+  title: NVIDIA NIM Biology (BioNeMo) ASR Reranking API
+  description: 'NVIDIA BioNeMo NIMs for drug discovery and structural biology. Each model is a containerized microservice with its own task-specific payload but a consistent JSON contract. Includes protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock).
+
+    '
   version: '2026-05-25'
   contact:
     name: NVIDIA Developer Support
@@ -13,15 +12,15 @@ info:
     name: NVIDIA AI Enterprise License
     url: https://www.nvidia.com/en-us/data-center/products/ai-enterprise/
 servers:
-  - url: https://integrate.api.nvidia.com
-    description: NVIDIA-hosted NIM endpoint
-  - url: http://localhost:8000
-    description: Self-hosted NIM container default
+- url: https://integrate.api.nvidia.com
+  description: NVIDIA-hosted NIM endpoint
+- url: http://localhost:8000
+  description: Self-hosted NIM container default
 security:
-  - BearerAuth: []
+- BearerAuth: []
 tags:
-  - name: Reranking
-    description: Cross-encoder reranking operations
+- name: Reranking
+  description: Cross-encoder reranking operations
 paths:
   /v1/ranking:
     post:
@@ -29,7 +28,7 @@ paths:
       description: Score candidate passages against a query using a NeMo Retriever reranker.
       operationId: rankPassages
       tags:
-        - Reranking
+      - Reranking
       requestBody:
         required: true
         content:
@@ -50,22 +49,21 @@ paths:
         '429':
           description: Rate limit exceeded.
 components:
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: nvapi-...
   schemas:
     RankingRequest:
       type: object
-      required: [model, query, passages]
+      required:
+      - model
+      - query
+      - passages
       properties:
         model:
           type: string
           description: e.g. `nvidia/llama-3.2-nv-rerankqa-1b-v2`, `nvidia/nv-rerankqa-mistral-4b-v3`.
         query:
           type: object
-          required: [text]
+          required:
+          - text
           properties:
             text:
               type: string
@@ -73,13 +71,16 @@ components:
           type: array
           items:
             type: object
-            required: [text]
+            required:
+            - text
             properties:
               text:
                 type: string
         truncate:
           type: string
-          enum: [NONE, END]
+          enum:
+          - NONE
+          - END
           default: END
     RankingResponse:
       type: object
@@ -95,3 +96,8 @@ components:
               logit:
                 type: number
                 description: Raw cross-encoder relevance logit (higher = more relevant).
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: nvapi-...

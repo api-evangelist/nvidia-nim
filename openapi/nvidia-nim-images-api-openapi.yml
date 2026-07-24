@@ -1,12 +1,9 @@
 openapi: 3.1.0
 info:
-  title: NVIDIA NIM Image Generation API
-  description: >
-    Visual generative AI endpoints. Text-to-image, image-to-image, and image
-    editing using models such as Black Forest Labs FLUX.1, Stable Diffusion XL,
-    Shutterstock-trained Edify Image, and NVIDIA Edify 3D — exposed by per-model
-    NIM containers with a uniform JSON contract that returns base64-encoded
-    PNG or JPEG artifacts.
+  title: NVIDIA NIM Biology (BioNeMo) ASR Images API
+  description: 'NVIDIA BioNeMo NIMs for drug discovery and structural biology. Each model is a containerized microservice with its own task-specific payload but a consistent JSON contract. Includes protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock).
+
+    '
   version: '2026-05-25'
   contact:
     name: NVIDIA Developer Support
@@ -15,15 +12,15 @@ info:
     name: NVIDIA AI Enterprise License
     url: https://www.nvidia.com/en-us/data-center/products/ai-enterprise/
 servers:
-  - url: https://integrate.api.nvidia.com
-    description: NVIDIA-hosted NIM endpoint
-  - url: http://localhost:8000
-    description: Self-hosted NIM container default
+- url: https://integrate.api.nvidia.com
+  description: NVIDIA-hosted NIM endpoint
+- url: http://localhost:8000
+  description: Self-hosted NIM container default
 security:
-  - BearerAuth: []
+- BearerAuth: []
 tags:
-  - name: Images
-    description: Text-to-image and image-to-image generation
+- name: Images
+  description: Text-to-image and image-to-image generation
 paths:
   /v1/genai/{publisher}/{model}:
     post:
@@ -31,20 +28,20 @@ paths:
       description: Generate or edit an image with a NIM-hosted visual generative model. The exact request schema varies by model family.
       operationId: generateImage
       tags:
-        - Images
+      - Images
       parameters:
-        - name: publisher
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Model publisher (e.g. `black-forest-labs`, `stabilityai`, `shutterstock`, `nvidia`).
-        - name: model
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Model slug (e.g. `flux.1-schnell`, `sdxl-turbo`, `edify-image`).
+      - name: publisher
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Model publisher (e.g. `black-forest-labs`, `stabilityai`, `shutterstock`, `nvidia`).
+      - name: model
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Model slug (e.g. `flux.1-schnell`, `sdxl-turbo`, `edify-image`).
       requestBody:
         required: true
         content:
@@ -65,15 +62,26 @@ paths:
         '429':
           description: Rate limit exceeded.
 components:
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: nvapi-...
   schemas:
+    ImageGenerationResponse:
+      type: object
+      properties:
+        artifacts:
+          type: array
+          items:
+            type: object
+            properties:
+              base64:
+                type: string
+                description: Base64-encoded image bytes (PNG or JPEG).
+              finishReason:
+                type: string
+              seed:
+                type: integer
     ImageGenerationRequest:
       type: object
-      required: [prompt]
+      required:
+      - prompt
       properties:
         prompt:
           type: string
@@ -95,7 +103,10 @@ components:
           type: integer
         mode:
           type: string
-          enum: [text-to-image, image-to-image, inpaint]
+          enum:
+          - text-to-image
+          - image-to-image
+          - inpaint
           default: text-to-image
         image:
           type: string
@@ -103,18 +114,8 @@ components:
         mask:
           type: string
           description: Optional base64-encoded inpainting mask.
-    ImageGenerationResponse:
-      type: object
-      properties:
-        artifacts:
-          type: array
-          items:
-            type: object
-            properties:
-              base64:
-                type: string
-                description: Base64-encoded image bytes (PNG or JPEG).
-              finishReason:
-                type: string
-              seed:
-                type: integer
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: nvapi-...

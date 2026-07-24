@@ -1,11 +1,9 @@
 openapi: 3.1.0
 info:
-  title: NVIDIA NIM Models API
-  description: >
-    OpenAI-compatible model catalog endpoint. Returns the list of models served
-    by the NIM endpoint or self-hosted container — useful for discovering the
-    exact `model` strings to pass to chat completions, completions, or
-    embeddings.
+  title: NVIDIA NIM Biology (BioNeMo) ASR Models API
+  description: 'NVIDIA BioNeMo NIMs for drug discovery and structural biology. Each model is a containerized microservice with its own task-specific payload but a consistent JSON contract. Includes protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock).
+
+    '
   version: '2026-05-25'
   contact:
     name: NVIDIA Developer Support
@@ -14,15 +12,15 @@ info:
     name: NVIDIA AI Enterprise License
     url: https://www.nvidia.com/en-us/data-center/products/ai-enterprise/
 servers:
-  - url: https://integrate.api.nvidia.com
-    description: NVIDIA-hosted NIM endpoint
-  - url: http://localhost:8000
-    description: Self-hosted NIM container default
+- url: https://integrate.api.nvidia.com
+  description: NVIDIA-hosted NIM endpoint
+- url: http://localhost:8000
+  description: Self-hosted NIM container default
 security:
-  - BearerAuth: []
+- BearerAuth: []
 tags:
-  - name: Models
-    description: Model discovery operations
+- name: Models
+  description: Model discovery operations
 paths:
   /v1/models:
     get:
@@ -30,7 +28,7 @@ paths:
       description: Return the list of models exposed by this NIM endpoint or container.
       operationId: listModels
       tags:
-        - Models
+      - Models
       responses:
         '200':
           description: Model list.
@@ -46,13 +44,13 @@ paths:
       description: Return metadata for a single model id.
       operationId: getModel
       tags:
-        - Models
+      - Models
       parameters:
-        - name: model_id
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: model_id
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Model object.
@@ -63,22 +61,7 @@ paths:
         '404':
           description: Model not found.
 components:
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: nvapi-...
   schemas:
-    ModelList:
-      type: object
-      properties:
-        object:
-          type: string
-          example: list
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Model'
     Model:
       type: object
       properties:
@@ -99,3 +82,18 @@ components:
           type: array
           items:
             type: object
+    ModelList:
+      type: object
+      properties:
+        object:
+          type: string
+          example: list
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: nvapi-...

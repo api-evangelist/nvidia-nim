@@ -1,13 +1,9 @@
 openapi: 3.1.0
 info:
-  title: NVIDIA NIM Biology (BioNeMo) API
-  description: >
-    NVIDIA BioNeMo NIMs for drug discovery and structural biology. Each model is
-    a containerized microservice with its own task-specific payload but a
-    consistent JSON contract. Includes protein structure prediction
-    (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2,
-    RFDiffusion), molecular property prediction (MolMIM), small molecule
-    generation, and molecular docking (DiffDock).
+  title: NVIDIA NIM (BioNeMo) ASR Biology API
+  description: 'NVIDIA BioNeMo NIMs for drug discovery and structural biology. Each model is a containerized microservice with its own task-specific payload but a consistent JSON contract. Includes protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock).
+
+    '
   version: '2026-05-25'
   contact:
     name: NVIDIA Developer Support
@@ -16,15 +12,15 @@ info:
     name: NVIDIA AI Enterprise License
     url: https://www.nvidia.com/en-us/data-center/products/ai-enterprise/
 servers:
-  - url: https://integrate.api.nvidia.com
-    description: NVIDIA-hosted NIM endpoint
-  - url: http://localhost:8000
-    description: Self-hosted NIM container default
+- url: https://integrate.api.nvidia.com
+  description: NVIDIA-hosted NIM endpoint
+- url: http://localhost:8000
+  description: Self-hosted NIM container default
 security:
-  - BearerAuth: []
+- BearerAuth: []
 tags:
-  - name: Biology
-    description: Protein, molecule, and structural-biology operations
+- name: Biology
+  description: Protein, molecule, and structural-biology operations
 paths:
   /v1/biology/nvidia/alphafold2/predict-structure-from-sequence:
     post:
@@ -32,14 +28,15 @@ paths:
       description: Predict the 3D structure of a protein from its amino acid sequence using AlphaFold2 NIM.
       operationId: predictProteinStructure
       tags:
-        - Biology
+      - Biology
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [sequence]
+              required:
+              - sequence
               properties:
                 sequence:
                   type: string
@@ -75,14 +72,16 @@ paths:
       description: Predict the binding pose of a small molecule ligand against a protein using DiffDock NIM.
       operationId: dockLigand
       tags:
-        - Biology
+      - Biology
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [protein, ligand]
+              required:
+              - protein
+              - ligand
               properties:
                 protein:
                   type: string
@@ -123,27 +122,31 @@ paths:
       description: Generate small molecule SMILES around a seed molecule using NVIDIA MolMIM NIM.
       operationId: generateMolecules
       tags:
-        - Biology
+      - Biology
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [smi]
+              required:
+              - smi
               properties:
                 smi:
                   type: string
                   description: Seed SMILES string.
                 algorithm:
                   type: string
-                  enum: [CMA-ES]
+                  enum:
+                  - CMA-ES
                 num_molecules:
                   type: integer
                   default: 10
                 property_name:
                   type: string
-                  enum: [QED, plogP]
+                  enum:
+                  - QED
+                  - plogP
                 minimize:
                   type: boolean
                 min_similarity:
