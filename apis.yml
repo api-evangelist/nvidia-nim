@@ -1,207 +1,229 @@
 aid: nvidia-nim
 url: https://raw.githubusercontent.com/api-evangelist/nvidia-nim/refs/heads/main/apis.yml
 apis:
-  - aid: nvidia-nim:nvidia-nim-chat-completions-api
-    name: NVIDIA NIM Chat Completions API
-    tags:
-      - AI
-      - Artificial Intelligence
-      - Chat
-      - Completions
-      - LLM
-      - OpenAI Compatible
-    humanURL: https://docs.api.nvidia.com/nim/reference/llm-apis
-    baseURL: https://integrate.api.nvidia.com/v1
-    properties:
-      - url: https://docs.api.nvidia.com/nim/reference/llm-apis
-        type: Documentation
-      - url: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
-        type: Documentation
-      - url: openapi/nvidia-nim-chat-completions-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/nvidia-nim-chat-completion-schema.json
-        type: JSONSchema
-      - url: json-ld/nvidia-nim-context.jsonld
-        type: JSONLD
-    description: >-
-      OpenAI-compatible chat completions endpoint exposing 100+ foundation models — Meta Llama, Mistral, Mixtral, NVIDIA
-      Nemotron, DeepSeek, Qwen, Microsoft Phi, Google Gemma, IBM Granite, and more — through a single
-      /v1/chat/completions surface. Supports streaming, tool/function calling, structured outputs, vision inputs on
-      multimodal models, and the standard temperature/top_p/max_tokens parameters. Switching models is a one-line change
-      to the model string. Available hosted on integrate.api.nvidia.com or self-hosted via NIM containers on any GPU.
-  - aid: nvidia-nim:nvidia-nim-completions-api
-    name: NVIDIA NIM Completions API
-    tags:
-      - AI
-      - Artificial Intelligence
-      - Completions
-      - LLM
-      - OpenAI Compatible
-    humanURL: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
-    baseURL: https://integrate.api.nvidia.com/v1
-    properties:
-      - url: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
-        type: Documentation
-      - url: openapi/nvidia-nim-completions-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Legacy OpenAI-compatible text completion endpoint (/v1/completions) for non-chat foundation models served by NIM.
-      Accepts a raw prompt and returns generated text with the same streaming, sampling, and stopping-criterion controls
-      as the chat endpoint.
-  - aid: nvidia-nim:nvidia-nim-embeddings-api
-    name: NVIDIA NIM Embeddings API
-    tags:
-      - AI
-      - Artificial Intelligence
-      - Embeddings
-      - Retrieval
-      - RAG
-      - OpenAI Compatible
-    humanURL: https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/api-reference.html
-    baseURL: https://integrate.api.nvidia.com/v1
-    properties:
-      - url: https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/api-reference.html
-        type: Documentation
-      - url: openapi/nvidia-nim-embeddings-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/nvidia-nim-embedding-schema.json
-        type: JSONSchema
-    description: >-
-      OpenAI-compatible embeddings endpoint (/v1/embeddings) backed by NVIDIA NeMo Retriever text embedding models
-      including NV-Embed, NV-EmbedQA-E5, llama-3.2-nv-embedqa-1b, and BAAI BGE-M3. Returns dense float vectors for
-      documents or queries to power RAG, semantic search, and clustering. Supports `input_type=passage|query` for
-      asymmetric retrieval and the standard `dimensions` parameter on models that permit dimension reduction.
-  - aid: nvidia-nim:nvidia-nim-reranking-api
-    name: NVIDIA NIM Reranking API
-    tags:
-      - AI
-      - Artificial Intelligence
-      - Reranking
-      - Retrieval
-      - RAG
-    humanURL: https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/api-reference.html
-    baseURL: https://integrate.api.nvidia.com/v1
-    properties:
-      - url: https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/api-reference.html
-        type: Documentation
-      - url: openapi/nvidia-nim-reranking-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      NeMo Retriever cross-encoder reranking endpoint (/v1/ranking) for scoring candidate passages against a query.
-      Improves retrieval relevance on RAG pipelines and supports the llama-3.2-nv-rerankqa-1b and
-      NV-RerankQA-Mistral-4B-v3 models. Accepts a query plus a list of passages and returns a sorted list of relevance
-      scores.
-  - aid: nvidia-nim:nvidia-nim-models-api
-    name: NVIDIA NIM Models API
-    tags:
-      - AI
-      - Artificial Intelligence
-      - Models
-      - Catalog
-      - OpenAI Compatible
-    humanURL: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
-    baseURL: https://integrate.api.nvidia.com/v1
-    properties:
-      - url: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
-        type: Documentation
-      - url: openapi/nvidia-nim-models-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      OpenAI-compatible model catalog endpoint (/v1/models) returning the list of models served by the NIM endpoint or
-      container. Each entry includes id, owned_by, and created timestamp. Used by clients to discover the model name
-      strings to pass to chat-completions / completions / embeddings.
-  - aid: nvidia-nim:nvidia-nim-vision-api
-    name: NVIDIA NIM Vision Language Models API
-    tags:
-      - AI
-      - Artificial Intelligence
-      - Vision
-      - Multimodal
-      - VLM
-    humanURL: https://docs.api.nvidia.com/nim/reference/vlm-apis
-    baseURL: https://integrate.api.nvidia.com/v1
-    properties:
-      - url: https://docs.api.nvidia.com/nim/reference/vlm-apis
-        type: Documentation
-      - url: openapi/nvidia-nim-vision-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Vision-language model inference through the standard /v1/chat/completions surface with image inputs (base64 or
-      URL) in the messages payload. Supports NVIDIA NeVA, microsoft/kosmos-2, Phi-3-vision,
-      llama-3.2-90b-vision-instruct, and other VLMs hosted in the NIM catalog.
-  - aid: nvidia-nim:nvidia-nim-health-api
-    name: NVIDIA NIM Health API
-    tags:
-      - Health
-      - Observability
-      - Kubernetes
-    humanURL: https://docs.nvidia.com/nim/large-language-models/latest/observability.html
-    properties:
-      - url: https://docs.nvidia.com/nim/large-language-models/latest/observability.html
-        type: Documentation
-      - url: openapi/nvidia-nim-health-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Liveness, readiness, and startup probes exposed by self-hosted NIM containers (/v1/health/live, /v1/health/ready)
-      and a Prometheus /v1/metrics scrape endpoint for GPU utilization, request latency, and queue depth. Drives
-      Kubernetes pod lifecycle and HPA scaling via the NIM Operator.
-  - aid: nvidia-nim:nvidia-nim-image-generation-api
-    name: NVIDIA NIM Image Generation API
-    tags:
-      - AI
-      - Artificial Intelligence
-      - Image Generation
-      - Visual
-    humanURL: https://docs.api.nvidia.com/nim/reference/visual-models
-    baseURL: https://integrate.api.nvidia.com/v1
-    properties:
-      - url: https://docs.api.nvidia.com/nim/reference/visual-models
-        type: Documentation
-      - url: openapi/nvidia-nim-image-generation-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Visual generative AI endpoints for text-to-image, image-to-image, and image editing using models such as Black
-      Forest Labs FLUX.1, Stable Diffusion XL, Shutterstock-trained models, and NVIDIA-curated Edify Image. Returns
-      base64-encoded PNG/JPEG artifacts.
-  - aid: nvidia-nim:nvidia-nim-speech-api
-    name: NVIDIA NIM Speech API
-    tags:
-      - AI
-      - Artificial Intelligence
-      - Speech
-      - ASR
-      - TTS
-      - Riva
-    humanURL: https://docs.nvidia.com/nim/riva/latest/index.html
-    baseURL: https://integrate.api.nvidia.com/v1
-    properties:
-      - url: https://docs.nvidia.com/nim/riva/latest/index.html
-        type: Documentation
-      - url: openapi/nvidia-nim-speech-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      NVIDIA Riva-powered speech NIMs delivering automatic speech recognition (Parakeet, Canary), neural machine
-      translation, and text-to-speech (Magpie-TTS, FastPitch) through HTTP and gRPC surfaces. Hosted endpoints accept
-      WAV/FLAC audio and return transcripts or synthesized speech.
-  - aid: nvidia-nim:nvidia-nim-biology-api
-    name: NVIDIA NIM Biology (BioNeMo) API
-    tags:
-      - AI
-      - Biology
-      - BioNeMo
-      - Drug Discovery
-      - Healthcare
-    humanURL: https://docs.nvidia.com/nim/bionemo/latest/index.html
-    baseURL: https://integrate.api.nvidia.com/v1
-    properties:
-      - url: https://docs.nvidia.com/nim/bionemo/latest/index.html
-        type: Documentation
-      - url: openapi/nvidia-nim-biology-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      BioNeMo NIMs for protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2,
-      RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock).
-      Each model is a containerized microservice with the same OpenAPI surface.
+- aid: nvidia-nim:nvidia-nim-completions-api
+  name: NVIDIA NIM Completions API
+  tags:
+  - AI
+  - Artificial Intelligence
+  - Completions
+  - LLM
+  - OpenAI Compatible
+  humanURL: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+  baseURL: https://integrate.api.nvidia.com/v1
+  properties:
+  - url: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+    type: Documentation
+  - url: openapi/nvidia-nim-completions-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    Legacy OpenAI-compatible text completion endpoint (/v1/completions) for non-chat foundation models
+    served by NIM. Accepts a raw prompt and returns generated text with the same streaming, sampling,
+    and stopping-criterion controls as the chat endpoint.
+- aid: nvidia-nim:nvidia-nim-embeddings-api
+  name: NVIDIA NIM Embeddings API
+  tags:
+  - AI
+  - Artificial Intelligence
+  - Embeddings
+  - Retrieval
+  - RAG
+  - OpenAI Compatible
+  humanURL: https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/api-reference.html
+  baseURL: https://integrate.api.nvidia.com/v1
+  properties:
+  - url: https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/api-reference.html
+    type: Documentation
+  - url: openapi/nvidia-nim-embeddings-api-openapi.yml
+    type: OpenAPI
+  - url: json-schema/nvidia-nim-embedding-schema.json
+    type: JSONSchema
+  description: >-
+    OpenAI-compatible embeddings endpoint (/v1/embeddings) backed by NVIDIA NeMo Retriever text embedding
+    models including NV-Embed, NV-EmbedQA-E5, llama-3.2-nv-embedqa-1b, and BAAI BGE-M3. Returns dense
+    float vectors for documents or queries to power RAG, semantic search, and clustering. Supports `input_type=passage|query`
+    for asymmetric retrieval and the standard `dimensions` parameter on models that permit dimension reduction.
+- aid: nvidia-nim:nvidia-nim-reranking-api
+  name: NVIDIA NIM Reranking API
+  tags:
+  - AI
+  - Artificial Intelligence
+  - Reranking
+  - Retrieval
+  - RAG
+  humanURL: https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/api-reference.html
+  baseURL: https://integrate.api.nvidia.com/v1
+  properties:
+  - url: https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/api-reference.html
+    type: Documentation
+  - url: openapi/nvidia-nim-reranking-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    NeMo Retriever cross-encoder reranking endpoint (/v1/ranking) for scoring candidate passages against
+    a query. Improves retrieval relevance on RAG pipelines and supports the llama-3.2-nv-rerankqa-1b and
+    NV-RerankQA-Mistral-4B-v3 models. Accepts a query plus a list of passages and returns a sorted list
+    of relevance scores.
+- aid: nvidia-nim:nvidia-nim-models-api
+  name: NVIDIA NIM Models API
+  tags:
+  - AI
+  - Artificial Intelligence
+  - Models
+  - Catalog
+  - OpenAI Compatible
+  humanURL: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+  baseURL: https://integrate.api.nvidia.com/v1
+  properties:
+  - url: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+    type: Documentation
+  - url: openapi/nvidia-nim-models-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    OpenAI-compatible model catalog endpoint (/v1/models) returning the list of models served by the NIM
+    endpoint or container. Each entry includes id, owned_by, and created timestamp. Used by clients to
+    discover the model name strings to pass to chat-completions / completions / embeddings.
+- aid: nvidia-nim:nvidia-nim-vision-api
+  name: NVIDIA NIM Vision Language Models API
+  tags:
+  - AI
+  - Artificial Intelligence
+  - Vision
+  - Multimodal
+  - VLM
+  humanURL: https://docs.api.nvidia.com/nim/reference/vlm-apis
+  baseURL: https://integrate.api.nvidia.com/v1
+  properties:
+  - url: https://docs.api.nvidia.com/nim/reference/vlm-apis
+    type: Documentation
+  - url: openapi/nvidia-nim-vision-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    Vision-language model inference through the standard /v1/chat/completions surface with image inputs
+    (base64 or URL) in the messages payload. Supports NVIDIA NeVA, microsoft/kosmos-2, Phi-3-vision, llama-3.2-90b-vision-instruct,
+    and other VLMs hosted in the NIM catalog.
+- aid: nvidia-nim:nvidia-nim-health-api
+  name: NVIDIA NIM Health API
+  tags:
+  - Health
+  - Observability
+  - Kubernetes
+  humanURL: https://docs.nvidia.com/nim/large-language-models/latest/observability.html
+  properties:
+  - url: https://docs.nvidia.com/nim/large-language-models/latest/observability.html
+    type: Documentation
+  - url: openapi/nvidia-nim-health-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    Liveness, readiness, and startup probes exposed by self-hosted NIM containers (/v1/health/live, /v1/health/ready)
+    and a Prometheus /v1/metrics scrape endpoint for GPU utilization, request latency, and queue depth.
+    Drives Kubernetes pod lifecycle and HPA scaling via the NIM Operator.
+- aid: nvidia-nim:nvidia-nim-biology-api
+  name: NVIDIA NIM Biology (BioNeMo) API
+  tags:
+  - AI
+  - Biology
+  - BioNeMo
+  - Drug Discovery
+  - Healthcare
+  humanURL: https://docs.nvidia.com/nim/bionemo/latest/index.html
+  baseURL: https://integrate.api.nvidia.com/v1
+  properties:
+  - url: https://docs.nvidia.com/nim/bionemo/latest/index.html
+    type: Documentation
+  - url: openapi/nvidia-nim-biology-api-openapi.yml
+    type: OpenAPI
+  description: >-
+    BioNeMo NIMs for protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation
+    (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular
+    docking (DiffDock). Each model is a containerized microservice with the same OpenAPI surface.
+- aid: nvidia-nim:nvidia-nim-asr-api
+  name: NVIDIA NIM ASR API
+  description: Automatic speech recognition (speech-to-text)
+  humanURL: https://docs.api.nvidia.com/nim/reference/llm-apis
+  baseURL: https://integrate.api.nvidia.com/v1
+  tags:
+  - ASR
+  properties:
+  - type: OpenAPI
+    url: openapi/nvidia-nim-asr-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.nvidia.com/nim/reference/llm-apis
+  - type: Documentation
+    url: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+  - type: JSONSchema
+    url: json-schema/nvidia-nim-chat-completion-schema.json
+  - type: JSONLD
+    url: json-ld/nvidia-nim-context.jsonld
+  - type: Documentation
+    url: https://docs.api.nvidia.com/nim/reference/visual-models
+  - type: Documentation
+    url: https://docs.nvidia.com/nim/riva/latest/index.html
+- aid: nvidia-nim:nvidia-nim-chat-api
+  name: NVIDIA NIM Chat API
+  description: OpenAI-compatible chat completion operations
+  humanURL: https://docs.api.nvidia.com/nim/reference/llm-apis
+  baseURL: https://integrate.api.nvidia.com/v1
+  tags:
+  - Chat
+  properties:
+  - type: OpenAPI
+    url: openapi/nvidia-nim-chat-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.nvidia.com/nim/reference/llm-apis
+  - type: Documentation
+    url: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+  - type: JSONSchema
+    url: json-schema/nvidia-nim-chat-completion-schema.json
+  - type: JSONLD
+    url: json-ld/nvidia-nim-context.jsonld
+  - type: Documentation
+    url: https://docs.api.nvidia.com/nim/reference/visual-models
+  - type: Documentation
+    url: https://docs.nvidia.com/nim/riva/latest/index.html
+- aid: nvidia-nim:nvidia-nim-images-api
+  name: NVIDIA NIM Images API
+  description: Text-to-image and image-to-image generation
+  humanURL: https://docs.api.nvidia.com/nim/reference/llm-apis
+  baseURL: https://integrate.api.nvidia.com/v1
+  tags:
+  - Images
+  properties:
+  - type: OpenAPI
+    url: openapi/nvidia-nim-images-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.nvidia.com/nim/reference/llm-apis
+  - type: Documentation
+    url: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+  - type: JSONSchema
+    url: json-schema/nvidia-nim-chat-completion-schema.json
+  - type: JSONLD
+    url: json-ld/nvidia-nim-context.jsonld
+  - type: Documentation
+    url: https://docs.api.nvidia.com/nim/reference/visual-models
+  - type: Documentation
+    url: https://docs.nvidia.com/nim/riva/latest/index.html
+- aid: nvidia-nim:nvidia-nim-tts-api
+  name: NVIDIA NIM TTS API
+  description: Text-to-speech synthesis
+  humanURL: https://docs.api.nvidia.com/nim/reference/llm-apis
+  baseURL: https://integrate.api.nvidia.com/v1
+  tags:
+  - TTS
+  properties:
+  - type: OpenAPI
+    url: openapi/nvidia-nim-tts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.nvidia.com/nim/reference/llm-apis
+  - type: Documentation
+    url: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+  - type: JSONSchema
+    url: json-schema/nvidia-nim-chat-completion-schema.json
+  - type: JSONLD
+    url: json-ld/nvidia-nim-context.jsonld
+  - type: Documentation
+    url: https://docs.api.nvidia.com/nim/reference/visual-models
+  - type: Documentation
+    url: https://docs.nvidia.com/nim/riva/latest/index.html
 name: NVIDIA NIM
 tags:
   - AI
@@ -215,7 +237,20 @@ tags:
   - NVIDIA
   - OpenAI Compatible
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/nvidia-nim.png
 access: 3rd-Party
 common:
   - type: AgenticAccess
