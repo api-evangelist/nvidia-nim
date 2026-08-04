@@ -1,0 +1,34 @@
+{
+  "provider": "nvidia-nim",
+  "sources": [
+    "nvidia-nim-asr-api-openapi.yml",
+    "nvidia-nim-biology-api-openapi.yml",
+    "nvidia-nim-chat-api-openapi.yml",
+    "nvidia-nim-completions-api-openapi.yml",
+    "nvidia-nim-embeddings-api-openapi.yml",
+    "nvidia-nim-health-api-openapi.yml",
+    "nvidia-nim-images-api-openapi.yml",
+    "nvidia-nim-models-api-openapi.yml",
+    "nvidia-nim-reranking-api-openapi.yml",
+    "nvidia-nim-tts-api-openapi.yml",
+    "nvidia-nim-vision-api-openapi.yml"
+  ],
+  "outputs": [
+    "nvidia-nim-asr-api-openapi.yml",
+    "nvidia-nim-biology-api-openapi.yml",
+    "nvidia-nim-chat-api-openapi.yml",
+    "nvidia-nim-completions-api-openapi.yml",
+    "nvidia-nim-embeddings-api-openapi.yml",
+    "nvidia-nim-health-api-openapi.yml",
+    "nvidia-nim-images-api-openapi.yml",
+    "nvidia-nim-models-api-openapi.yml",
+    "nvidia-nim-reranking-api-openapi.yml",
+    "nvidia-nim-tts-api-openapi.yml",
+    "nvidia-nim-vision-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
