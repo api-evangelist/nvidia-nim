@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "896ae215-0b77-4d8f-bdf1-e99f43045108",
+      "id": "e082281e-d779-4a8f-a080-99387d3f5569",
       "name": "Embeddings",
       "description": {
         "content": "Dense vector embedding operations for RAG and semantic search",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "ffef373f-6b16-490d-b55e-881cb8100e14",
+          "id": "22b8b095-19ad-46ed-89a4-d9a3e5c5647f",
           "name": "Create An Embedding",
           "request": {
             "name": "Create An Embedding",
@@ -52,7 +52,7 @@
           },
           "response": [
             {
-              "id": "3a6a6b7b-5a99-4921-a755-41e0222573e0",
+              "id": "4f70c398-ab41-4910-b38f-6ff76c53026c",
               "name": "Embedding response.",
               "originalRequest": {
                 "url": {
@@ -99,12 +99,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"object\": \"list\",\n  \"data\": [\n    {\n      \"object\": \"embedding\",\n      \"index\": 7652,\n      \"embedding\": [\n        226.55047011718165,\n        3224.859175040976\n      ]\n    },\n    {\n      \"object\": \"embedding\",\n      \"index\": 3439,\n      \"embedding\": [\n        3460.6324271745148,\n        5998.183933811943\n      ]\n    }\n  ],\n  \"model\": \"string\",\n  \"usage\": {\n    \"prompt_tokens\": 9839,\n    \"total_tokens\": 6215\n  }\n}",
+              "body": "{\n  \"object\": \"list\",\n  \"data\": [\n    {\n      \"object\": \"embedding\",\n      \"index\": 1723,\n      \"embedding\": [\n        4054.3539723577637,\n        6554.620810900782\n      ]\n    },\n    {\n      \"object\": \"embedding\",\n      \"index\": 2032,\n      \"embedding\": [\n        2658.558172783595,\n        6764.721580032698\n      ]\n    }\n  ],\n  \"model\": \"string\",\n  \"usage\": {\n    \"prompt_tokens\": 7472,\n    \"total_tokens\": 221\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "c2d8166d-804d-4755-9617-796ac155cc0c",
+              "id": "a9fb71b2-0124-45ab-8cc8-9f72ed1f7068",
               "name": "Invalid request.",
               "originalRequest": {
                 "url": {
@@ -152,7 +152,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "c3870cc7-82b4-4f29-955f-02ff87cda0a7",
+              "id": "54e3da06-5102-44c2-a4ab-13f236b9aee7",
               "name": "Missing or invalid API key.",
               "originalRequest": {
                 "url": {
@@ -200,7 +200,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "c83c0438-3487-4d2c-b753-7342cbb74d9b",
+              "id": "711e1b48-d23a-4aac-85fa-c952aa9b155d",
               "name": "Rate limit exceeded.",
               "originalRequest": {
                 "url": {
@@ -275,11 +275,11 @@
     ]
   },
   "info": {
-    "_postman_id": "be5297e1-1560-4e7a-ac61-b94ff70577a5",
-    "name": "NVIDIA NIM Embeddings API",
+    "_postman_id": "e14e03fe-fbbb-4063-8c3f-7b410ea2533c",
+    "name": "NVIDIA NIM Biology (BioNeMo) ASR Embeddings API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "OpenAI-compatible embeddings endpoint backed by NVIDIA NeMo Retriever text embedding models. Returns dense float vectors for documents or queries. Supports `input_type=passage|query` for asymmetric retrieval and the standard `dimensions` parameter on models that allow dimension reduction.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+      "content": "NVIDIA BioNeMo NIMs for drug discovery and structural biology. Each model is a containerized microservice with its own task-specific payload but a consistent JSON contract. Includes protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock).\n\n\nContact Support:\n Name: NVIDIA Developer Support",
       "type": "text/plain"
     }
   }

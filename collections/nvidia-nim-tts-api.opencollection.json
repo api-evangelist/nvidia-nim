@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "NVIDIA NIM Biology (BioNeMo) ASR Embeddings API",
+    "name": "NVIDIA NIM Biology (BioNeMo) ASR TTS API",
     "version": "2026-05-25"
   },
   "request": {
@@ -13,24 +13,24 @@
   "items": [
     {
       "info": {
-        "name": "Embeddings",
+        "name": "TTS",
         "type": "folder"
       },
       "items": [
         {
           "info": {
-            "name": "Create An Embedding",
+            "name": "Synthesize Speech",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://integrate.api.nvidia.com/v1/embeddings",
+            "url": "https://integrate.api.nvidia.com/v1/audio/speech",
             "body": {
               "type": "json",
               "data": "{}"
             }
           },
-          "docs": "Generate embedding vectors for one or more input strings using a NeMo Retriever embedding model."
+          "docs": "Generate WAV/MP3 audio from text using a Riva TTS NIM (e.g. Magpie-TTS, FastPitch)."
         }
       ]
     }

@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "a4be096c-a3e7-41a2-9336-2c181a714b6a",
+      "id": "70c8286a-6d9a-43a8-9237-0df2ab88643c",
       "name": "Vision",
       "description": {
         "content": "Multimodal vision-language operations",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "3c88defe-9158-4983-abb0-bfede1be1fd8",
+          "id": "1556e3d2-6e6e-47f6-a236-9452390a117d",
           "name": "Create A Multimodal Chat Completion",
           "request": {
             "name": "Create A Multimodal Chat Completion",
@@ -53,7 +53,7 @@
           },
           "response": [
             {
-              "id": "d1b3d225-a6ec-42aa-bfff-b2ccd7df3b86",
+              "id": "bc45142b-ebd3-47aa-a924-721d742b9e6b",
               "name": "Multimodal chat completion response.",
               "originalRequest": {
                 "url": {
@@ -101,12 +101,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"object\": \"chat.completion\",\n  \"choices\": [\n    {\n      \"message\": {\n        \"role\": \"string\",\n        \"content\": \"string\"\n      },\n      \"finish_reason\": \"string\"\n    },\n    {\n      \"message\": {\n        \"role\": \"string\",\n        \"content\": \"string\"\n      },\n      \"finish_reason\": \"string\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 9887,\n    \"completion_tokens\": 7862,\n    \"total_tokens\": 4541\n  }\n}",
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"chat.completion\",\n  \"choices\": [\n    {\n      \"message\": {\n        \"role\": \"string\",\n        \"content\": \"string\"\n      },\n      \"finish_reason\": \"string\"\n    },\n    {\n      \"message\": {\n        \"role\": \"string\",\n        \"content\": \"string\"\n      },\n      \"finish_reason\": \"string\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 8602,\n    \"completion_tokens\": 6952,\n    \"total_tokens\": 8758\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "61c9660a-c60f-42d6-8ff1-2bbc03968fde",
+              "id": "5f554fa3-4231-4dda-905f-130f609d301a",
               "name": "Invalid request (e.g. image too large or unsupported format).",
               "originalRequest": {
                 "url": {
@@ -155,7 +155,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "19a70abb-dc28-49cd-861a-ae630162ac31",
+              "id": "90b50262-b859-4d27-86e0-ebeb12e80796",
               "name": "Missing or invalid API key.",
               "originalRequest": {
                 "url": {
@@ -204,7 +204,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "d93549b4-43e0-405e-8ccf-aa40a20d1142",
+              "id": "c9b1e33d-17b2-4bf3-bafb-01b7eab7d11e",
               "name": "Payload too large.",
               "originalRequest": {
                 "url": {
@@ -280,11 +280,11 @@
     ]
   },
   "info": {
-    "_postman_id": "3e8db7bd-fe6e-436e-b117-96a651075a88",
-    "name": "NVIDIA NIM Vision Language Models API",
+    "_postman_id": "468e82d5-fe96-46be-925e-80088419c416",
+    "name": "NVIDIA NIM Biology (BioNeMo) ASR Vision API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Vision-language model inference through the standard /v1/chat/completions surface. Image inputs are passed as `image_url` content parts inside the messages array — either HTTPS URLs or base64 data URIs. Supports NVIDIA NeVA, microsoft/kosmos-2, phi-3-vision, llama-3.2-90b-vision-instruct, and other VLMs in the NIM catalog.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+      "content": "NVIDIA BioNeMo NIMs for drug discovery and structural biology. Each model is a containerized microservice with its own task-specific payload but a consistent JSON contract. Includes protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock).\n\n\nContact Support:\n Name: NVIDIA Developer Support",
       "type": "text/plain"
     }
   }

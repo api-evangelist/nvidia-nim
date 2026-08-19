@@ -1,26 +1,27 @@
 {
   "item": [
     {
-      "id": "cd460c5c-3b06-4db5-b7c8-e63bfcb1e60d",
-      "name": "Reranking",
+      "id": "57c05803-b8b9-4b3e-908d-33ea563f64c8",
+      "name": "TTS",
       "description": {
-        "content": "Cross-encoder reranking operations",
+        "content": "Text-to-speech synthesis",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "a85a174c-9344-493f-9e0c-1c932b6dc36c",
-          "name": "Rank Candidate Passages",
+          "id": "74022984-203e-4cf2-aa4b-31fb8386aa34",
+          "name": "Synthesize Speech",
           "request": {
-            "name": "Rank Candidate Passages",
+            "name": "Synthesize Speech",
             "description": {
-              "content": "Score candidate passages against a query using a NeMo Retriever reranker.",
+              "content": "Generate WAV/MP3 audio from text using a Riva TTS NIM (e.g. Magpie-TTS, FastPitch).",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "v1",
-                "ranking"
+                "audio",
+                "speech"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -35,14 +36,14 @@
               },
               {
                 "key": "Accept",
-                "value": "application/json"
+                "value": "audio/mpeg"
               }
             ],
             "method": "POST",
             "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"model\": \"<string>\",\n  \"query\": {\n    \"text\": \"<string>\"\n  },\n  \"passages\": [\n    {\n      \"text\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\"\n    }\n  ],\n  \"truncate\": \"END\"\n}",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"voice\": \"<string>\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -52,13 +53,14 @@
           },
           "response": [
             {
-              "id": "d978ba33-e45c-4a6f-8f8d-20f1110689a0",
-              "name": "Ranked passages with relevance scores.",
+              "id": "ffac42fa-8c76-4d9a-8535-9704ce5af0cb",
+              "name": "Synthesized audio bytes.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v1",
-                    "ranking"
+                    "audio",
+                    "speech"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -77,13 +79,13 @@
                   },
                   {
                     "key": "Accept",
-                    "value": "application/json"
+                    "value": "audio/mpeg"
                   }
                 ],
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"model\": \"<string>\",\n  \"query\": {\n    \"text\": \"<string>\"\n  },\n  \"passages\": [\n    {\n      \"text\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\"\n    }\n  ],\n  \"truncate\": \"END\"\n}",
+                  "raw": "{\n  \"model\": \"nvidia/magpie-tts\",\n  \"input\": \"<string>\",\n  \"voice\": \"en-US.Female-1\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -96,21 +98,22 @@
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "application/json"
+                  "value": "audio/mpeg"
                 }
               ],
-              "body": "{\n  \"rankings\": [\n    {\n      \"index\": 8874,\n      \"logit\": 8392.862752495359\n    },\n    {\n      \"index\": 6814,\n      \"logit\": 8234.13465391973\n    }\n  ]\n}",
+              "body": "string",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "_postman_previewlanguage": "text"
             },
             {
-              "id": "cc55d1eb-daca-4eb9-acd4-18c66eda0272",
+              "id": "ca907bc4-4ee0-464d-9521-1552a94bd58a",
               "name": "Invalid request.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v1",
-                    "ranking"
+                    "audio",
+                    "speech"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -131,7 +134,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"model\": \"<string>\",\n  \"query\": {\n    \"text\": \"<string>\"\n  },\n  \"passages\": [\n    {\n      \"text\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\"\n    }\n  ],\n  \"truncate\": \"END\"\n}",
+                  "raw": "{\n  \"model\": \"nvidia/magpie-tts\",\n  \"input\": \"<string>\",\n  \"voice\": \"en-US.Female-1\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -152,13 +155,14 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "47c2d4ae-d189-4755-abb2-6f1b81835cf4",
+              "id": "ad887422-530f-4e6b-b0f4-d198cad5bb39",
               "name": "Missing or invalid API key.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v1",
-                    "ranking"
+                    "audio",
+                    "speech"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -179,7 +183,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"model\": \"<string>\",\n  \"query\": {\n    \"text\": \"<string>\"\n  },\n  \"passages\": [\n    {\n      \"text\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\"\n    }\n  ],\n  \"truncate\": \"END\"\n}",
+                  "raw": "{\n  \"model\": \"nvidia/magpie-tts\",\n  \"input\": \"<string>\",\n  \"voice\": \"en-US.Female-1\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -189,54 +193,6 @@
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "84c17279-286c-43cb-b2dc-afdde917e849",
-              "name": "Rate limit exceeded.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "ranking"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"model\": \"<string>\",\n  \"query\": {\n    \"text\": \"<string>\"\n  },\n  \"passages\": [\n    {\n      \"text\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\"\n    }\n  ],\n  \"truncate\": \"END\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
               "header": [
                 {
                   "key": "Content-Type",
@@ -275,8 +231,8 @@
     ]
   },
   "info": {
-    "_postman_id": "65738b94-3379-4451-a0a1-74b2101b4650",
-    "name": "NVIDIA NIM Biology (BioNeMo) ASR Reranking API",
+    "_postman_id": "98af2122-654b-42c6-8e0b-16f87797a3d4",
+    "name": "NVIDIA NIM Biology (BioNeMo) ASR TTS API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "NVIDIA BioNeMo NIMs for drug discovery and structural biology. Each model is a containerized microservice with its own task-specific payload but a consistent JSON contract. Includes protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock).\n\n\nContact Support:\n Name: NVIDIA Developer Support",

@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "34fb4474-99e7-4725-8bf5-9324f2466b00",
+      "id": "a4123989-4073-45c7-8b21-1e0c7bcb89a3",
       "name": "Models",
       "description": {
         "content": "Model discovery operations",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "4f484637-d496-4a49-994b-759d618b306c",
+          "id": "f3d805ea-89ab-4d44-85bf-5fa570ed7256",
           "name": "List Available Models",
           "request": {
             "name": "List Available Models",
@@ -39,7 +39,7 @@
           },
           "response": [
             {
-              "id": "333520a9-8d4e-470b-8bce-4357cb37df02",
+              "id": "1e9f385a-fc49-418d-b298-054ebc7b3c35",
               "name": "Model list.",
               "originalRequest": {
                 "url": {
@@ -78,12 +78,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"object\": \"list\",\n  \"data\": [\n    {\n      \"id\": \"meta/llama-3.3-70b-instruct\",\n      \"object\": \"model\",\n      \"created\": 2910,\n      \"owned_by\": \"meta\",\n      \"root\": \"string\"\n    },\n    {\n      \"id\": \"meta/llama-3.3-70b-instruct\",\n      \"object\": \"model\",\n      \"created\": 9458,\n      \"owned_by\": \"meta\",\n      \"root\": \"string\"\n    }\n  ]\n}",
+              "body": "{\n  \"object\": \"list\",\n  \"data\": [\n    {\n      \"id\": \"meta/llama-3.3-70b-instruct\",\n      \"object\": \"model\",\n      \"created\": 7375,\n      \"owned_by\": \"meta\",\n      \"root\": \"string\"\n    },\n    {\n      \"id\": \"meta/llama-3.3-70b-instruct\",\n      \"object\": \"model\",\n      \"created\": 2473,\n      \"owned_by\": \"meta\",\n      \"root\": \"string\"\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "1bfd141d-3b6a-443d-bad1-444e898c5c9a",
+              "id": "b1d90973-2a36-430e-9d88-ee72bca8c699",
               "name": "Missing or invalid API key.",
               "originalRequest": {
                 "url": {
@@ -129,7 +129,7 @@
           }
         },
         {
-          "id": "3efc1da1-1da6-4410-9cfb-d0d78728e1b1",
+          "id": "ca1dc22b-78e7-4afb-b87e-723a653937e1",
           "name": "Retrieve A Model",
           "request": {
             "name": "Retrieve A Model",
@@ -168,7 +168,7 @@
           },
           "response": [
             {
-              "id": "7e97624b-85f3-4132-beda-d764c7213fe8",
+              "id": "19c0374f-1f27-4962-8ce9-e74f65629d32",
               "name": "Model object.",
               "originalRequest": {
                 "url": {
@@ -216,12 +216,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"meta/llama-3.3-70b-instruct\",\n  \"object\": \"model\",\n  \"created\": 5032,\n  \"owned_by\": \"meta\",\n  \"root\": \"string\"\n}",
+              "body": "{\n  \"id\": \"meta/llama-3.3-70b-instruct\",\n  \"object\": \"model\",\n  \"created\": 3508,\n  \"owned_by\": \"meta\",\n  \"root\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "9faa09c6-3328-482b-8c9b-07045d03bbb9",
+              "id": "ea77657a-7438-4b41-8279-2bda0960ba2f",
               "name": "Model not found.",
               "originalRequest": {
                 "url": {
@@ -297,11 +297,11 @@
     ]
   },
   "info": {
-    "_postman_id": "3a3dae3b-a129-4e42-ac8e-ece3b6f62a14",
-    "name": "NVIDIA NIM Models API",
+    "_postman_id": "15bec614-68aa-49bd-a9a2-74e394fb43c6",
+    "name": "NVIDIA NIM Biology (BioNeMo) ASR Models API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "OpenAI-compatible model catalog endpoint. Returns the list of models served by the NIM endpoint or self-hosted container — useful for discovering the exact `model` strings to pass to chat completions, completions, or embeddings.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+      "content": "NVIDIA BioNeMo NIMs for drug discovery and structural biology. Each model is a containerized microservice with its own task-specific payload but a consistent JSON contract. Includes protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock).\n\n\nContact Support:\n Name: NVIDIA Developer Support",
       "type": "text/plain"
     }
   }

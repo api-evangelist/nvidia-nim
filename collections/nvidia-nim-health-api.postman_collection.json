@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "37fda4ff-36de-4a22-aad7-bea578121a4a",
+      "id": "fc2c01cc-317c-4704-a13e-7232b2662e29",
       "name": "Health",
       "description": {
         "content": "Liveness, readiness, and metrics probes",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "a58f3aad-ee3d-403d-bd36-2684d52dae87",
+          "id": "218dfc8a-e3b0-4446-a73d-cf6ce04e097b",
           "name": "Liveness Probe",
           "request": {
             "name": "Liveness Probe",
@@ -40,7 +40,7 @@
           },
           "response": [
             {
-              "id": "7f1a88b8-3ae5-4916-b45f-5425ba11213f",
+              "id": "b28b1593-61be-4bf5-a7e8-16fb1105337f",
               "name": "Container is alive.",
               "originalRequest": {
                 "url": {
@@ -56,6 +56,14 @@
                   "variable": []
                 },
                 "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
@@ -77,7 +85,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "579de3d8-aac3-4fdd-9fb0-ad5cd7a79ea1",
+              "id": "8a4dc21c-03db-4d0e-b771-20ffae2e7ef3",
               "name": "Container is unhealthy and should be restarted.",
               "originalRequest": {
                 "url": {
@@ -92,6 +100,16 @@
                   "query": [],
                   "variable": []
                 },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
                 "method": "GET",
                 "body": {}
               },
@@ -114,7 +132,7 @@
           }
         },
         {
-          "id": "3169835f-367f-4a79-9939-089c6b1a4efe",
+          "id": "f4b5e638-ca33-46b7-b542-896c2fc7fd74",
           "name": "Readiness Probe",
           "request": {
             "name": "Readiness Probe",
@@ -145,7 +163,7 @@
           },
           "response": [
             {
-              "id": "bf20c2cb-d118-42d1-bdc1-577db8932eb8",
+              "id": "119b401b-3d12-460b-bce5-003c3eae4a3d",
               "name": "Ready to serve.",
               "originalRequest": {
                 "url": {
@@ -161,6 +179,14 @@
                   "variable": []
                 },
                 "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
@@ -182,7 +208,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "36c653ca-5e1e-43df-b5e0-1a3a0e1fa7e1",
+              "id": "55f8f482-30fe-4058-a9e9-7ad11289900a",
               "name": "Not ready yet (e.g. model still loading).",
               "originalRequest": {
                 "url": {
@@ -197,6 +223,16 @@
                   "query": [],
                   "variable": []
                 },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
                 "method": "GET",
                 "body": {}
               },
@@ -219,7 +255,7 @@
           }
         },
         {
-          "id": "caa76208-f58e-46d6-b244-0a8b5435c63c",
+          "id": "2be730c6-918e-4499-9e1a-1348fb741ab5",
           "name": "Prometheus Metrics",
           "request": {
             "name": "Prometheus Metrics",
@@ -249,7 +285,7 @@
           },
           "response": [
             {
-              "id": "d31ecdc0-5a51-4117-9d21-c590c49d9cff",
+              "id": "d33cd1d6-dc78-4066-9b98-db359847950d",
               "name": "Prometheus metrics payload.",
               "originalRequest": {
                 "url": {
@@ -264,6 +300,14 @@
                   "variable": []
                 },
                 "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
                   {
                     "key": "Accept",
                     "value": "text/plain"
@@ -298,16 +342,25 @@
   "variable": [
     {
       "type": "string",
-      "value": "http://localhost:8000",
+      "value": "https://integrate.api.nvidia.com",
       "key": "baseUrl"
     }
   ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
   "info": {
-    "_postman_id": "35745573-03a8-460b-8725-09e824be3967",
-    "name": "NVIDIA NIM Health API",
+    "_postman_id": "6aa9b162-bc61-464f-9b91-791a495473c5",
+    "name": "NVIDIA NIM Biology (BioNeMo) ASR Health API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Liveness, readiness, and metrics endpoints exposed by every self-hosted NIM container on port 8000. The NIM Operator uses these for Kubernetes probes; Prometheus scrapes /v1/metrics for GPU utilization, request latency, queue depth, and per-engine counters.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+      "content": "NVIDIA BioNeMo NIMs for drug discovery and structural biology. Each model is a containerized microservice with its own task-specific payload but a consistent JSON contract. Includes protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock).\n\n\nContact Support:\n Name: NVIDIA Developer Support",
       "type": "text/plain"
     }
   }

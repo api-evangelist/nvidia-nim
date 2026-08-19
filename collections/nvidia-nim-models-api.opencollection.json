@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "NVIDIA NIM Models API",
+    "name": "NVIDIA NIM Biology (BioNeMo) ASR Models API",
     "version": "2026-05-25"
   },
   "request": {

@@ -1,32 +1,49 @@
 {
   "item": [
     {
-      "id": "cd460c5c-3b06-4db5-b7c8-e63bfcb1e60d",
-      "name": "Reranking",
+      "id": "621845fc-76c2-4a3f-ae50-93c312182e8c",
+      "name": "Images",
       "description": {
-        "content": "Cross-encoder reranking operations",
+        "content": "Text-to-image and image-to-image generation",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "a85a174c-9344-493f-9e0c-1c932b6dc36c",
-          "name": "Rank Candidate Passages",
+          "id": "8d573706-bb5a-4d9f-b3b9-6568784ee2ee",
+          "name": "Generate An Image",
           "request": {
-            "name": "Rank Candidate Passages",
+            "name": "Generate An Image",
             "description": {
-              "content": "Score candidate passages against a query using a NeMo Retriever reranker.",
+              "content": "Generate or edit an image with a NIM-hosted visual generative model. The exact request schema varies by model family.",
               "type": "text/plain"
             },
             "url": {
               "path": [
                 "v1",
-                "ranking"
+                "genai",
+                ":publisher",
+                ":model"
               ],
               "host": [
                 "{{baseUrl}}"
               ],
               "query": [],
-              "variable": []
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "publisher",
+                  "description": "(Required) Model publisher (e.g. `black-forest-labs`, `stabilityai`, `shutterstock`, `nvidia`)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "model",
+                  "description": "(Required) Model slug (e.g. `flux.1-schnell`, `sdxl-turbo`, `edify-image`)."
+                }
+              ]
             },
             "header": [
               {
@@ -42,7 +59,7 @@
             "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"model\": \"<string>\",\n  \"query\": {\n    \"text\": \"<string>\"\n  },\n  \"passages\": [\n    {\n      \"text\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\"\n    }\n  ],\n  \"truncate\": \"END\"\n}",
+              "raw": "{\n  \"prompt\": \"<string>\",\n  \"negative_prompt\": \"<string>\",\n  \"cfg_scale\": 5,\n  \"sampler\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"steps\": 50,\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"mode\": \"text-to-image\",\n  \"image\": \"<string>\",\n  \"mask\": \"<string>\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -52,19 +69,36 @@
           },
           "response": [
             {
-              "id": "d978ba33-e45c-4a6f-8f8d-20f1110689a0",
-              "name": "Ranked passages with relevance scores.",
+              "id": "3f07325e-374f-47b7-95eb-a544fe0c8563",
+              "name": "Generated image artifacts.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v1",
-                    "ranking"
+                    "genai",
+                    ":publisher",
+                    ":model"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publisher",
+                      "description": "(Required) Model publisher (e.g. `black-forest-labs`, `stabilityai`, `shutterstock`, `nvidia`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model",
+                      "description": "(Required) Model slug (e.g. `flux.1-schnell`, `sdxl-turbo`, `edify-image`)."
+                    }
+                  ]
                 },
                 "header": [
                   {
@@ -83,7 +117,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"model\": \"<string>\",\n  \"query\": {\n    \"text\": \"<string>\"\n  },\n  \"passages\": [\n    {\n      \"text\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\"\n    }\n  ],\n  \"truncate\": \"END\"\n}",
+                  "raw": "{\n  \"prompt\": \"<string>\",\n  \"negative_prompt\": \"<string>\",\n  \"cfg_scale\": 5,\n  \"sampler\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"steps\": 50,\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"mode\": \"text-to-image\",\n  \"image\": \"<string>\",\n  \"mask\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -99,24 +133,41 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"rankings\": [\n    {\n      \"index\": 8874,\n      \"logit\": 8392.862752495359\n    },\n    {\n      \"index\": 6814,\n      \"logit\": 8234.13465391973\n    }\n  ]\n}",
+              "body": "{\n  \"artifacts\": [\n    {\n      \"base64\": \"string\",\n      \"finishReason\": \"string\",\n      \"seed\": 8291\n    },\n    {\n      \"base64\": \"string\",\n      \"finishReason\": \"string\",\n      \"seed\": 1368\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "cc55d1eb-daca-4eb9-acd4-18c66eda0272",
+              "id": "824bc27f-a4e5-464f-b329-5ec184f37e82",
               "name": "Invalid request.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v1",
-                    "ranking"
+                    "genai",
+                    ":publisher",
+                    ":model"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publisher",
+                      "description": "(Required) Model publisher (e.g. `black-forest-labs`, `stabilityai`, `shutterstock`, `nvidia`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model",
+                      "description": "(Required) Model slug (e.g. `flux.1-schnell`, `sdxl-turbo`, `edify-image`)."
+                    }
+                  ]
                 },
                 "header": [
                   {
@@ -131,7 +182,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"model\": \"<string>\",\n  \"query\": {\n    \"text\": \"<string>\"\n  },\n  \"passages\": [\n    {\n      \"text\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\"\n    }\n  ],\n  \"truncate\": \"END\"\n}",
+                  "raw": "{\n  \"prompt\": \"<string>\",\n  \"negative_prompt\": \"<string>\",\n  \"cfg_scale\": 5,\n  \"sampler\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"steps\": 50,\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"mode\": \"text-to-image\",\n  \"image\": \"<string>\",\n  \"mask\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -152,19 +203,36 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "47c2d4ae-d189-4755-abb2-6f1b81835cf4",
+              "id": "f135d988-62ab-4ab7-a5cc-392cad61d1f2",
               "name": "Missing or invalid API key.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v1",
-                    "ranking"
+                    "genai",
+                    ":publisher",
+                    ":model"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publisher",
+                      "description": "(Required) Model publisher (e.g. `black-forest-labs`, `stabilityai`, `shutterstock`, `nvidia`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model",
+                      "description": "(Required) Model slug (e.g. `flux.1-schnell`, `sdxl-turbo`, `edify-image`)."
+                    }
+                  ]
                 },
                 "header": [
                   {
@@ -179,7 +247,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"model\": \"<string>\",\n  \"query\": {\n    \"text\": \"<string>\"\n  },\n  \"passages\": [\n    {\n      \"text\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\"\n    }\n  ],\n  \"truncate\": \"END\"\n}",
+                  "raw": "{\n  \"prompt\": \"<string>\",\n  \"negative_prompt\": \"<string>\",\n  \"cfg_scale\": 5,\n  \"sampler\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"steps\": 50,\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"mode\": \"text-to-image\",\n  \"image\": \"<string>\",\n  \"mask\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -200,19 +268,36 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "84c17279-286c-43cb-b2dc-afdde917e849",
+              "id": "40949541-e8e0-4fbd-9937-98590ffc947a",
               "name": "Rate limit exceeded.",
               "originalRequest": {
                 "url": {
                   "path": [
                     "v1",
-                    "ranking"
+                    "genai",
+                    ":publisher",
+                    ":model"
                   ],
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "query": [],
-                  "variable": []
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "publisher",
+                      "description": "(Required) Model publisher (e.g. `black-forest-labs`, `stabilityai`, `shutterstock`, `nvidia`)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "model",
+                      "description": "(Required) Model slug (e.g. `flux.1-schnell`, `sdxl-turbo`, `edify-image`)."
+                    }
+                  ]
                 },
                 "header": [
                   {
@@ -227,7 +312,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"model\": \"<string>\",\n  \"query\": {\n    \"text\": \"<string>\"\n  },\n  \"passages\": [\n    {\n      \"text\": \"<string>\"\n    },\n    {\n      \"text\": \"<string>\"\n    }\n  ],\n  \"truncate\": \"END\"\n}",
+                  "raw": "{\n  \"prompt\": \"<string>\",\n  \"negative_prompt\": \"<string>\",\n  \"cfg_scale\": 5,\n  \"sampler\": \"<string>\",\n  \"seed\": \"<integer>\",\n  \"steps\": 50,\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"mode\": \"text-to-image\",\n  \"image\": \"<string>\",\n  \"mask\": \"<string>\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -275,8 +360,8 @@
     ]
   },
   "info": {
-    "_postman_id": "65738b94-3379-4451-a0a1-74b2101b4650",
-    "name": "NVIDIA NIM Biology (BioNeMo) ASR Reranking API",
+    "_postman_id": "97e35897-56c7-4e81-ad7e-45f41f41105b",
+    "name": "NVIDIA NIM Biology (BioNeMo) ASR Images API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "NVIDIA BioNeMo NIMs for drug discovery and structural biology. Each model is a containerized microservice with its own task-specific payload but a consistent JSON contract. Includes protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock).\n\n\nContact Support:\n Name: NVIDIA Developer Support",

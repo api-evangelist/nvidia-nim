@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "ac86eabe-dec1-47d9-9815-bdf24d063887",
+      "id": "a5b04c77-e243-455e-bcdb-34601a473ded",
       "name": "Biology",
       "description": {
         "content": "Protein, molecule, and structural-biology operations",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "cea401f4-25ef-47e8-9247-f102bb94f876",
+          "id": "2bdeea3b-3125-41de-8774-09317bdeec21",
           "name": "Predict Protein Structure",
           "request": {
             "name": "Predict Protein Structure",
@@ -55,7 +55,7 @@
           },
           "response": [
             {
-              "id": "525c78b1-4891-4dc0-b954-816b82830b86",
+              "id": "d1cf1b3f-093f-4600-8659-b50412e1d5cd",
               "name": "Predicted structure.",
               "originalRequest": {
                 "url": {
@@ -110,7 +110,7 @@
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "f248ef3e-4ce7-419d-a6ee-613f3580b244",
+              "id": "578a7727-5bd1-4f1f-bc25-631e26e0753f",
               "name": "Invalid sequence.",
               "originalRequest": {
                 "url": {
@@ -161,7 +161,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "ec81538f-eb23-4013-bf93-376b4bc9863e",
+              "id": "7814b19c-1d27-43af-b871-9acd79acc31b",
               "name": "Missing or invalid API key.",
               "originalRequest": {
                 "url": {
@@ -218,7 +218,7 @@
           }
         },
         {
-          "id": "26b6eb64-50df-4f90-8747-e9e18c5f15af",
+          "id": "cdf44fab-4030-41ca-b216-b51be08d9910",
           "name": "Dock Ligand To Protein",
           "request": {
             "name": "Dock Ligand To Protein",
@@ -263,7 +263,7 @@
           },
           "response": [
             {
-              "id": "0af6a4b2-986e-4153-9f96-a5eb01a7effb",
+              "id": "d387924b-89f9-4b89-a896-b9196f4ddd52",
               "name": "Predicted binding poses.",
               "originalRequest": {
                 "url": {
@@ -312,12 +312,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"ligand_positions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"position_confidence\": [\n    5844.069590286193,\n    5378.860193788107\n  ]\n}",
+              "body": "{\n  \"ligand_positions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"position_confidence\": [\n    7084.292956359224,\n    1206.7984016513278\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "cf6dfb56-d3ce-4373-967a-78e58734eb12",
+              "id": "af046ab1-5b03-4b11-955c-c01514202d26",
               "name": "Invalid input.",
               "originalRequest": {
                 "url": {
@@ -373,7 +373,7 @@
           }
         },
         {
-          "id": "d93a77ba-52a1-4947-b902-0ec8032ce26f",
+          "id": "3690a859-09f4-4a9e-bec4-e21bac78fd90",
           "name": "Generate Small Molecules",
           "request": {
             "name": "Generate Small Molecules",
@@ -419,7 +419,7 @@
           },
           "response": [
             {
-              "id": "c05ca4f3-5e32-4629-a290-2a5871fe6c53",
+              "id": "78fc8572-3ec6-44ef-b52e-a77996c1080d",
               "name": "Generated molecules.",
               "originalRequest": {
                 "url": {
@@ -469,7 +469,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"generated\": [\n    {\n      \"sample\": \"string\",\n      \"score\": 926.0020489266863\n    },\n    {\n      \"sample\": \"string\",\n      \"score\": 9374.564430080836\n    }\n  ]\n}",
+              "body": "{\n  \"generated\": [\n    {\n      \"sample\": \"string\",\n      \"score\": 2838.829282894136\n    },\n    {\n      \"sample\": \"string\",\n      \"score\": 6601.177721769608\n    }\n  ]\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -501,8 +501,8 @@
     ]
   },
   "info": {
-    "_postman_id": "edb6c759-c583-463a-a0fb-9a77933838b0",
-    "name": "NVIDIA NIM Biology (BioNeMo) API",
+    "_postman_id": "72b57a05-233c-4251-a407-c7833eb2bbfa",
+    "name": "NVIDIA NIM (BioNeMo) ASR Biology API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "NVIDIA BioNeMo NIMs for drug discovery and structural biology. Each model is a containerized microservice with its own task-specific payload but a consistent JSON contract. Includes protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock).\n\n\nContact Support:\n Name: NVIDIA Developer Support",

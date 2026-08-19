@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "NVIDIA NIM Biology (BioNeMo) ASR Embeddings API",
+    "name": "NVIDIA NIM Biology (BioNeMo) ASR Chat API",
     "version": "2026-05-25"
   },
   "request": {
@@ -13,24 +13,24 @@
   "items": [
     {
       "info": {
-        "name": "Embeddings",
+        "name": "Chat",
         "type": "folder"
       },
       "items": [
         {
           "info": {
-            "name": "Create An Embedding",
+            "name": "Create A Chat Completion",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://integrate.api.nvidia.com/v1/embeddings",
+            "url": "https://integrate.api.nvidia.com/v1/chat/completions",
             "body": {
               "type": "json",
               "data": "{}"
             }
           },
-          "docs": "Generate embedding vectors for one or more input strings using a NeMo Retriever embedding model."
+          "docs": "Generate a chat completion for the supplied messages. Compatible with the OpenAI chat completions schema; supports streaming via Server-Sent Events when `stream: true` is set, tool/function calling, JSON-mode structured outputs, and (on VLM models) image inputs inside the messages array.\n"
         }
       ]
     }

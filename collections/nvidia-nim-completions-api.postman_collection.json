@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "8e40bb2c-3144-4c3e-b35c-75cbda68e8f1",
+      "id": "40a07ebc-4f30-4110-8d6f-140582f4d5fb",
       "name": "Completions",
       "description": {
         "content": "Legacy text completion operations",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "d8d462de-b145-4909-99aa-3678289b5ab7",
+          "id": "c7ffdb7f-60b6-4819-a5f3-99c5e574ab38",
           "name": "Create A Text Completion",
           "request": {
             "name": "Create A Text Completion",
@@ -52,7 +52,7 @@
           },
           "response": [
             {
-              "id": "9b4f1170-c73e-4326-b83b-ef011c0f0ee9",
+              "id": "4f98aee0-7ff0-491c-9150-29a1095ec271",
               "name": "Completion response (or SSE stream when stream=true).",
               "originalRequest": {
                 "url": {
@@ -99,12 +99,12 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"object\": \"text_completion\",\n  \"created\": 582,\n  \"model\": \"string\",\n  \"choices\": [\n    {\n      \"text\": \"string\",\n      \"index\": 2390,\n      \"finish_reason\": \"string\"\n    },\n    {\n      \"text\": \"string\",\n      \"index\": 3546,\n      \"finish_reason\": \"string\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 2509,\n    \"completion_tokens\": 3917,\n    \"total_tokens\": 6067\n  }\n}",
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"text_completion\",\n  \"created\": 4781,\n  \"model\": \"string\",\n  \"choices\": [\n    {\n      \"text\": \"string\",\n      \"index\": 3423,\n      \"finish_reason\": \"string\"\n    },\n    {\n      \"text\": \"string\",\n      \"index\": 1633,\n      \"finish_reason\": \"string\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 1838,\n    \"completion_tokens\": 4647,\n    \"total_tokens\": 7433\n  }\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             },
             {
-              "id": "3d03c11d-98df-4085-98e8-e511d3d4c097",
+              "id": "c1036a67-0040-4d98-ba2a-7036eaf6c59a",
               "name": "Invalid request.",
               "originalRequest": {
                 "url": {
@@ -152,7 +152,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "c8cb4b72-a44f-41db-8453-327e03dc4b4b",
+              "id": "ce32de2c-45a5-4a83-976a-53187bbae9ae",
               "name": "Missing or invalid API key.",
               "originalRequest": {
                 "url": {
@@ -200,7 +200,7 @@
               "_postman_previewlanguage": "text"
             },
             {
-              "id": "ff35c5a9-eb8f-4cb7-aacb-f9c1fd15ccb2",
+              "id": "994c7118-3022-483f-9339-8197c5c7984b",
               "name": "Rate limit exceeded.",
               "originalRequest": {
                 "url": {
@@ -275,11 +275,11 @@
     ]
   },
   "info": {
-    "_postman_id": "2b50026c-ed3c-4dbe-b884-f2847b1f8f83",
-    "name": "NVIDIA NIM Completions API",
+    "_postman_id": "8c4697d5-0b84-417e-8a7f-f9c3eddf9fd8",
+    "name": "NVIDIA NIM Biology (BioNeMo) ASR Completions API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Legacy OpenAI-compatible text completion endpoint. Accepts a raw prompt (instead of a structured messages array) and returns generated text. Same streaming, stop, and sampling controls as the chat endpoint.\n\n\nContact Support:\n Name: NVIDIA Developer Support",
+      "content": "NVIDIA BioNeMo NIMs for drug discovery and structural biology. Each model is a containerized microservice with its own task-specific payload but a consistent JSON contract. Includes protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock).\n\n\nContact Support:\n Name: NVIDIA Developer Support",
       "type": "text/plain"
     }
   }
