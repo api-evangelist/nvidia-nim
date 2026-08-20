@@ -4,6 +4,11 @@ apis:
 - aid: nvidia-nim:nvidia-nim-completions-api
   name: NVIDIA NIM Completions API
   tags:
+  - Artificial Intelligence
+  - Completions
+  - LLM
+  - OpenAI-Compatible
+  tags_raw:
   - AI
   - Artificial Intelligence
   - Completions
@@ -23,6 +28,12 @@ apis:
 - aid: nvidia-nim:nvidia-nim-embeddings-api
   name: NVIDIA NIM Embeddings API
   tags:
+  - Artificial Intelligence
+  - Embeddings
+  - Retrieval
+  - RAG
+  - OpenAI-Compatible
+  tags_raw:
   - AI
   - Artificial Intelligence
   - Embeddings
@@ -46,6 +57,11 @@ apis:
 - aid: nvidia-nim:nvidia-nim-reranking-api
   name: NVIDIA NIM Reranking API
   tags:
+  - Artificial Intelligence
+  - Reranking
+  - Retrieval
+  - RAG
+  tags_raw:
   - AI
   - Artificial Intelligence
   - Reranking
@@ -66,6 +82,11 @@ apis:
 - aid: nvidia-nim:nvidia-nim-models-api
   name: NVIDIA NIM Models API
   tags:
+  - Artificial Intelligence
+  - Models
+  - Catalog
+  - OpenAI-Compatible
+  tags_raw:
   - AI
   - Artificial Intelligence
   - Models
@@ -85,6 +106,11 @@ apis:
 - aid: nvidia-nim:nvidia-nim-vision-api
   name: NVIDIA NIM Vision Language Models API
   tags:
+  - Artificial Intelligence
+  - Vision
+  - Multi-Modal
+  - VLM
+  tags_raw:
   - AI
   - Artificial Intelligence
   - Vision
@@ -120,6 +146,12 @@ apis:
 - aid: nvidia-nim:nvidia-nim-biology-api
   name: NVIDIA NIM Biology (BioNeMo) API
   tags:
+  - Artificial Intelligence
+  - Biology
+  - BioNeMo
+  - Drug Discovery
+  - Healthcare
+  tags_raw:
   - AI
   - Biology
   - BioNeMo
@@ -186,6 +218,8 @@ apis:
   humanURL: https://docs.api.nvidia.com/nim/reference/llm-apis
   baseURL: https://integrate.api.nvidia.com/v1
   tags:
+  - Image
+  tags_raw:
   - Images
   properties:
   - type: OpenAPI
@@ -226,6 +260,16 @@ apis:
     url: https://docs.nvidia.com/nim/riva/latest/index.html
 name: NVIDIA NIM
 tags:
+  - Artificial Intelligence
+  - Inference
+  - Microservices
+  - LLM
+  - Foundation Models
+  - GPU
+  - Kubernetes
+  - NVIDIA
+  - OpenAI-Compatible
+tags_raw:
   - AI
   - Artificial Intelligence
   - Inference
