@@ -13,11 +13,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
+- name: chatApi
+  url: ../openapi/nvidia-nim-chat-api-openapi.yml
+  type: openapi
 - name: modelsApi
   url: ../openapi/nvidia-nim-models-api-openapi.yml
-  type: openapi
-- name: chatCompletionsApi
-  url: ../openapi/nvidia-nim-chat-completions-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: discover-and-chat

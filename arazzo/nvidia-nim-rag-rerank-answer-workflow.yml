@@ -13,14 +13,14 @@ info:
     executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
+- name: chatApi
+  url: ../openapi/nvidia-nim-chat-api-openapi.yml
+  type: openapi
 - name: embeddingsApi
   url: ../openapi/nvidia-nim-embeddings-api-openapi.yml
   type: openapi
 - name: rerankingApi
   url: ../openapi/nvidia-nim-reranking-api-openapi.yml
-  type: openapi
-- name: chatCompletionsApi
-  url: ../openapi/nvidia-nim-chat-completions-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: rag-rerank-answer

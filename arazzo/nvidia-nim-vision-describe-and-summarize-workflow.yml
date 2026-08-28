@@ -13,11 +13,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
+- name: chatApi
+  url: ../openapi/nvidia-nim-chat-api-openapi.yml
+  type: openapi
 - name: visionApi
   url: ../openapi/nvidia-nim-vision-api-openapi.yml
-  type: openapi
-- name: chatCompletionsApi
-  url: ../openapi/nvidia-nim-chat-completions-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: vision-describe-and-summarize

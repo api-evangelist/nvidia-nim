@@ -12,11 +12,14 @@ info:
     executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: speechApi
-  url: ../openapi/nvidia-nim-speech-api-openapi.yml
+- name: asrApi
+  url: ../openapi/nvidia-nim-asr-api-openapi.yml
   type: openapi
-- name: chatCompletionsApi
-  url: ../openapi/nvidia-nim-chat-completions-api-openapi.yml
+- name: chatApi
+  url: ../openapi/nvidia-nim-chat-api-openapi.yml
+  type: openapi
+- name: ttsApi
+  url: ../openapi/nvidia-nim-tts-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: voice-assistant-loop

@@ -13,8 +13,8 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: imageGenerationApi
-  url: ../openapi/nvidia-nim-image-generation-api-openapi.yml
+- name: imagesApi
+  url: ../openapi/nvidia-nim-images-api-openapi.yml
   type: openapi
 - name: visionApi
   url: ../openapi/nvidia-nim-vision-api-openapi.yml

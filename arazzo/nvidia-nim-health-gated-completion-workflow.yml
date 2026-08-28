@@ -12,14 +12,14 @@ info:
     executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
+- name: completionsApi
+  url: ../openapi/nvidia-nim-completions-api-openapi.yml
+  type: openapi
 - name: healthApi
   url: ../openapi/nvidia-nim-health-api-openapi.yml
   type: openapi
 - name: modelsApi
   url: ../openapi/nvidia-nim-models-api-openapi.yml
-  type: openapi
-- name: completionsApi
-  url: ../openapi/nvidia-nim-completions-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: health-gated-completion
