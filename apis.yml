@@ -103,30 +103,6 @@ apis:
     OpenAI-compatible model catalog endpoint (/v1/models) returning the list of models served by the NIM
     endpoint or container. Each entry includes id, owned_by, and created timestamp. Used by clients to
     discover the model name strings to pass to chat-completions / completions / embeddings.
-- aid: nvidia-nim:nvidia-nim-vision-api
-  name: NVIDIA NIM Vision Language Models API
-  tags:
-  - Artificial Intelligence
-  - Vision
-  - Multi-Modal
-  - VLM
-  tags_raw:
-  - AI
-  - Artificial Intelligence
-  - Vision
-  - Multimodal
-  - VLM
-  humanURL: https://docs.api.nvidia.com/nim/reference/vlm-apis
-  baseURL: https://integrate.api.nvidia.com/v1
-  properties:
-  - url: https://docs.api.nvidia.com/nim/reference/vlm-apis
-    type: Documentation
-  - url: openapi/nvidia-nim-vision-api-openapi.yml
-    type: OpenAPI
-  description: >-
-    Vision-language model inference through the standard /v1/chat/completions surface with image inputs
-    (base64 or URL) in the messages payload. Supports NVIDIA NeVA, microsoft/kosmos-2, Phi-3-vision, llama-3.2-90b-vision-instruct,
-    and other VLMs hosted in the NIM catalog.
 - aid: nvidia-nim:nvidia-nim-health-api
   name: NVIDIA NIM Health API
   tags:
