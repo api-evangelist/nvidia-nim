@@ -1,34 +1,49 @@
 {
   "provider": "nvidia-nim",
   "sources": [
-    "nvidia-nim-asr-api-openapi.yml",
+    "_original/nvidia-nim-chat-completions-api-openapi.yml",
+    "_original/nvidia-nim-image-generation-api-openapi.yml",
+    "_original/nvidia-nim-speech-api-openapi.yml",
     "nvidia-nim-biology-api-openapi.yml",
-    "nvidia-nim-chat-api-openapi.yml",
     "nvidia-nim-completions-api-openapi.yml",
     "nvidia-nim-embeddings-api-openapi.yml",
     "nvidia-nim-health-api-openapi.yml",
-    "nvidia-nim-images-api-openapi.yml",
     "nvidia-nim-models-api-openapi.yml",
-    "nvidia-nim-reranking-api-openapi.yml",
-    "nvidia-nim-tts-api-openapi.yml",
-    "nvidia-nim-vision-api-openapi.yml"
+    "nvidia-nim-reranking-api-openapi.yml"
   ],
   "outputs": [
-    "nvidia-nim-asr-api-openapi.yml",
-    "nvidia-nim-biology-api-openapi.yml",
     "nvidia-nim-chat-api-openapi.yml",
+    "nvidia-nim-images-api-openapi.yml",
+    "nvidia-nim-asr-api-openapi.yml",
+    "nvidia-nim-tts-api-openapi.yml",
+    "nvidia-nim-biology-api-openapi.yml",
     "nvidia-nim-completions-api-openapi.yml",
     "nvidia-nim-embeddings-api-openapi.yml",
     "nvidia-nim-health-api-openapi.yml",
-    "nvidia-nim-images-api-openapi.yml",
     "nvidia-nim-models-api-openapi.yml",
-    "nvidia-nim-reranking-api-openapi.yml",
-    "nvidia-nim-tts-api-openapi.yml",
-    "nvidia-nim-vision-api-openapi.yml"
+    "nvidia-nim-reranking-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
-  "notes": [],
-  "skipped": []
+  "warnings": [
+    "nvidia-nim-biology-api-openapi.yml: previously refined output kept for 3 operation(s) no archived document covers (e.g. /v1/biology/mit/diffdock post, /v1/biology/nvidia/alphafold2/predict-structure-from-sequence post, /v1/biology/nvidia/molmim/generate post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "nvidia-nim-completions-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v1/completions post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "nvidia-nim-embeddings-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v1/embeddings post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "nvidia-nim-health-api-openapi.yml: previously refined output kept for 3 operation(s) no archived document covers (e.g. /v1/health/live get, /v1/health/ready get, /v1/metrics get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "nvidia-nim-models-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /v1/models get, /v1/models/{model_id} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "nvidia-nim-reranking-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v1/ranking post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "nvidia-nim-chat-completions-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "nvidia-nim-image-generation-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "nvidia-nim-speech-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "nvidia-nim-asr-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nvidia-nim-chat-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nvidia-nim-images-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nvidia-nim-tts-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

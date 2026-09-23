@@ -1,9 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: NVIDIA NIM Biology (BioNeMo) ASR Images API
-  description: 'NVIDIA BioNeMo NIMs for drug discovery and structural biology. Each model is a containerized microservice with its own task-specific payload but a consistent JSON contract. Includes protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock).
-
-    '
+  title: NVIDIA NIM Image Generation Images API
+  description: Visual generative AI endpoints. Text-to-image, image-to-image, and image editing using models such as Black Forest Labs FLUX.1, Stable Diffusion XL, Shutterstock-trained Edify Image, and NVIDIA Edify 3D — exposed by per-model NIM containers with a uniform JSON contract that returns base64-encoded PNG or JPEG artifacts.
   version: '2026-05-25'
   contact:
     name: NVIDIA Developer Support
@@ -63,21 +61,6 @@ paths:
           description: Rate limit exceeded.
 components:
   schemas:
-    ImageGenerationResponse:
-      type: object
-      properties:
-        artifacts:
-          type: array
-          items:
-            type: object
-            properties:
-              base64:
-                type: string
-                description: Base64-encoded image bytes (PNG or JPEG).
-              finishReason:
-                type: string
-              seed:
-                type: integer
     ImageGenerationRequest:
       type: object
       required:
@@ -114,6 +97,21 @@ components:
         mask:
           type: string
           description: Optional base64-encoded inpainting mask.
+    ImageGenerationResponse:
+      type: object
+      properties:
+        artifacts:
+          type: array
+          items:
+            type: object
+            properties:
+              base64:
+                type: string
+                description: Base64-encoded image bytes (PNG or JPEG).
+              finishReason:
+                type: string
+              seed:
+                type: integer
   securitySchemes:
     BearerAuth:
       type: http
