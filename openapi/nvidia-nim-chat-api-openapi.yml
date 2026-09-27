@@ -58,32 +58,27 @@ paths:
           description: Upstream inference error.
 components:
   schemas:
-    ChatMessage:
+    Tool:
       type: object
       required:
-      - role
+      - type
+      - function
       properties:
-        role:
+        type:
           type: string
           enum:
-          - system
-          - user
-          - assistant
-          - tool
-        content:
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              $ref: '#/components/schemas/ContentPart'
-        name:
-          type: string
-        tool_calls:
-          type: array
-          items:
-            $ref: '#/components/schemas/ToolCall'
-        tool_call_id:
-          type: string
+          - function
+        function:
+          type: object
+          required:
+          - name
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+            parameters:
+              type: object
     ToolCall:
       type: object
       properties:
@@ -100,24 +95,6 @@ components:
               type: string
             arguments:
               type: string
-    ContentPart:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - text
-          - image_url
-        text:
-          type: string
-        image_url:
-          type: object
-          properties:
-            url:
-              type: string
-              description: HTTPS URL or `data:image/...;base64,...` payload.
     ChatCompletionResponse:
       type: object
       properties:
@@ -155,6 +132,24 @@ components:
               type: integer
             total_tokens:
               type: integer
+    ContentPart:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+          - image_url
+        text:
+          type: string
+        image_url:
+          type: object
+          properties:
+            url:
+              type: string
+              description: HTTPS URL or `data:image/...;base64,...` payload.
     ChatCompletionRequest:
       type: object
       required:
@@ -224,27 +219,32 @@ components:
           type: number
         presence_penalty:
           type: number
-    Tool:
+    ChatMessage:
       type: object
       required:
-      - type
-      - function
+      - role
       properties:
-        type:
+        role:
           type: string
           enum:
-          - function
-        function:
-          type: object
-          required:
-          - name
-          properties:
-            name:
-              type: string
-            description:
-              type: string
-            parameters:
-              type: object
+          - system
+          - user
+          - assistant
+          - tool
+        content:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              $ref: '#/components/schemas/ContentPart'
+        name:
+          type: string
+        tool_calls:
+          type: array
+          items:
+            $ref: '#/components/schemas/ToolCall'
+        tool_call_id:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http
