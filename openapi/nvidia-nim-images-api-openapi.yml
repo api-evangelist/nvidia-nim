@@ -61,6 +61,21 @@ paths:
           description: Rate limit exceeded.
 components:
   schemas:
+    ImageGenerationResponse:
+      type: object
+      properties:
+        artifacts:
+          type: array
+          items:
+            type: object
+            properties:
+              base64:
+                type: string
+                description: Base64-encoded image bytes (PNG or JPEG).
+              finishReason:
+                type: string
+              seed:
+                type: integer
     ImageGenerationRequest:
       type: object
       required:
@@ -97,21 +112,6 @@ components:
         mask:
           type: string
           description: Optional base64-encoded inpainting mask.
-    ImageGenerationResponse:
-      type: object
-      properties:
-        artifacts:
-          type: array
-          items:
-            type: object
-            properties:
-              base64:
-                type: string
-                description: Base64-encoded image bytes (PNG or JPEG).
-              finishReason:
-                type: string
-              seed:
-                type: integer
   securitySchemes:
     BearerAuth:
       type: http

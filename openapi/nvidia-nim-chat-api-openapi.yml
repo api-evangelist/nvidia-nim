@@ -79,6 +79,32 @@ components:
               type: string
             parameters:
               type: object
+    ChatMessage:
+      type: object
+      required:
+      - role
+      properties:
+        role:
+          type: string
+          enum:
+          - system
+          - user
+          - assistant
+          - tool
+        content:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              $ref: '#/components/schemas/ContentPart'
+        name:
+          type: string
+        tool_calls:
+          type: array
+          items:
+            $ref: '#/components/schemas/ToolCall'
+        tool_call_id:
+          type: string
     ToolCall:
       type: object
       properties:
@@ -95,61 +121,6 @@ components:
               type: string
             arguments:
               type: string
-    ChatCompletionResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-          example: chat.completion
-        created:
-          type: integer
-        model:
-          type: string
-        choices:
-          type: array
-          items:
-            type: object
-            properties:
-              index:
-                type: integer
-              message:
-                $ref: '#/components/schemas/ChatMessage'
-              finish_reason:
-                type: string
-                enum:
-                - stop
-                - length
-                - tool_calls
-                - content_filter
-        usage:
-          type: object
-          properties:
-            prompt_tokens:
-              type: integer
-            completion_tokens:
-              type: integer
-            total_tokens:
-              type: integer
-    ContentPart:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - text
-          - image_url
-        text:
-          type: string
-        image_url:
-          type: object
-          properties:
-            url:
-              type: string
-              description: HTTPS URL or `data:image/...;base64,...` payload.
     ChatCompletionRequest:
       type: object
       required:
@@ -219,32 +190,61 @@ components:
           type: number
         presence_penalty:
           type: number
-    ChatMessage:
+    ContentPart:
       type: object
       required:
-      - role
+      - type
       properties:
-        role:
+        type:
           type: string
           enum:
-          - system
-          - user
-          - assistant
-          - tool
-        content:
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              $ref: '#/components/schemas/ContentPart'
-        name:
+          - text
+          - image_url
+        text:
           type: string
-        tool_calls:
+        image_url:
+          type: object
+          properties:
+            url:
+              type: string
+              description: HTTPS URL or `data:image/...;base64,...` payload.
+    ChatCompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          example: chat.completion
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
           type: array
           items:
-            $ref: '#/components/schemas/ToolCall'
-        tool_call_id:
-          type: string
+            type: object
+            properties:
+              index:
+                type: integer
+              message:
+                $ref: '#/components/schemas/ChatMessage'
+              finish_reason:
+                type: string
+                enum:
+                - stop
+                - length
+                - tool_calls
+                - content_filter
+        usage:
+          type: object
+          properties:
+            prompt_tokens:
+              type: integer
+            completion_tokens:
+              type: integer
+            total_tokens:
+              type: integer
   securitySchemes:
     BearerAuth:
       type: http
