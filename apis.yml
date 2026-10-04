@@ -166,28 +166,6 @@ apis:
     url: https://docs.api.nvidia.com/nim/reference/visual-models
   - type: Documentation
     url: https://docs.nvidia.com/nim/riva/latest/index.html
-- aid: nvidia-nim:nvidia-nim-chat-api
-  name: NVIDIA NIM Chat API
-  description: OpenAI-compatible chat completion operations
-  humanURL: https://docs.api.nvidia.com/nim/reference/llm-apis
-  baseURL: https://integrate.api.nvidia.com/v1
-  tags:
-  - Chat
-  properties:
-  - type: OpenAPI
-    url: openapi/nvidia-nim-chat-api-openapi.yml
-  - type: Documentation
-    url: https://docs.api.nvidia.com/nim/reference/llm-apis
-  - type: Documentation
-    url: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
-  - type: JSONSchema
-    url: json-schema/nvidia-nim-chat-completion-schema.json
-  - type: JSONLD
-    url: json-ld/nvidia-nim-context.jsonld
-  - type: Documentation
-    url: https://docs.api.nvidia.com/nim/reference/visual-models
-  - type: Documentation
-    url: https://docs.nvidia.com/nim/riva/latest/index.html
 - aid: nvidia-nim:nvidia-nim-images-api
   name: NVIDIA NIM Images API
   description: Text-to-image and image-to-image generation
@@ -222,6 +200,28 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/nvidia-nim-tts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.nvidia.com/nim/reference/llm-apis
+  - type: Documentation
+    url: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+  - type: JSONSchema
+    url: json-schema/nvidia-nim-chat-completion-schema.json
+  - type: JSONLD
+    url: json-ld/nvidia-nim-context.jsonld
+  - type: Documentation
+    url: https://docs.api.nvidia.com/nim/reference/visual-models
+  - type: Documentation
+    url: https://docs.nvidia.com/nim/riva/latest/index.html
+- aid: nvidia-nim:nvidia-nim-chat-completions-api
+  name: NVIDIA NIM Chat Completions API
+  description: OpenAI-compatible chat completion operations
+  humanURL: https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html
+  baseURL: https://integrate.api.nvidia.com/v1
+  tags:
+  - Chat Completions
+  properties:
+  - type: OpenAPI
+    url: openapi/nvidia-nim-chat-completions-api-openapi.yml
   - type: Documentation
     url: https://docs.api.nvidia.com/nim/reference/llm-apis
   - type: Documentation

@@ -17,7 +17,7 @@ servers:
 security:
 - BearerAuth: []
 tags:
-- name: Chat
+- name: Chat Completions
   description: OpenAI-compatible chat completion operations
 paths:
   /v1/chat/completions:
@@ -26,7 +26,7 @@ paths:
       description: 'Generate a chat completion for the supplied messages. Compatible with the OpenAI chat completions schema; supports streaming via Server-Sent Events when `stream: true` is set, tool/function calling, JSON-mode structured outputs, and (on VLM models) image inputs inside the messages array.'
       operationId: createChatCompletion
       tags:
-      - Chat
+      - Chat Completions
       requestBody:
         required: true
         content:
@@ -58,27 +58,61 @@ paths:
           description: Upstream inference error.
 components:
   schemas:
-    Tool:
+    ContentPart:
       type: object
       required:
       - type
-      - function
       properties:
         type:
           type: string
           enum:
-          - function
-        function:
+          - text
+          - image_url
+        text:
+          type: string
+        image_url:
           type: object
-          required:
-          - name
           properties:
-            name:
+            url:
               type: string
-            description:
-              type: string
-            parameters:
-              type: object
+              description: HTTPS URL or `data:image/...;base64,...` payload.
+    ChatCompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+          example: chat.completion
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+              message:
+                $ref: '#/components/schemas/ChatMessage'
+              finish_reason:
+                type: string
+                enum:
+                - stop
+                - length
+                - tool_calls
+                - content_filter
+        usage:
+          type: object
+          properties:
+            prompt_tokens:
+              type: integer
+            completion_tokens:
+              type: integer
+            total_tokens:
+              type: integer
     ChatMessage:
       type: object
       required:
@@ -105,6 +139,27 @@ components:
             $ref: '#/components/schemas/ToolCall'
         tool_call_id:
           type: string
+    Tool:
+      type: object
+      required:
+      - type
+      - function
+      properties:
+        type:
+          type: string
+          enum:
+          - function
+        function:
+          type: object
+          required:
+          - name
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+            parameters:
+              type: object
     ToolCall:
       type: object
       properties:
@@ -190,61 +245,6 @@ components:
           type: number
         presence_penalty:
           type: number
-    ContentPart:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - text
-          - image_url
-        text:
-          type: string
-        image_url:
-          type: object
-          properties:
-            url:
-              type: string
-              description: HTTPS URL or `data:image/...;base64,...` payload.
-    ChatCompletionResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-          example: chat.completion
-        created:
-          type: integer
-        model:
-          type: string
-        choices:
-          type: array
-          items:
-            type: object
-            properties:
-              index:
-                type: integer
-              message:
-                $ref: '#/components/schemas/ChatMessage'
-              finish_reason:
-                type: string
-                enum:
-                - stop
-                - length
-                - tool_calls
-                - content_filter
-        usage:
-          type: object
-          properties:
-            prompt_tokens:
-              type: integer
-            completion_tokens:
-              type: integer
-            total_tokens:
-              type: integer
   securitySchemes:
     BearerAuth:
       type: http
