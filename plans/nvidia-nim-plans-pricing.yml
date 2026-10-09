@@ -1,3 +1,8 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-05-25 by the file itself), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
+generated: '2026-05-25'
 apiCommonsPlans: '0.1'
 provider:
   name: NVIDIA NIM
@@ -78,3 +83,37 @@ plans:
   - name: 24/7 NVIDIA support
   url: https://www.nvidia.com/en-us/data-center/dgx-cloud/
 modified: '2026-05-25'
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  units:
+  - compute
+  - seat
+  plans:
+  - name: Developer (Free)
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: NVIDIA AI Enterprise
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - other
+    periods:
+    - one-time
+    - year
+  - name: DGX Cloud
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - month
