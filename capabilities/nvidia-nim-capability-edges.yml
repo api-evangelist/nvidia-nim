@@ -1,0 +1,65 @@
+slug: nvidia-nim
+provider: NVIDIA NIM
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Chat Completions
+  spec_file: nvidia-nim-chat-completions-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.75
+  evidence: POST /v1/chat/completions createChatCompletion 'Create A Chat Completion'; schemas ChatCompletionRequest,
+    ToolCall
+  reason: LLM inference endpoint serving 100+ foundation models — AI/ML model lifecycle and inference
+    delivery under Artificial Intelligence Management.
+- tag: Completions
+  spec_file: nvidia-nim-completions-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.72
+  evidence: POST /v1/completions createCompletion 'Create A Text Completion'; schemas CompletionRequest,
+    CompletionResponse
+  reason: Text-completion LLM inference surface (the title's BioNeMo wording belongs to another tag);
+    operations show generic AI model inference, mapping to Artificial Intelligence Management.
+- tag: Embeddings
+  spec_file: nvidia-nim-embeddings-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.72
+  evidence: POST /v1/embeddings createEmbedding 'Create An Embedding'; schemas EmbeddingRequest, EmbeddingResponse
+  reason: Embedding-model inference endpoint; realises AI/ML model serving under Artificial Intelligence
+    Management rather than any domain business capability.
+- tag: ASR
+  spec_file: nvidia-nim-asr-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /v1/audio/transcriptions createTranscription 'Transcribe Audio'; 'NVIDIA Riva-powered
+    speech NIMs ... automatic speech recognition'
+  reason: Serving of a speech-recognition AI model via inference endpoint; the realised capability is
+    AI/ML model deployment and inference, i.e. Artificial Intelligence Management.
+- tag: Images
+  spec_file: nvidia-nim-images-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /v1/genai/{publisher}/{model} generateImage 'Generate An Image' — 'Visual generative
+    AI endpoints. Text-to-image, image-to-image, and image editing'
+  reason: This is a generative AI model inference endpoint; the closest honest capability is Artificial
+    Intelligence Management (AI/ML model lifecycle, inference serving). Confidence moderate since it is
+    runtime model consumption rather than model lifecycle governance.

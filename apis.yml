@@ -286,6 +286,9 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/nvidia-nim.png
 access: 3rd-Party
 common:
+  - type: CapabilityMap
+    url: capabilities/nvidia-nim-capability-edges.yml
+    name: NVIDIA NIM Business Capability Map
   - type: Website
     url: https://www.nvidia.com/
   - type: AgenticAccess
