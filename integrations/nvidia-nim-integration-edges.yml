@@ -1,0 +1,63 @@
+edges:
+- partner_name: OpenRouter
+  partner: openrouter
+  partner_match: router
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://openrouter.ai/api/v1/models
+  coverage_role:
+  - inference-host
+  router_signals:
+    inference-host:
+      models: 5
+      router_ids:
+      - Nvidia
+      tools_share: 0.8
+      structured_output_share: 0.2
+  matched_by: verified-token-table
+  detected_by: sweep-model-routing.py
+  first_seen: '2026-10-13'
+- partner_name: LiteLLM
+  partner: litellm
+  partner_match: router
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json
+  coverage_role:
+  - provider
+  router_signals:
+    provider:
+      models: 3
+      router_ids:
+      - nvidia_nim
+  matched_by: verified-token-table
+  detected_by: sweep-model-routing.py
+  first_seen: '2026-10-13'
+- partner_name: OpenAI
+  partner: openai
+  partner_match: domain
+  type: contract
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  evidence: https://github.com/api-evangelist/nvidia-nim/blob/main/openapi/nvidia-nim-chat-completions-api-openapi.yml#L4
+  contract_reference:
+    repo: nvidia-nim
+    spec_file: nvidia-nim-chat-completions-api-openapi.yml
+    property: description
+    value: OpenAI-compatible
+    note: 'nvidia-nim declares OpenAI compatibility: ''description: OpenAI-compatible chat completions endpoint
+      served by NVIDIA NIM. Available as a hosted service at https://integrate.api.nvidia.com/v1 and on every'''
+    detected_by: sweep-model-routing.py
+    detected: '2026-10-13'
+  detected_by: sweep-model-routing.py
+  first_seen: '2026-10-13'
+generated: '2026-10-13'
+method: searched
+checked:
+- https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json
+- https://openrouter.ai/api/v1/models
