@@ -45,3 +45,47 @@
     detected: '2026-10-13'
   status: not-a-workflow
   arazzo: null
+- slug: nvidia-nim-pipecat
+  label: Pipecat
+  partner: pipecat-ai
+  partner_name: Pipecat
+  type: coverage
+  channel: partner-built
+  evidence: https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services/nvidia
+  source: edge
+  relationship: system-coverage
+  status: not-a-workflow
+  arazzo: null
+- slug: nvidia-nim-livekit-agents
+  label: LiveKit Agents
+  partner: livekit
+  partner_name: LiveKit Agents
+  type: coverage
+  channel: partner-built
+  evidence: https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-nvidia
+  source: edge
+  relationship: system-coverage
+  status: not-a-workflow
+  arazzo: null
+- slug: nvidia-nim-llamaindex
+  label: LlamaIndex
+  partner: llamaindex
+  partner_name: LlamaIndex
+  type: coverage
+  channel: partner-built
+  evidence: https://github.com/run-llama/llama_index/tree/main/llama-index-integrations/embeddings/llama-index-embeddings-nvidia
+  source: edge
+  relationship: system-coverage
+  status: not-a-workflow
+  arazzo: null
+- slug: nvidia-nim-langchain
+  label: LangChain
+  partner: langchain
+  partner_name: LangChain
+  type: coverage
+  channel: partner-built
+  evidence: https://github.com/langchain-ai/langchain-nvidia
+  source: edge
+  relationship: system-coverage
+  status: not-a-workflow
+  arazzo: null
