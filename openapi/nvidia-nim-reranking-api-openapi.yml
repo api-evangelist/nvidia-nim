@@ -48,20 +48,6 @@ paths:
           description: Rate limit exceeded.
 components:
   schemas:
-    RankingResponse:
-      type: object
-      properties:
-        rankings:
-          type: array
-          items:
-            type: object
-            properties:
-              index:
-                type: integer
-                description: Original index in the request `passages` array.
-              logit:
-                type: number
-                description: Raw cross-encoder relevance logit (higher = more relevant).
     RankingRequest:
       type: object
       required:
@@ -94,6 +80,20 @@ components:
           - NONE
           - END
           default: END
+    RankingResponse:
+      type: object
+      properties:
+        rankings:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+                description: Original index in the request `passages` array.
+              logit:
+                type: number
+                description: Raw cross-encoder relevance logit (higher = more relevant).
   securitySchemes:
     BearerAuth:
       type: http

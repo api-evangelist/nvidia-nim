@@ -23,7 +23,9 @@
     "nvidia-nim-models-api-openapi.yml",
     "nvidia-nim-reranking-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [
     "nvidia-nim-biology-api-openapi.yml: previously refined output kept for 3 operation(s) no archived document covers (e.g. /v1/biology/mit/diffdock post, /v1/biology/nvidia/alphafold2/predict-structure-from-sequence post, /v1/biology/nvidia/molmim/generate post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
@@ -38,11 +40,12 @@
     "nvidia-nim-chat-completions-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "nvidia-nim-image-generation-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "nvidia-nim-speech-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "superseded outputs removed: nvidia-nim-chat-completions-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 10 total)"
   ],
   "skipped": [
     "nvidia-nim-asr-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "nvidia-nim-chat-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nvidia-nim-chat-completions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "nvidia-nim-images-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "nvidia-nim-tts-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
