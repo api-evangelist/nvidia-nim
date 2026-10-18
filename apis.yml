@@ -150,6 +150,8 @@ apis:
   humanURL: https://docs.api.nvidia.com/nim/reference/llm-apis
   baseURL: https://integrate.api.nvidia.com/v1
   tags:
+  - Speech Recognition
+  tags_raw:
   - ASR
   properties:
   - type: OpenAPI
