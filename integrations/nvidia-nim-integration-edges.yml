@@ -174,6 +174,41 @@ edges:
     detected: '2026-10-19'
   detected_by: sweep-cloud-native.py
   first_seen: '2026-10-15'
+- partner_name: Obsidian
+  partner: obsidian
+  partner_match: aggregator
+  type: marketplace
+  marketplace: obsidian-community-plugins
+  channel: community-plugin
+  relationship: connector-listing
+  direction: third-party
+  evidence: https://github.com/axxalab/axxa-agent
+  app: AXXA Agent
+  listing_count: 1
+  category: Obsidian community plugin
+  partner_url: https://obsidian.md/plugins
+  contract_reference:
+    register: Obsidian community-plugins.json (obsidianmd/obsidian-releases@793b5211) + plugin repo README / manifest
+      / source
+    spec_file: null
+    role: obsidian-community-plugin:community
+    registered_name: AXXA Lab™
+    register_id: https://github.com/axxalab/axxa-agent
+    matched_domain: nvidia.com
+    matched_by: domain+name-in-listing
+    matched_where: README
+    matched_host: api.ngc.nvidia.com
+    builder: community
+    plugins:
+    - axxa-agent
+    downloads_context: 901
+    signal_note: 'ONE edge per provider: a community plugin names the provider in its name/description AND carries
+      the provider''s domain or API host in its README or source. Builder is a named community author (not the provider).
+      Plugin and download counts are context, never counted.'
+    detected_by: sweep-obsidian-community-plugins.py
+    detected: '2026-10-22'
+  detected_by: sweep-obsidian-community-plugins.py
+  first_seen: '2026-10-22'
 generated: '2026-10-13'
 method: searched
 checked:
@@ -186,6 +221,10 @@ checked:
 - https://github.com/pipecat-ai/pipecat/tree/main/src/pipecat/services
 - https://github.com/run-llama/llama_index/tree/main/llama-index-integrations
 - https://openrouter.ai/api/v1/models
+- https://raw.githubusercontent.com/<repo>/HEAD/README.md
+- https://raw.githubusercontent.com/<repo>/HEAD/manifest.json
+- https://raw.githubusercontent.com/obsidianmd/obsidian-releases/793b52114f54b055b760ef47761ec5c93d689804/community-plugin-stats.json
+- https://raw.githubusercontent.com/obsidianmd/obsidian-releases/793b52114f54b055b760ef47761ec5c93d689804/community-plugins.json
 source:
 - https://github.com/cncf/landscape
 - https://github.com/cncf/k8s-conformance
