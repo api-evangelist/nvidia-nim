@@ -1,4 +1,4 @@
-# NVIDIA NIM (nvidia-nim)
+# NVIDIA NIM
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,299 +66,249 @@
 
 NVIDIA NIM (NVIDIA Inference Microservices) is a catalog of GPU-accelerated, containerized AI inference microservices that package optimized model engines (TensorRT-LLM, vLLM, SGLang, Triton) behind industry-standard OpenAI-compatible REST APIs. NIM covers large language models, embeddings and reranking, vision-language models, speech (Riva), visual generative AI, and biology (BioNeMo) — exposed identically whether consumed from the hosted endpoint at integrate.api.nvidia.com or self-hosted via Docker containers and the Kubernetes-native NIM Operator. NIM ships with NVIDIA AI Enterprise for commercial deployment and is the inference layer underneath NVIDIA AI Blueprints, NeMo Retriever, NeMo Guardrails, and the broader NVIDIA developer stack.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/nvidia-nim/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/nvidia-nim/refs/heads/main/apis.yml)
+**Areas:** Artificial Intelligence · Inference · Microservices · LLM · Foundation Models · GPU · Kubernetes · NVIDIA · OpenAI-Compatible
 
-## Scope
+## NVIDIA NIM on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for NVIDIA NIM is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/nvidia-nim/](https://apis.io/providers/nvidia-nim/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (10)
 
-- AI
-- Artificial Intelligence
-- Inference
-- Microservices
-- LLM
-- Foundation Models
-- GPU
-- Kubernetes
-- NVIDIA
-- OpenAI Compatible
+- [NVIDIA NIM Completions API](https://apis.io/apis/nvidia-nim/nvidia-nim-completions-api/) — Legacy OpenAI-compatible text completion endpoint (/v1/completions) for non-chat foundation models served by NIM. Accepts a raw prompt and returns generated…
+- [NVIDIA NIM Embeddings API](https://apis.io/apis/nvidia-nim/nvidia-nim-embeddings-api/) — OpenAI-compatible embeddings endpoint (/v1/embeddings) backed by NVIDIA NeMo Retriever text embedding models including NV-Embed, NV-EmbedQA-E5,…
+- [NVIDIA NIM Reranking API](https://apis.io/apis/nvidia-nim/nvidia-nim-reranking-api/) — NeMo Retriever cross-encoder reranking endpoint (/v1/ranking) for scoring candidate passages against a query. Improves retrieval relevance on RAG pipelines…
+- [NVIDIA NIM Models API](https://apis.io/apis/nvidia-nim/nvidia-nim-models-api/) — OpenAI-compatible model catalog endpoint (/v1/models) returning the list of models served by the NIM endpoint or container. Each entry includes id,…
+- [NVIDIA NIM Health API](https://apis.io/apis/nvidia-nim/nvidia-nim-health-api/) — Liveness, readiness, and startup probes exposed by self-hosted NIM containers (/v1/health/live, /v1/health/ready) and a Prometheus /v1/metrics scrape…
+- [NVIDIA NIM Biology (BioNeMo) API](https://apis.io/apis/nvidia-nim/nvidia-nim-biology-api/) — BioNeMo NIMs for protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction…
+- [NVIDIA NIM ASR API](https://apis.io/apis/nvidia-nim/nvidia-nim-asr-api/) — Automatic speech recognition (speech-to-text)
+- [NVIDIA NIM Images API](https://apis.io/apis/nvidia-nim/nvidia-nim-images-api/) — Text-to-image and image-to-image generation
+- [NVIDIA NIM TTS API](https://apis.io/apis/nvidia-nim/nvidia-nim-tts-api/) — Text-to-speech synthesis
+- [NVIDIA NIM Chat Completions API](https://apis.io/apis/nvidia-nim/nvidia-nim-chat-completions-api/) — OpenAI-compatible chat completion operations
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Arazzo workflows (7)
+
+Multi-step workflows that chain operations into a business task.
+
+- [NVIDIA NIM BioNeMo Drug Discovery](https://apis.io/arazzos/nvidia-nim/nvidia-nim-bionemo-drug-discovery-workflow/)
+- [NVIDIA NIM Discover And Chat](https://apis.io/arazzos/nvidia-nim/nvidia-nim-discover-and-chat-workflow/)
+- [NVIDIA NIM Generate Image And Caption](https://apis.io/arazzos/nvidia-nim/nvidia-nim-generate-image-and-caption-workflow/)
+- [NVIDIA NIM Health Gated Completion](https://apis.io/arazzos/nvidia-nim/nvidia-nim-health-gated-completion-workflow/)
+- [NVIDIA NIM RAG Rerank And Answer](https://apis.io/arazzos/nvidia-nim/nvidia-nim-rag-rerank-answer-workflow/)
+- [NVIDIA NIM Vision Describe And Summarize](https://apis.io/arazzos/nvidia-nim/nvidia-nim-vision-describe-and-summarize-workflow/)
+- [NVIDIA NIM Voice Assistant Loop](https://apis.io/arazzos/nvidia-nim/nvidia-nim-voice-assistant-loop-workflow/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [nvidia-nim](https://apis.io/servers/nvidia-nim/nvidia-nim/)
+
+#### Agent skills (237)
+
+Agent skills built on the API.
+
+- [accelerated-computing-cudf](https://apis.io/agent-skills/nvidia-nim/accelerated-computing-cudf/)
+- [aiq-deploy](https://apis.io/agent-skills/nvidia-nim/aiq-deploy/)
+- [aiq-deploy](https://apis.io/agent-skills/nvidia-nim/aiq-deploy-2/)
+- [aiq-research](https://apis.io/agent-skills/nvidia-nim/aiq-research/)
+- [aiq-research](https://apis.io/agent-skills/nvidia-nim/aiq-research-2/)
+- [cudaq-guide](https://apis.io/agent-skills/nvidia-nim/cudaq-guide/)
+- [cufolio](https://apis.io/agent-skills/nvidia-nim/cufolio/)
+- [cuopt-developer](https://apis.io/agent-skills/nvidia-nim/cuopt-developer/)
+- [cuopt-install](https://apis.io/agent-skills/nvidia-nim/cuopt-install/)
+- [cuopt-numerical-optimization-api-c](https://apis.io/agent-skills/nvidia-nim/cuopt-numerical-optimization-api-c/)
+- [cuopt-numerical-optimization-api-cli](https://apis.io/agent-skills/nvidia-nim/cuopt-numerical-optimization-api-cli/)
+- [cuopt-numerical-optimization-api-python](https://apis.io/agent-skills/nvidia-nim/cuopt-numerical-optimization-api-python/)
+- [cuopt-numerical-optimization-formulation](https://apis.io/agent-skills/nvidia-nim/cuopt-numerical-optimization-formulation/)
+- [cuopt-routing-api-python](https://apis.io/agent-skills/nvidia-nim/cuopt-routing-api-python/)
+- [cuopt-routing-formulation](https://apis.io/agent-skills/nvidia-nim/cuopt-routing-formulation/)
+- [cuopt-server-api-python](https://apis.io/agent-skills/nvidia-nim/cuopt-server-api-python/)
+- [cuopt-server-common](https://apis.io/agent-skills/nvidia-nim/cuopt-server-common/)
+- [cuopt-skill-evolution](https://apis.io/agent-skills/nvidia-nim/cuopt-skill-evolution/)
+- [cuopt-user-rules](https://apis.io/agent-skills/nvidia-nim/cuopt-user-rules/)
+- [cuopt-user-rules](https://apis.io/agent-skills/nvidia-nim/cuopt-user-rules-2/)
+- [cupynumeric-hdf5](https://apis.io/agent-skills/nvidia-nim/cupynumeric-hdf5/)
+- [cupynumeric-install](https://apis.io/agent-skills/nvidia-nim/cupynumeric-install/)
+- [cupynumeric-migration-readiness](https://apis.io/agent-skills/nvidia-nim/cupynumeric-migration-readiness/)
+- [cupynumeric-parallel-data-load](https://apis.io/agent-skills/nvidia-nim/cupynumeric-parallel-data-load/)
+- [dali-dynamic-mode](https://apis.io/agent-skills/nvidia-nim/dali-dynamic-mode/)
+- …and 212 more published on APIs.io
 
-## Timestamps
+#### Agentic access (1)
 
-- **Created:** 2026-05-25
-- **Modified:** 2026-05-25
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## APIs
+- [Nvidia Nim Agentic Access](https://apis.io/agentic-access/nvidia-nim/nvidia-nim-agentic-access/)
 
-### NVIDIA NIM Chat Completions API
+#### JSON Schema (2)
 
-OpenAI-compatible chat completions endpoint exposing 100+ foundation models — Meta Llama, Mistral, Mixtral, NVIDIA Nemotron, DeepSeek, Qwen, Microsoft Phi, Google Gemma, IBM Granite, and more — through a single /v1/chat/completions surface. Supports streaming, tool/function calling, structured outputs, vision inputs on multimodal models, and the standard temperature/top_p/max_tokens parameters. Switching models is a one-line change to the model string. Available hosted on integrate.api.nvidia.com or self-hosted via NIM containers on any GPU.
+The data models the API reads and writes.
 
-- **Human URL:** [https://docs.api.nvidia.com/nim/reference/llm-apis](https://docs.api.nvidia.com/nim/reference/llm-apis)
-- **Base URL:** `https://integrate.api.nvidia.com/v1`
+- [NVIDIA NIM Chat Completion](https://apis.io/schemas/nvidia-nim/nvidia-nim-chat-completion/)
+- [NVIDIA NIM Embedding](https://apis.io/schemas/nvidia-nim/nvidia-nim-embedding/)
 
-#### Tags
+#### JSON-LD (1)
 
-- AI
-- Artificial Intelligence
-- Chat
-- Completions
-- LLM
-- OpenAI Compatible
+Linked-data contexts for the provider's vocabulary.
 
-#### Properties
+- [Nvidia Nim Context](https://apis.io/jsonld/nvidia-nim/nvidia-nim-context/)
 
-- [Documentation](https://docs.api.nvidia.com/nim/reference/llm-apis)
-- [Documentation](https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html)
-- [OpenAPI](openapi/nvidia-nim-chat-completions-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nvidia-nim-chat-completions-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nvidia-nim-chat-completions-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/nvidia-nim-chat-completion-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/nvidia-nim-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+#### Collections (24)
 
-### NVIDIA NIM Completions API
+Postman and Open Collection request collections.
 
-Legacy OpenAI-compatible text completion endpoint (/v1/completions) for non-chat foundation models served by NIM. Accepts a raw prompt and returns generated text with the same streaming, sampling, and stopping-criterion controls as the chat endpoint.
+- [NVIDIA NIM Biology (BioNeMo) ASR API](https://apis.io/collections/nvidia-nim/open-nvidia-nim-asr-api/)
+- [NVIDIA NIM (BioNeMo) ASR Biology API](https://apis.io/collections/nvidia-nim/open-nvidia-nim-biology-api/)
+- [NVIDIA NIM Biology (BioNeMo) ASR Chat API](https://apis.io/collections/nvidia-nim/open-nvidia-nim-chat-api/)
+- [NVIDIA NIM Chat Completions API](https://apis.io/collections/nvidia-nim/open-nvidia-nim-chat-completions-api/)
+- [NVIDIA NIM Biology (BioNeMo) ASR Completions API](https://apis.io/collections/nvidia-nim/open-nvidia-nim-completions-api/)
+- [NVIDIA NIM Biology (BioNeMo) ASR Embeddings API](https://apis.io/collections/nvidia-nim/open-nvidia-nim-embeddings-api/)
+- [NVIDIA NIM Biology (BioNeMo) ASR Health API](https://apis.io/collections/nvidia-nim/open-nvidia-nim-health-api/)
+- [NVIDIA NIM Image Generation API](https://apis.io/collections/nvidia-nim/open-nvidia-nim-image-generation-api/)
+- [NVIDIA NIM Biology (BioNeMo) ASR Images API](https://apis.io/collections/nvidia-nim/open-nvidia-nim-images-api/)
+- [NVIDIA NIM Biology (BioNeMo) ASR Models API](https://apis.io/collections/nvidia-nim/open-nvidia-nim-models-api/)
+- [NVIDIA NIM Biology (BioNeMo) ASR Reranking API](https://apis.io/collections/nvidia-nim/open-nvidia-nim-reranking-api/)
+- [NVIDIA NIM Speech API](https://apis.io/collections/nvidia-nim/open-nvidia-nim-speech-api/)
+- [NVIDIA NIM Biology (BioNeMo) ASR TTS API](https://apis.io/collections/nvidia-nim/open-nvidia-nim-tts-api/)
+- [NVIDIA NIM Biology (BioNeMo) ASR Vision API](https://apis.io/collections/nvidia-nim/open-nvidia-nim-vision-api/)
+- [NVIDIA NIM Biology (BioNeMo) API](https://apis.io/collections/nvidia-nim/postman-nvidia-nim-biology-api/)
+- [NVIDIA NIM Chat Completions API](https://apis.io/collections/nvidia-nim/postman-nvidia-nim-chat-completions-api/)
+- [NVIDIA NIM Completions API](https://apis.io/collections/nvidia-nim/postman-nvidia-nim-completions-api/)
+- [NVIDIA NIM Embeddings API](https://apis.io/collections/nvidia-nim/postman-nvidia-nim-embeddings-api/)
+- [NVIDIA NIM Health API](https://apis.io/collections/nvidia-nim/postman-nvidia-nim-health-api/)
+- [NVIDIA NIM Image Generation API](https://apis.io/collections/nvidia-nim/postman-nvidia-nim-image-generation-api/)
+- [NVIDIA NIM Models API](https://apis.io/collections/nvidia-nim/postman-nvidia-nim-models-api/)
+- [NVIDIA NIM Reranking API](https://apis.io/collections/nvidia-nim/postman-nvidia-nim-reranking-api/)
+- [NVIDIA NIM Speech API](https://apis.io/collections/nvidia-nim/postman-nvidia-nim-speech-api/)
+- [NVIDIA NIM Vision Language Models API](https://apis.io/collections/nvidia-nim/postman-nvidia-nim-vision-api/)
 
-- **Human URL:** [https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html](https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html)
-- **Base URL:** `https://integrate.api.nvidia.com/v1`
+#### Overlays (20)
 
-#### Tags
+OpenAPI overlays, including conversational phrasing for each operation.
 
-- AI
-- Artificial Intelligence
-- Completions
-- LLM
-- OpenAI Compatible
+- [Nvidia Nim Asr Api Phrasing Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-asr-api-phrasing-overlay/)
+- [Nvidia Nim Biology Api Phrasing Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-biology-api-phrasing-overlay/)
+- [Nvidia Nim Biology Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-biology-overlay/)
+- [Nvidia Nim Chat Api Phrasing Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-chat-api-phrasing-overlay/)
+- [Nvidia Nim Chat Completions Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-chat-completions-overlay/)
+- [Nvidia Nim Completions Api Phrasing Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-completions-api-phrasing-overlay/)
+- [Nvidia Nim Completions Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-completions-overlay/)
+- [Nvidia Nim Embeddings Api Phrasing Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-embeddings-api-phrasing-overlay/)
+- [Nvidia Nim Embeddings Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-embeddings-overlay/)
+- [Nvidia Nim Health Api Phrasing Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-health-api-phrasing-overlay/)
+- [Nvidia Nim Health Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-health-overlay/)
+- [Nvidia Nim Image Generation Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-image-generation-overlay/)
+- [Nvidia Nim Images Api Phrasing Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-images-api-phrasing-overlay/)
+- [Nvidia Nim Models Api Phrasing Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-models-api-phrasing-overlay/)
+- [Nvidia Nim Models Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-models-overlay/)
+- [Nvidia Nim Reranking Api Phrasing Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-reranking-api-phrasing-overlay/)
+- [Nvidia Nim Reranking Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-reranking-overlay/)
+- [Nvidia Nim Speech Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-speech-overlay/)
+- [Nvidia Nim Tts Api Phrasing Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-tts-api-phrasing-overlay/)
+- [Nvidia Nim Vision Overlay](https://apis.io/overlays/nvidia-nim/nvidia-nim-vision-overlay/)
 
-#### Properties
+#### Governance rules (1)
 
-- [Documentation](https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html)
-- [OpenAPI](openapi/nvidia-nim-completions-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nvidia-nim-completions-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nvidia-nim-completions-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Spectral rulesets for the provider's contracts.
 
-### NVIDIA NIM Embeddings API
+- [NVIDIA NIM — jsonschema rules](https://apis.io/rules/nvidia-nim/nvidia-nim-jsonschema-spectral-rules/)
 
-OpenAI-compatible embeddings endpoint (/v1/embeddings) backed by NVIDIA NeMo Retriever text embedding models including NV-Embed, NV-EmbedQA-E5, llama-3.2-nv-embedqa-1b, and BAAI BGE-M3. Returns dense float vectors for documents or queries to power RAG, semantic search, and clustering. Supports `input_type=passage|query` for asymmetric retrieval and the standard `dimensions` parameter on models that permit dimension reduction.
+#### Security (3)
 
-- **Human URL:** [https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/api-reference.html](https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/api-reference.html)
-- **Base URL:** `https://integrate.api.nvidia.com/v1`
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
+- [Nvidia Nim Authentication](https://apis.io/security/nvidia-nim/nvidia-nim-authentication/)
+- [Nvidia Nim Domain Security](https://apis.io/security/nvidia-nim/nvidia-nim-domain-security/)
+- [Nvidia Nim Vulnerability Disclosure](https://apis.io/security/nvidia-nim/nvidia-nim-vulnerability-disclosure/)
 
-- AI
-- Artificial Intelligence
-- Embeddings
-- Retrieval
-- RAG
-- OpenAI Compatible
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/api-reference.html)
-- [OpenAPI](openapi/nvidia-nim-embeddings-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nvidia-nim-embeddings-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nvidia-nim-embeddings-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/nvidia-nim-embedding-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [Nvidia Nim Plans Pricing](https://apis.io/plans/nvidia-nim/nvidia-nim-plans-pricing/)
 
-### NVIDIA NIM Reranking API
+#### Rate limits (1)
 
-NeMo Retriever cross-encoder reranking endpoint (/v1/ranking) for scoring candidate passages against a query. Improves retrieval relevance on RAG pipelines and supports the llama-3.2-nv-rerankqa-1b and NV-RerankQA-Mistral-4B-v3 models. Accepts a query plus a list of passages and returns a sorted list of relevance scores.
+Published request limits.
 
-- **Human URL:** [https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/api-reference.html](https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/api-reference.html)
-- **Base URL:** `https://integrate.api.nvidia.com/v1`
+- [Nvidia Nim Rate Limits](https://apis.io/rate-limits/nvidia-nim/nvidia-nim-rate-limits/)
 
-#### Tags
+#### FinOps (1)
 
-- AI
-- Artificial Intelligence
-- Reranking
-- Retrieval
-- RAG
+What the API costs to run, by operation.
 
-#### Properties
+- [Nvidia Nim Finops](https://apis.io/finops/nvidia-nim/nvidia-nim-finops/)
 
-- [Documentation](https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/api-reference.html)
-- [OpenAPI](openapi/nvidia-nim-reranking-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nvidia-nim-reranking-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nvidia-nim-reranking-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+## Where to find this API
 
-### NVIDIA NIM Models API
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-OpenAI-compatible model catalog endpoint (/v1/models) returning the list of models served by the NIM endpoint or container. Each entry includes id, owned_by, and created timestamp. Used by clients to discover the model name strings to pass to chat-completions / completions / embeddings.
-
-- **Human URL:** [https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html](https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html)
-- **Base URL:** `https://integrate.api.nvidia.com/v1`
-
-#### Tags
-
-- AI
-- Artificial Intelligence
-- Models
-- Catalog
-- OpenAI Compatible
-
-#### Properties
-
-- [Documentation](https://docs.nvidia.com/nim/large-language-models/latest/api-reference.html)
-- [OpenAPI](openapi/nvidia-nim-models-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nvidia-nim-models-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nvidia-nim-models-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### NVIDIA NIM Vision Language Models API
-
-Vision-language model inference through the standard /v1/chat/completions surface with image inputs (base64 or URL) in the messages payload. Supports NVIDIA NeVA, microsoft/kosmos-2, Phi-3-vision, llama-3.2-90b-vision-instruct, and other VLMs hosted in the NIM catalog.
-
-- **Human URL:** [https://docs.api.nvidia.com/nim/reference/vlm-apis](https://docs.api.nvidia.com/nim/reference/vlm-apis)
-- **Base URL:** `https://integrate.api.nvidia.com/v1`
-
-#### Tags
-
-- AI
-- Artificial Intelligence
-- Vision
-- Multimodal
-- VLM
-
-#### Properties
-
-- [Documentation](https://docs.api.nvidia.com/nim/reference/vlm-apis)
-- [OpenAPI](openapi/nvidia-nim-vision-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nvidia-nim-vision-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nvidia-nim-vision-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### NVIDIA NIM Health API
-
-Liveness, readiness, and startup probes exposed by self-hosted NIM containers (/v1/health/live, /v1/health/ready) and a Prometheus /v1/metrics scrape endpoint for GPU utilization, request latency, and queue depth. Drives Kubernetes pod lifecycle and HPA scaling via the NIM Operator.
-
-- **Human URL:** [https://docs.nvidia.com/nim/large-language-models/latest/observability.html](https://docs.nvidia.com/nim/large-language-models/latest/observability.html)
-
-#### Tags
-
-- Health
-- Observability
-- Kubernetes
-
-#### Properties
-
-- [Documentation](https://docs.nvidia.com/nim/large-language-models/latest/observability.html)
-- [OpenAPI](openapi/nvidia-nim-health-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nvidia-nim-health-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nvidia-nim-health-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### NVIDIA NIM Image Generation API
-
-Visual generative AI endpoints for text-to-image, image-to-image, and image editing using models such as Black Forest Labs FLUX.1, Stable Diffusion XL, Shutterstock-trained models, and NVIDIA-curated Edify Image. Returns base64-encoded PNG/JPEG artifacts.
-
-- **Human URL:** [https://docs.api.nvidia.com/nim/reference/visual-models](https://docs.api.nvidia.com/nim/reference/visual-models)
-- **Base URL:** `https://integrate.api.nvidia.com/v1`
-
-#### Tags
-
-- AI
-- Artificial Intelligence
-- Image Generation
-- Visual
-
-#### Properties
-
-- [Documentation](https://docs.api.nvidia.com/nim/reference/visual-models)
-- [OpenAPI](openapi/nvidia-nim-image-generation-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nvidia-nim-image-generation-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nvidia-nim-image-generation-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### NVIDIA NIM Speech API
-
-NVIDIA Riva-powered speech NIMs delivering automatic speech recognition (Parakeet, Canary), neural machine translation, and text-to-speech (Magpie-TTS, FastPitch) through HTTP and gRPC surfaces. Hosted endpoints accept WAV/FLAC audio and return transcripts or synthesized speech.
-
-- **Human URL:** [https://docs.nvidia.com/nim/riva/latest/index.html](https://docs.nvidia.com/nim/riva/latest/index.html)
-- **Base URL:** `https://integrate.api.nvidia.com/v1`
-
-#### Tags
-
-- AI
-- Artificial Intelligence
-- Speech
-- ASR
-- TTS
-- Riva
-
-#### Properties
-
-- [Documentation](https://docs.nvidia.com/nim/riva/latest/index.html)
-- [OpenAPI](openapi/nvidia-nim-speech-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nvidia-nim-speech-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nvidia-nim-speech-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### NVIDIA NIM Biology (BioNeMo) API
-
-BioNeMo NIMs for protein structure prediction (AlphaFold2, ESMFold, OpenFold), protein generation (ProtGPT2, RFDiffusion), molecular property prediction (MolMIM), small molecule generation, and molecular docking (DiffDock). Each model is a containerized microservice with the same OpenAPI surface.
-
-- **Human URL:** [https://docs.nvidia.com/nim/bionemo/latest/index.html](https://docs.nvidia.com/nim/bionemo/latest/index.html)
-- **Base URL:** `https://integrate.api.nvidia.com/v1`
-
-#### Tags
-
-- AI
-- Biology
-- BioNeMo
-- Drug Discovery
-- Healthcare
-
-#### Properties
-
-- [Documentation](https://docs.nvidia.com/nim/bionemo/latest/index.html)
-- [OpenAPI](openapi/nvidia-nim-biology-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/nvidia-nim-biology-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/nvidia-nim-biology-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
-- [Portal](https://build.nvidia.com)
+- [Website](https://www.nvidia.com/)
 - [Documentation](https://docs.nvidia.com/nim/index.html)
-- [Documentation](https://docs.api.nvidia.com/nim/reference/llm-apis)
-- [Documentation](https://developer.nvidia.com/nim)
-- [Getting Started](https://docs.nvidia.com/nim/large-language-models/latest/getting-started.html)
-- [Sign Up](https://build.nvidia.com/explore/discover)
-- [Sandbox](https://build.nvidia.com/explore/discover)
+- [Getting started](https://docs.nvidia.com/nim/large-language-models/latest/getting-started.html)
 - [Pricing](https://www.nvidia.com/en-us/data-center/products/ai-enterprise/)
-- [GitHub Organization](https://github.com/NVIDIA)
-- [GitHub Organization](https://github.com/NVIDIA-NIM-Agent-Blueprints)
-- [Status Page](https://status.nvidia.com)
 - [Blog](https://developer.nvidia.com/blog/category/generative-ai/)
-- [Blog](https://blogs.nvidia.com/blog/category/generative-ai/)
-- [Forum](https://forums.developer.nvidia.com/c/ai-data-science/nemo-llm-service/)
-- [Trust Center](https://www.nvidia.com/en-us/about-nvidia/legal-info/)
-- [Terms of Service](https://www.nvidia.com/en-us/about-nvidia/terms-of-service/)
-- [Privacy Policy](https://www.nvidia.com/en-us/about-nvidia/privacy-policy/)
-- [Documentation](https://docs.nvidia.com/nim-operator/latest/index.html)
-- [SDK](https://github.com/NVIDIA/nim-deploy)
-- [SDK](https://github.com/NVIDIA/k8s-nim-operator)
-- [SDK](https://github.com/NVIDIA/GenerativeAIExamples)
-- [SDK](https://github.com/NVIDIA/NeMo)
-- [SDK](https://github.com/NVIDIA/NeMo-Guardrails)
-- [SDK](https://github.com/NVIDIA/TensorRT-LLM)
-- [SDK](https://github.com/triton-inference-server/server)
-- [SDK](https://github.com/langchain-ai/langchain-nvidia)
-- [SDK](https://pypi.org/project/openai/)
-- [Code Examples](https://github.com/NVIDIA/GenerativeAIExamples)
-- [Code Examples](https://github.com/NVIDIA-AI-Blueprints)
-- [Models](https://build.nvidia.com/explore/discover)
-- [Kubernetes C R D](https://github.com/NVIDIA/k8s-nim-operator/tree/main/api)
-- [Rate Limits](https://docs.api.nvidia.com/nim/reference/limits)
-- [Versioning](https://docs.nvidia.com/nim/large-language-models/latest/release-notes.html)
-- [Plans](plans/nvidia-nim-plans-pricing.yml)
-- [Rate Limits](rate-limits/nvidia-nim-rate-limits.yml)
-- [Fin Ops](finops/nvidia-nim-finops.yml)
-- [Features](undefined)
+- [Trust centre](https://www.nvidia.com/en-us/about-nvidia/legal-info/)
+- [Terms of service](https://www.nvidia.com/en-us/about-nvidia/terms-of-service/)
+- [Privacy policy](https://www.nvidia.com/en-us/about-nvidia/privacy-policy/)
+- [GitHub](https://github.com/NVIDIA)
+- [Status](https://status.nvidia.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 60.6** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 69.6 |
+| Contract quality | 64.0 |
+| Contract governance | 14.4 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 82.6 |
+| Access clarity | 60.5 |
+
+**Agent readiness 26.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | unknown |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 32.7** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/nvidia-nim/](https://apis.io/providers/nvidia-nim/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for NVIDIA NIM: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/nvidia-nim/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
